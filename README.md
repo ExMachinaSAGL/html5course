@@ -4,29 +4,20 @@
     - CSS3: intro sui selettori.
     - CSS3: Borders, Background, gradients, shadows, colors/opacity.
 
-
 2.  - HTML5: forms: nuovi input type, validazione.
     - CSS3: fonts, web fonts ("data:" come fonte), (text columns).
-
-
 
 3.  - API: geolocation.
     - HTML5: drag & drop.
     - CSS3: transforms, transitions, animation.
 
-
-4.  - HTML5: canvas plus (cenni SVG, WebGL tempo permettendo)
-    - HTML5: audio, video.
-
-
+4.  - HTML5: canvas VS svg
 
 5.  - API: cross-document messaging: postMessage, WebSocket.
     - API: web workers.
 
-
 6.  - API: file API.
     - API: storage: application cache (manifest + offline use), Web Storage, Local Storage, Session Storage, history API.
-
 
 7.  - CSS3: media query.
     - API: orientation e deviceMotion API.
@@ -34,8 +25,7 @@
 ---
 ***Eliminato***
 
-1.  Appendici/approfondimenti/spunti
-    - HTML5: rich text editing.
+    - HTML5: audio, video, rich text editing.
     - HTML5: microdata.
     - FRAMEWORKS: CSS, js, responsive: jquery, angular, bootstrap...
     - LINK UTILI.
