@@ -1,4 +1,4 @@
-1.  - HTML5: intro sulle principali differente col vecchio HTML, perchè è stato introdotto, browser support, detecting HTML5 features (cenni), HTML5 shim.
+1.  - HTML5: intro sulle principali differenze col vecchio HTML, perchè è stato introdotto, browser support, detecting HTML5 features (cenni), HTML5 shim.
     - HTML5: console e strumenti di debug.
     - HTML5: nuovi tags semantici e attributi (i principali, es: "data-").
     - CSS3: intro sui selettori.
