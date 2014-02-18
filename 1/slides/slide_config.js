@@ -2,7 +2,7 @@ var SLIDE_CONFIG = {
   // Slide settings
   settings: {
     title: 'HTML5',
-    subtitle: 'Tags, selettori, CSS3 (e altre meraviglie...)',
+    subtitle: '&lt;tags&gt;, #selettori, {CSS3} (e altre meraviglie...)',
     eventInfo: {
       title: 'EOC',
       date: '21/02/2014'

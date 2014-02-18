@@ -1221,7 +1221,7 @@ article.smaller q:before, article.smaller q:after {
 }
 /* line 812, ../scss/default.scss */
 .segue h2 {
-  color: #e6e6e6;
+  color: #888;
   font-size: 60px;
 }
 /* line 816, ../scss/default.scss */
@@ -1256,6 +1256,10 @@ article.smaller q:before, article.smaller q:after {
   bottom: 80px;
   font-size: 24pt;
   line-height: 1.3;
+}
+
+.render-html {
+  margin: 2em; padding: 1em; border: 2px solid #00f; border-radius: 4px;
 }
 
 /* line 848, ../scss/default.scss */

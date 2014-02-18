@@ -67,6 +67,10 @@
     </article>
   </slide>
 
+  <slide class="fill nobackground" style="background-image: url(images/SW.png)">
+    <footer class="source white" style="font-size: 2em;">HTML5 rocks!</footer>
+  </slide>
+
   <slide>
     <article>
       <ul>
@@ -122,6 +126,15 @@
 
   <slide>
     <hgroup>
+      <h3>diveinto.html5doctor.com/peeks-pokes-and-pointers.html</h3>
+    </hgroup>
+    <article>
+      <iframe data-src="http://diveinto.html5doctor.com/peeks-pokes-and-pointers.html"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>(X)HTML: Template di base</h2>
     </hgroup>
     <article>
@@ -138,11 +151,39 @@
     </article>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>Sintassi XHTML?</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;link rel="stylesheet" href="style.css" />
+        &lt;link rel="stylesheet" href="style.css">
+        &lt;LINK REL="stylesheet" HREF="style.css">
+        &lt;Link Rel="stylesheet" Href="style.css">
+        &lt;link rel=stylesheet href=style.css>
+
+        &lt;input type="text" disabled="disabled" />
+        &lt;input type="text" disabled>
+      </pre>
+      <p>Qualunque forma si scelga: condividiamo uno standard</p>
+    </article>
+  </slide>
+
   <slide class="segue">
     <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
     <hgroup class="auto-fadein">
       <h2>Nuovi Tag Semantici</h2>
     </hgroup>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>C'era una volta...</h2>
+    </hgroup>
+    <article>
+      <pre data-src="../snippets/03_cera_una_volta.html"></pre>
+    </article>
   </slide>
 
   <slide>
@@ -162,20 +203,311 @@
       <pre class="prettyprint" data-lang="html">
         &lt;header>
           &lt;hgroup>
-            &lt;h1>Page title&lt;/h1>
-            &lt;h2>Page subtitle&lt;/h2>
+            &lt;h1>Fight Club&lt;/h1>
+            &lt;h2>Le 8 Regole&lt;/h2>
           &lt;/hgroup>
         &lt;/header>
       </pre>
-      <p>Definisce il titolo di una sezione qualsiasi all'interno della pagina. Puo' essere ripetuto.</p>
-      <p>N.B. Controllare continuamente le definizioni: &lt;hgroup&gt; è già considerato obsoleto (<cite><a href="http://html5doctor.com/the-hgroup-element/">http://html5doctor.com/the-hgroup-element</a></cite>)!</p>
+      <section class="centered render-html">
+        <header>
+          <hgroup>
+            <h1>Fight Club</h1>
+            <h2 style="font-size: 22px;">Le 8 regole</h2>
+          </hgroup>
+        </header>
+      </section>
+      <p>Definisce il titolo di una sezione qualsiasi all'interno della pagina (article, section o l'intera pagina). Puo' essere ripetuto.</p>
     </article>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>&lt;section&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;section>
+          &lt;article>regola 1...&lt;/article>
+          &lt;article>regola 2...&lt;/article>
+          &lt;article>regola 3...&lt;/article>
+        &lt;/section>
+      </pre>
+      <section class="render-html">
+        <section>
+          <article>Non dovete parlare mai del Fight Club</article>
+          <article>Non dovete parlare mai del Fight Club</article>
+          <article>Se qualcuno grida basta, si accascia o è spompato... fine del combattimento</article>
+        </section>
+      </section>
+      <p>Rappresenta una generica sezione di un documento o un'applicazione (gruppo tematico di contenuti).</p>
+    </article>
+  </slide>
 
+  <slide>
+    <hgroup>
+      <h2>&lt;article&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;article>&lt;header>Header&lt;/header>Contenuto...&lt;/article>
 
+        &lt;article>Contenuto...&lt;/article>
+      </pre>
+      <section class="render-html">
+          <article><header>Prima regola del Fight Club:</header>Non dovete parlare mai del Fight Club</article>
+          <br>
+          <article>Le lingue nazionali sono il tedesco, il francese, l’italiano e il romancio</article>
+      </section>
+      <p>Contenuto indipendente e "completo": in principio distribuibile o riutilizzabile indipendentemente dal resto.</p>
+    </article>
+  </slide>
 
-<!--
+  <slide>
+    <hgroup>
+      <h2>&lt;nav&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;nav>
+          &lt;ul>
+            &lt;li>&lt;a href="#">Brontolo&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Cucciolo&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Pisolo&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Gongolo&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/nav>
+      </pre>
+      <section class="render-html">
+          <nav>
+          <ul>
+            <li style="display: inline;"><a href="#">Brontolo</a></li> |
+            <li style="display: inline;"><a href="#">Cucciolo</a></li> | 
+            <li style="display: inline;"><a href="#">Pisolo</a></li> |
+            <li style="display: inline;"><a href="#">Gongolo</a></li>
+          </ul>
+        </nav>
+      </section>
+      <p>Un gruppo di link per la navigazione.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;aside&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;article>Adoro mangiare la raclette...&lt;/article>
+        &lt;aside>Raclette: specialità del Vallese...&lt;/aside>
+      </pre>
+      <section class="render-html" style="overflow: Auto;">
+          <article style="float: left; width: 50%;">In vacanza sul lago di Ginevra, adoro trascorrere la sera mangiando raclette...</article>
+          <aside style="float: left; width: 30%; font-size: 0.6em; background: lightgoldenrodyellow; padding: 0.5em;">Raclette: specialità del Vallese a base di formaggio fuso.</aside>
+      </section>
+      <p>Contenuto secondario, separato, ma concettualmente collegato al contenuto primario.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;footer&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;footer>
+          Copyright © &lt;time datetime="2014-02-21">2014&lt;/time>
+        &lt;/footer>
+      </pre>
+      <section class="centered render-html">
+        <footer>
+          Copyright © <time datetime="2014-02-21">2014</time>
+        </footer>
+      </section>
+      <p>Definisce il footer di una sezione qualsiasi all'interno della pagina (article, section o l'intera pagina). Puo' essere ripetuto.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;time&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;!-- senza @datetime deve contenere una data/time/datetime valido -->
+        &lt;time>2014-02-21&lt;/time>
+        &lt;!-- se si @datetime il contenuto puo' essere di qualsiasi tipo -->
+        &lt;time datetime="2014-02-21">il 21 di Febbraio&lt;/time>
+        &lt;!-- time -->
+        &lt;time datetime="09:00">inizieremo alle 9&lt;/time>
+        &lt;!-- datetime con time-zone (con time zone offset) -->
+        &lt;time datetime="2014-02-21T09:00+00:00">Primo incontro HTML5&lt;/time>
+        &lt;!-- datetime con "Z" (UTC) -->
+        &lt;time datetime="2014-02-21T09:00Z">Primo incontro HTML5&lt;/time>        
+      </pre>
+      <p>Macchine e uomini leggono (e interpretano) le date in maniera differente.</p>
+      <article class="smaller">
+        <ul>
+          <li>Non va utilizzato per codificare date imprecisate (es: "lo scorso inveno")</li>
+          <li>La data non puo' essere "BC": deve essere una data positiva del calendario gregoriano</li>
+          <li>L'attributo "datetime" deve essere valorizzato con una data (stringa) valida</li>
+          <li>Se l'attributo "datetime" non è specificato, deve contenere una data/time/datetime valido</li>
+        </ul>
+      </article>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;figure&gt; e &lt;figcaption&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;figure>
+          &lt;figcaption>HTML5 Monster!&lt;/figcaption>
+          &lt;img src="/img.png" width="100" height="100" alt="descrizione">          
+        &lt;/figure>
+      </pre>
+      <section class="centered render-html">
+        <figure>
+              <figcaption>Fig. 1: Pericoloso mostro HTML5</figcaption>
+              <iframe data-src="http://m.cadsh.com/simao/monster.html"></iframe>              
+        </figure>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;meter&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;meter 
+          min="0" max="100" 
+          low="40" high="90" 
+          optimum="100" value="91">60Gb&lt;/meter>
+      </pre>
+      <section class="centered render-html">
+        <span>Spazio su disco utilizzato: <meter min="0" max="100" low="40" high="90" optimum="100" value="91">60Gb</meter></span>
+      </section>
+      <ul>
+      <li>Rappresenta un valore il cui range è noto: minimo (min) e massimo (max) sono definiti.</li>
+      <li>Permette di indicare quali valori vengono considerati bassi (low) e quali alti (high).</li>
+      <li>Permette di indicare quale viene considerato il valore "ideale" (optimum).</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;progress&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;progress>working...&lt;/progress>
+
+        &lt;progress value="75" max="100">3/4 complete&lt;/progress>
+      </pre>
+      <section class="render-html">
+        <p>Downloading... <progress>downloading...</progress></p>
+        <p>Processo completato: <progress value="75" max="100">3/4 complete</progress></p>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;datalist&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;input list="mountains" placeholder="Scegli una montagna"/>
+        &lt;datalist id="mountains">
+          &lt;option value="Everest"/>
+          &lt;option value="Kilimangiaro"/>
+          &lt;option value="Aconcagua"/>
+          &lt;option value="Elbrus"/>
+        &lt;/datalist>
+      </pre>
+      <section class="render-html">
+        <input list="mountains" placeholder="Scegli una montagna"/>
+        <datalist id="mountains">
+          <option value="Everest"/>
+          <option value="Kilimangiaro"/>
+          <option value="Aconcagua"/>
+          <option value="Elbrus"/>
+        </datalist>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;details&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;details>
+          &lt;summary>Montagne&lt;/summary>
+          &lt;ul>
+            &lt;li>option value="Everest"&lt;/li>
+            &lt;li>option value="Kilimangiaro"&lt;/li>
+            &lt;li>option value="Aconcagua"&lt;/li>
+            &lt;li>option value="Elbrus"&lt;/li>
+          &lt;/ul>
+        &lt;/details>
+      </pre>
+      <section class="render-html">
+        <details>
+          <summary>Montagne</summary>
+          <ul>
+            <li>option value="Everest"</li>
+            <li>option value="Kilimangiaro"</li>
+            <li>option value="Aconcagua"</li>
+            <li>option value="Elbrus"</li>
+          </ul>
+        </details>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>C'era una volta un blog</h2>
+    </hgroup>
+    <article>
+      <pre data-src="../snippets/04_possibile_blog_oldtime.html"></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Un Nuovo Blog! (fig.)</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/template_html5_page.png" alt="template_html5_page" title="template_html5_page">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Un Nuovo Blog! (markup)</h2>
+    </hgroup>
+    <article>
+      <pre data-src="../snippets/05_HTML5_blog.html"></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Validatore HTML5</h2>
+      <h3>http://html5.validator.nu/</h3>
+    </hgroup>
+    <article>
+      <iframe data-src="http://html5.validator.nu/"></iframe>
+    </article>
+  </slide>
+
   <slide>
     <hgroup>
       <h2>Links</h2>
@@ -191,362 +523,31 @@
           <ul><li>stadio di sviluppo di ogni feature, come usarla e relativi fallback, polyfill...</li></ul>
         </li>
         <li>
+          <a href="http://html5doctor.com" target="_blank">http://html5doctor.com</a>
+          <ul><li>helping you implement HTML5 today</li></ul>
+        </li>
+        <li>
           <a href="http://modernizr.com" target="_blank">http://modernizr.com</a>
           <ul><li>feature detection (progressive enhancement)</li></ul>
         </li>
         <li>
-          <a href="http://html5doctor.com" target="_blank">http://html5doctor.com</a>
-          <ul><li>helping you implement HTML5 today</li></ul>
+          <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills" target="_blank">https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills</a>
+          <ul><li>The All-In-One Entirely-Not-Alphabetical No-Bullshit Guide to HTML5 Fallbacks</li></ul>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org" target="_blank">https://developer.mozilla.org</a>
+          <ul><li>Mozilla Developer Network</li></ul>
         </li>
       </ul>
     </article>
   </slide>
-
-
-
-
-
-
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Bullets</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>Titles are formatted as Open Sans with bold applied and font size is set at 45</li>
-        <li>Title capitalization is title case
-          <ul>
-            <li>Subtitle capitalization is title case</li>
-          </ul>
-        </li>
-        <li>Subtitle capitalization is title case</li>
-        <li>Titles and subtitles should never have a period at the end</li>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Bullets that Build</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <p>A list where items build:</p>
-      <ul class="build">
-        <li>Pressing 'h' highlights code snippets</li>
-        <li>Pressing 'p' toggles speaker notes (if they're on the current slide)</li>
-        <li>Pressing 'f' toggles fullscreen viewing</li>
-        <li>Pressing 'w' toggles widescreen</li>
-        <li>Pressing 'o' toggles overview mode</li>
-        <li>Pressing 'ESC' toggles off these goodies</li>
-      </ul>
-      <p>Another list, but items fade as they build:</p>
-      <ul class="build fade">
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with (Smaller Font)</h2>
-    </hgroup>
-    <article class="smaller">
-      <ul>
-        <li>All <a href="http://google.com">links</a> open in new tabs.</li>
-        <li>To change that this, add <code>target="_self"</code> to the link.</li>
-      </ul>
-    </article>
-  </slide>
-
-  <slide hidden>
-    Hidden slides are left out of the presentation.
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Code Slide (with Subtitle Placeholder)</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <p>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</p>
-      <pre class="prettyprint" data-lang="javascript">
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    <b>for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }</b>
-  }
-&lt;/script&gt;
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Code Slide (Smaller Font)</h2>
-    </hgroup>
-    <article class="smaller">
-      <pre class="prettyprint" data-lang="javascript">
-// Say hello world until the user starts questioning
-// the meaningfulness of their existence.
-function helloWorld(world) {
-  for (var i = 42; --i &gt;= 0;) {
-    alert('Hello ' + String(world));
-  }
-}
-</pre>
-<pre class="prettyprint" data-lang="css">
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-&lt;/style&gt;
-</pre>
-<pre class="prettyprint" data-lang="html">
-&lt;!DOCTYPE html>
-&lt;html>
-&lt;head>
-  &lt;title>My Awesome Page&lt;/title>
-&lt;/head>
-&lt;body>
-  &lt;p&gt;Hello world&lt;/p&gt;
-&lt;body>
-&lt;/html>
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>Point I wanted to make #1</li>
-          <li>Point I wanted to make #2</li>
-          <li>Point I wanted to make #3</li>
-          <li>Example <a href="#">link</a> in notes.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Slide with Speaker Notes</h2>
-    </hgroup>
-    <article>
-      <p>Press 'p' to toggle speaker notes.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>See this amazing link: <a href="http://www.google.com">link</a>.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
-    <hgroup>
-      <h2>Presenter Mode</h2>
-    </hgroup>
-    <article>
-      <p>Add <code><a href="?presentme=true" target="_self">?presentme=true</a></code> to the URL to enabled presenter mode.
-      This setting is sticky, meaning refreshing the page will persist presenter
-      mode.</p>
-      <p>Hit <code><a href="?presentme=false" target="_self">?presentme=false</a></code> to disable presenter mode.</p>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Image</h2>
-    </hgroup>
-    <article>
-      <img src="images/chart.png" class="reflect" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Image (Centered horz/vert)</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option A</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option A (Smaller Text)</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article class="smaller">
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option B</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article>
-      <table class="rows">
-        <tr>
-          <th>Header 1</th><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 2</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 3</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 4</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 5</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide Styles</h2>
-    </hgroup>
-    <article class="smaller">
-      <div class="columns-2">
-        <ul>
-          <li class="red">class="red"</li>
-          <li class="red2">class="red2"</li>
-          <li class="red3">class="red3"</li>
-          <li class="blue">class="blue"</li>
-          <li class="blue2">class="blue2"</li>
-          <li class="blue3">class="blue3"</li>
-          <li class="green">class="green"</li>
-          <li class="green2">class="green2"</li>
-        </ul>
-        <ul>
-          <li class="green3">class="green3"</li>
-          <li class="yellow">class="yellow"</li>
-          <li class="yellow2">class="yellow2"</li>
-          <li class="yellow3">class="yellow3"</li>
-          <li class="gray">class="gray"</li>
-          <li class="gray2">class="gray2"</li>
-          <li class="gray3">class="gray3"</li>
-          <li class="gray4">class="gray4"</li>
-        </ul>
-      </div>
-      <div class="centered" style="margin-top:2em">
-        I am centered text with a <button>Button</button> and <button disabled>Disabled</button> button.
-      </div>
-    </article>
-  </slide>
-
-  <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Segue Slide</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image: url(images/sky.jpg)">
-    <hgroup>
-      <h2 class="white">Full Image (with Optional Header)</h2>
-    </hgroup>
-    <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
-  </slide>
-
-  <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="../../lib/slides/images/exm_logo.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <q>
-        This is an example of quote text.
-      </q>
-      <div class="author">
-        Name<br>
-        Company
-      </div>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Slide with Iframe</h2>
-    </hgroup>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/resources/history.html"></iframe>
-    </article>
-  </slide>
-
-  <slide>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/resources/history.html"></iframe>
-    </article>
-  </slide>
-  -->
 
   <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="../../lib/slides/images/exm_logo.png"></aside>
     <article class="flexbox vleft auto-fadein">
       <h2>&lt;Grazie!&gt;</h2>
     </article>
+    <p>https://github.com/ExMachinaSAGL/html5course</p>
     <p class="auto-fadein" data-config-contact>
       <!-- populated from slide_config.json -->
     </p>
