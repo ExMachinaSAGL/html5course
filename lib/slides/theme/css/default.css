@@ -450,7 +450,7 @@ b {
 a {
   color: #2a7cdf;
   text-decoration: none;
-  border-bottom: 1px solid rgba(42, 124, 223, 0.5);
+  /*border-bottom: 1px solid rgba(42, 124, 223, 0.5);*/
 }
 /* line 271, ../scss/default.scss */
 a:hover {
@@ -1260,6 +1260,9 @@ article.smaller q:before, article.smaller q:after {
 
 .render-html {
   margin: 2em; padding: 1em; border: 2px solid #00f; border-radius: 4px;
+}
+.render-html-no-border {
+  margin: 2em; padding: 1em;
 }
 
 /* line 848, ../scss/default.scss */

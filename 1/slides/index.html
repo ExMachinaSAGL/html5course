@@ -68,6 +68,7 @@
   </slide>
 
   <slide class="fill nobackground" style="background-image: url(images/SW.png)">
+    <h3>http://www.html5rocks.com/</h3>
     <footer class="source white" style="font-size: 2em;">HTML5 rocks!</footer>
   </slide>
 
@@ -677,7 +678,7 @@
             els[i].style.backgroundColor = '#ccc';
           }
           
-          els = document.querySelectorAll("ul li:nth-child(odd)");
+          els = document.querySelectorAll(".weekday ul li:nth-child(odd)");
           i = els.length;
           while (i--) {
             els[i].style.backgroundColor = '#ffa8a8';
@@ -693,6 +694,744 @@
       <h2>Selettori CSS</h2>
     </hgroup>
   </slide>
+
+  <slide>
+    <hgroup>
+      <h2>HTML5: vecchi browser e stili di default</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        article, aside, figure, footer, header, hgroup, nav, section {
+          display: block;
+        }
+      </pre>
+      <a href="http://css3pie.com/" target="_blank">http://css3pie.com</a>
+      <iframe style="height: 350px;" data-src="http://css3pie.com/"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Relational Selectors</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        /* descendant E F */
+        header h2 {color: blue;}
+
+        /* child E>F */
+        article>p {color: orange;}
+
+        /* adjacent siblings E+F */
+        li+li {text-decoration: underline;}
+
+        /* general siblings E~F */
+        header~p {text-decoration:line-through;}
+      </pre>
+      <article class="smaller" style="float: left; width: 40%; margin: 0;">
+        <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+          &lt;article>
+            &lt;header>
+              &lt;h2>Sottotitolo&lt;/h2>
+            &lt;/header>
+            &lt;p>testo qui... &lt;/p>
+            &lt;h2>Sottotitolo&lt;/h2>
+            &lt;div>
+              &lt;p>Secondo paragrafo...&lt;/p>
+              &lt;ul>
+                &lt;li>item 1&lt;/li>
+                &lt;li>item 2&lt;/li>
+              &lt;/ul>
+            &lt;/div>
+          &lt;/article>
+        </pre>
+      </article>
+      <section class="render-html" style="float: right; width: 40%; margin: 0;">
+        <style scoped>
+          header.example h2 {color: blue;}
+          article.example>p {color: orange;}
+          ul.example li {font-size: 14px;}
+          li.example+li.example {text-decoration: underline;}
+          header.example~p {text-decoration:line-through;}
+        </style>
+        <article class="example">
+          <header class="example">
+            <h2>Sottotitolo</h2>
+          </header>
+          <p>testo qui... </p>
+          <h2>Sottotitolo</h2>
+          <div>
+            <p>Secondo paragrafo...</p>
+            <ul class="example">
+              <li class="example">item 1</li>
+              <li class="example">item 2</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Attribute Selectors</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        /* E[attr] */
+        input[type] {background: orange;}
+
+        /* E[attr=val] */
+        input[type="text"] {color: #fff;}
+
+        /* E[attr|=val] */
+        p[lang|=en] {color: blue;}
+
+        /* E[attr*=val] */
+        p[lang*=en] {text-decoration: line-through;}
+      </pre>
+      <article class="smaller" style="float: left; width: 40%; margin: 0;">
+        <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+          &lt;div>
+            &lt;input type="text" value="ciao">
+            &lt;input type="checkbox" checked>
+            &lt;p lang="en-US">Americano&lt;/p>
+            &lt;p lang="en">Inglese&lt;/p>
+            &lt;p lang="fooenfoo">Foo&lt;/p>
+          &lt;/div>
+        </pre>
+      </article>
+      <section class="render-html" style="float: right; width: 40%; margin: 0;">
+        <style scoped>
+          div.example input[type] {background: orange;}
+          div.example input[type="text"] {color: #fff;}
+          div.example p[lang|=en] {color: blue;}
+          div.example p[lang*=en] {text-decoration: line-through;}
+        </style>
+        <div class="example">
+          <input type="text" value="ciao">
+          <input type="email" value="me@myemail.com">
+          <p lang="en-US">Americano</p>
+          <p lang="en">Inglese</p>
+          <p lang="fooENfoo">Foo</p>
+        </div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pseudo-classes</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        :hover, :visited, :focus
+        
+        :disabled, :checked, :required
+
+        a:hover {text-decoration: underline;}
+        input:disabled {background: pink;}
+      </pre>
+    </article>
+    <article class="smaller" style="float: left; width: 40%; margin: 0;">
+      <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+        &lt;a href="#">link 1&lt;/a>
+        &lt;input type="text" disabled" value="disabilitato">
+      </pre>
+    </article>
+    <section class="render-html" style="float: right; width: 40%; margin: 0;">
+      <style scoped>
+        .pseudo-test a {text-decoration: none;}
+        .pseudo-test a:hover {text-decoration: underline;}
+        .pseudo-test input:disabled {background: pink;}
+      </style>
+      <div class="pseudo-test">
+        <a href="#">link 1</a>
+        <br>
+        <input type="text" disabled value="disabilitato">
+      </div>
+    </section>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Strucutral Pseudo-classes</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        .row:nth-child(even) {background: #dde;}
+        .row:nth-child(odd) {background: white;}
+
+        h2:first-child {display:inline-block;}
+        h2:last-child {display:inline-block;}
+
+        li:nth-of-type(3) {text-decoration: underline;}
+
+        div:not(.box) {color: #00c;}
+        span:not(div>span) {display: block;}
+      </pre>
+    </article>
+    <article>
+      <section class="render-html">
+        <div class="weekday">
+          <ul>
+            <li>Concert</li>
+            <li>Shopping</li>
+            <li>Work</li>
+          </ul>
+        </div>
+        <div class="weekday">
+          <ul>
+            <li>Gym</li>
+            <li>Dance</li>
+            <li>Theater</li>
+          </ul>
+        </div>
+
+        <script>
+          var els = document.getElementsByClassName('weekday');
+          var i = els.length;
+          while (i--) {
+            els[i].style.backgroundColor = '#ccc';
+          }
+          
+          els = document.querySelectorAll(".weekday ul li:nth-child(odd)");
+          i = els.length;
+          while (i--) {
+            els[i].style.backgroundColor = '#ffa8a8';
+          }
+          </script>
+        </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Contenuto generato tramite CSS</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        /* E:before, E:after */
+
+        a:after { content: attr(href) }
+        a:before { content: "link: " }
+      </pre>
+    </article>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+        &lt;div>
+          &lt;ul>
+            &lt;li>&lt;a class="generated" href="http://www.google.com">&lt;/a>&lt;/li>
+            &lt;li>&lt;a class="generated" href="http://www.exmachina.ch">&lt;/a>&lt;/li>
+            &lt;li>&lt;a class="generated" href="http://www.twitter.com">&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/div>
+      </pre>
+    </article>
+    <section class="render-html">
+      <style scoped>
+        a.generated:after { content: attr(href) }
+        a.generated:before { content: "link: " }
+      </style>
+      <div>
+        <ul>
+          <li><a class="generated" href="http://www.google.com"></a></li>
+          <li><a class="generated" href="http://www.exmachina.ch"></a></li>
+          <li><a class="generated" href="http://www.twitter.com"></a></li>
+        </ul>
+      </div>
+    </section>
+  </slide>
+
+  <slide class="segue">
+    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>CSS3 !!!</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <section class="render-html" style="border: 0;">
+      <style scoped>
+        #ad1 {
+          background-color: #eee;
+          border-radius: 4px;
+          padding: 10px;
+          border: 1px solid #666;
+        }
+        #ad1 h1 {
+          text-shadow: #fff 1px 1px;
+          font-family: LeagueGothic, Tahoma, Geneva, sans-serif;
+          text-transform: uppercase;
+          line-height: 1;
+          font-family: AcknowledgementMedium;
+          letter-spacing: 0.1em;
+          font-size: 36px;
+          margin: 0 0 0 0;
+          text-align: center;
+        }
+        #ad1 p {
+          margin: 0;
+          text-transform: uppercase;
+          font-size: 20px;
+          text-align: center;
+          line-height: 1em;
+          color: #484848;
+        }
+        article#ad1 p+a {
+          display: block;
+          text-decoration: none;
+          border: 5px double;
+          color: #ffffff;
+          background-color: #484848;
+          background-image: -webkit-linear-gradient(top, rgba(177, 163, 163, 0.6) 0, rgba(204, 165, 165, 0) 37%, rgba(0,0,0,0) 83%, rgba(211, 211, 211, 0.26) 92%, rgba(31, 27, 27, 0) 98%);
+          text-align: center;
+          font-size: 28px;
+          margin: 5px 30px 30px 5px;
+          padding: 40px 0;
+          position: relative;
+          border-radius: 25px;
+          -webkit-box-shadow: 2px 5px 0 0 rgba(72,72,72,1);
+          -moz-box-shadow: 2px 5px 0 0 rgba(72,72,72,1);
+          box-shadow: 2px 5px 0 0 rgba(72,72,72,1);
+          text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
+          font-family: AcknowledgementMedium, sans-serif;
+          margin: 30px;
+        } 
+        #ad1 a.wanted:hover {
+          -webkit-box-shadow: 4px 10px #484848;
+          -moz-box-shadow: 4px 10px #484848;
+          box-shadow: 4px 10px #484848;
+          top: -5px;
+          left: -2px;
+          color: #fff!important;
+        }
+      </style>
+      <article id="ad1">
+        <h1>Wanted</h1>
+        <p>Dead or Alive</p>
+        <a href="#" class="wanted">$$$ Billy the Kid $$$</a>
+        <p>Reward $10.000</p>
+      </article>
+    </section>
+  </slide>
+
+  <slide>
+    <h3>http://css3please.com</h3>
+    <article>
+      <iframe data-src="http://css3please.com/"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <h3>http://www.css3maker.com</h3>
+    <article>
+      <iframe data-src="http://www.css3maker.com/"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>border-radius</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        -webkit-border-radius: 25px;    /* Chrome, Safari 3.1+ 
+          -moz-border-radius: 25px;     /* Firefox 3.5+ 
+            -ms-tborder-radius: 25px;   /* IE 9 
+              -o-border-radius: 25px;   /* Opera 10.50-12.00 
+                border-radius: 25px;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.borders1 {
+              border: 2px solid blue;
+              padding: 60px;
+              border-radius: 25px;
+          }
+        </style>
+        <div class="borders1"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        border-top-left-radius: 5px;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 50px;
+        border-bottom-left-radius: 90px;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.borders2 {
+              border: 2px solid blue;
+              padding: 60px;
+              border-top-left-radius: 5px;
+              border-top-right-radius: 25px;
+              border-bottom-right-radius: 50px;
+              border-bottom-left-radius: 90px;
+          }
+        </style>
+        <div class="borders2"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        border-top-left-radius: 5px 10px;
+        border-top-right-radius: 10px 20px;
+        border-bottom-right-radius: 15px 30px;
+        border-bottom-left-radius: 20px 40px;
+
+        /* shorthand */
+        border-radius: 20px / 10px;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.borders3 {
+              border: 2px solid blue;
+              padding: 60px;
+              border-top-left-radius: 5px 10px;
+              border-top-right-radius: 10px 20px;
+              border-bottom-right-radius: 15px 30px;
+              border-bottom-left-radius: 20px 40px;
+          }
+        </style>
+        <div class="borders3"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>box-shadow</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        -webkit-box-shadow: 2px 5px 4px 2px #666;
+          -moz-box-shadow: 2px 5px 4px 2px #666;
+            box-shadow: inset 2px 5px 4px 2px #666;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.shadow1 {
+              border: 2px solid blue;
+              padding: 30px;
+              border-radius: 25px;
+              -webkit-box-shadow: 2px 5px 4px 2px #666;
+                box-shadow: 2px 5px 4px 2px #666;
+          }
+          div.shadow1:hover {
+              -webkit-box-shadow: 12px 15px 24px 12px #fc0;
+                box-shadow: 12px 15px 24px 12px #fc0;
+          }
+        </style>
+        <div class="shadow1"></div>
+      </section>
+      <article class="smaller">
+        <ul>
+          <li>inset (opzionale)</li>
+          <li>offset orizzontale (positivo o negativo)</li>
+          <li>offset verticale (positivo o negativo)</li>
+          <li>sfumatura dell'ombra</li>
+          <li>spessore dal bordo di origine</li>
+          <li>colore</li>
+        </ul>
+      </article>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>box-shadow (inset)</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        box-shadow: 
+          inset 12px 15px 24px 12px #fc0, 
+          inset -12px -15px 24px 12px #fc0;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.shadow2 {
+              border: 2px solid blue;
+              padding: 30px;
+              border-radius: 25px;
+              -webkit-box-shadow: 2px 5px 4px 2px #666;
+                box-shadow: 2px 5px 4px 2px #666;
+          }
+          div.shadow2:hover {
+              -webkit-box-shadow: inset 12px 15px 24px 12px #fc0, inset -12px -15px 24px 12px #fc0;
+                box-shadow: inset 12px 15px 24px 12px #fc0, inset -12px -15px 24px 12px #fc0;
+          }
+        </style>
+        <div class="shadow2"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>text-shadow</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        /* singola */
+        text-shadow: top left blur color;
+
+        /* multipla */
+        text-shadow: 
+          top1 left1 blur1 color1,
+          top2 left2 blur2 color2,
+          top3 left3 blur3 color3;
+      </pre>
+      <ul>
+        <li>offset orizzontale (positivo o negativo)</li>
+        <li>offset verticale (positivo o negativo)</li>
+        <li>sfumatura dell'ombra</li>
+        <li>colore</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>text-shadow</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        /* esempio */
+        text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          p.shadow3 {
+            font-family: sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+            color: green;
+            -webkit-text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+          }
+          p.shadow3:hover {
+            -webkit-text-shadow: 13px 13px 12px rgba(0, 0, 0, 0.5);
+            text-shadow: 13px 13px 12px rgba(0, 0, 0, 0.5);
+          }
+        </style>
+        <p class="shadow3">Testo Ombra</p>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>gradient (linear)</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: linear-gradient(direction, #stopColor1 percentage1, #stopColor2 percentage2);
+
+        /* esempio */
+        background-image: linear-gradient(top, #fff 0%, #000 100%);
+        background-image: linear-gradient(270deg, #fff 0%, #000 100%);
+        background-image: linear-gradient(#fff 0%, #000 100%);
+        background-image: linear-gradient(#fff, #000);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient1 {
+            padding: 30px;
+            border-radius: 25px;
+            background-image: -webkit-linear-gradient(top, #fff 0%, #000 100%);
+            background-image: linear-gradient(top, #fff 0%, #000 100%);
+          }
+        </style>
+        <div class="gradient1"></div>
+      </section>
+      <article class="smaller">
+        <ul>
+          <li>direzione - angolo (deg) o lato (left, bottom, right, top)</li>
+          <li>colore e percentuale occupata prima dello stop</li>
+        </ul>
+      </article>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: linear-gradient(35deg, #fff 0%, #000 100%);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient2 {
+            padding: 30px;
+            border-radius: 25px;
+            background-image: -webkit-linear-gradient(35deg, #fff 0%, #000 100%);
+            background-image: linear-gradient(35deg, #fff 0%, #000 100%);
+          }
+        </style>
+        <div class="gradient2"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: linear-gradient(
+          45deg, 
+          #f00 0%, 
+          #f63 20%, 
+          #ff0 40%, 
+          #0f0 60%, 
+          #00f 80%, 
+          #a0a 
+          100%
+        );
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient3 {
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid #0f0;
+            background-image: -webkit-linear-gradient(45deg, #f00 0%, #f63 20%, #ff0 40%, #0f0 60%, #00f 80%, #a0a 100%);
+            background-image: linear-gradient(45deg, #f00 0%, #f63 20%, #ff0 40%, #0f0 60%, #00f 80%, #a0a 100%);
+          }
+        </style>
+        <div class="gradient3"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: linear-gradient(
+          45deg, 
+          #000 30%, 
+          #666 30%, 
+          #666 60%, 
+          #ccc 60%, 
+          #ccc 90%
+        );
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient4 {
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid #0f0;
+            background-image: -webkit-linear-gradient(45deg, #000 30%, #666 30%, #666 60%, #ccc 60%, #ccc 90%);
+            background-image: linear-gradient(45deg, #000 30%, #666 30%, #666 60%, #ccc 60%, #ccc 90%);
+          }
+        </style>
+        <div class="gradient4"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <h3>http://westciv.com/tools/gradients</h3>
+    <article>
+      <iframe data-src="http://westciv.com/tools/gradients/"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>gradient (radial)</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: radial-gradient(positionCenter, shapeAndSize, #colors);
+
+        /* esempio */
+        background-image: radial-gradient(#fff, #000);
+        background-image: radial-gradient(center, #fff, #000);
+        background-image: radial-gradient(center, ellipse cover, #fff, #000);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient5 {
+            padding: 40px 30px;
+            border-radius: 25px;
+            background-image: -webkit-radial-gradient(center, ellipse cover, #fff, #000);
+            background-image: radial-gradient(center, ellipse cover, #fff, #000);
+          }
+        </style>
+        <div class="gradient5"></div>
+      </section>
+      <article class="smaller">
+        <ul>
+          <li>position: 15px 20px | 20% </li>
+          <li>shape: circle | ellipse</li>
+          <li>size: closest-side | closest-corner | farthest-side | farthest-corner</li>
+        </ul>
+      </article>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: radial-gradient(30px 30px, circle farthest-side, #fff, #0f0 30%, #fff);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient6 {
+            padding: 40px 30px;
+            border-radius: 25px;
+            background-image: -webkit-radial-gradient(30px 30px, circle farthest-side, #fff, #0f0 30%, #fff);
+            background-image: radial-gradient(30px 30px, circle farthest-side, #fff, #0f0 30%, #fff);
+          }
+        </style>
+        <div class="gradient6"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>repeating gradient</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: 
+          repeating-linear-gradient(left, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 30%),
+          repeating-radial-gradient(
+            top left, 
+            circle, 
+            rgba(0,0,0,0.9), rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5) 20%);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient7 {
+            width: 200px;
+            height: 200px;
+            border-radius: 25px;
+            background-image: 
+              -webkit-repeating-linear-gradient(left, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 30%),
+              -webkit-repeating-radial-gradient(top left, circle, rgba(0,0,0,0.9), rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5) 20%);
+            background-image: 
+              repeating-linear-gradient(left, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 30%),
+              repeating-radial-gradient(top left, circle, rgba(0,0,0,0.9), rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5) 20%);
+          }
+        </style>
+        <div class="gradient7"></div>
+      </section>
+    </article>
+  </slide>
+
+
+
+
+
 
   <slide>
     <hgroup>
