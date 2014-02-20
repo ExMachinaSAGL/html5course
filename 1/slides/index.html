@@ -473,6 +473,46 @@
 
   <slide>
     <hgroup>
+      <h2>Simple feature detection...</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+        function supports_geolocation() {
+          return !!navigator.geolocation;
+        }
+
+        function supports_canvas() {
+          return !!document.createElement('canvas').getContext;
+        }
+
+        if (supports_canvas()) {
+          //...
+        }
+        else {
+          //...
+        }
+      </pre>
+      <p>A seconda dell'elemento o proprietà che si desidera testare...</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>... oppure librerie (es: Modernizr)</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+        if (Modernizr.input.placeholder) {
+          // l'attributo "placeholder" del tag input esiste
+        } else {
+          // nessun supporto per "placeholder"
+        }
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>C'era una volta un blog</h2>
     </hgroup>
     <article>
@@ -505,6 +545,145 @@
     </hgroup>
     <article>
       <iframe data-src="http://html5.validator.nu/"></iframe>
+    </article>
+  </slide>
+
+  <slide class="segue">
+    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>data-*</h2>
+      <h3>one-way data binding</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;!-- non valido -->
+        &lt;img src="photo1.jpg" author="Me Medesimo" data="2014/02/21">
+
+        &lt;!-- valido -->
+        &lt;img src="photo.jpg" data-author="Me Medesimo" data-on="2014/02/21">
+      </pre>
+      <p>Metodo valido e standard per aggiungere dati ad un qualsiasi elemento HTML</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>el.dataset</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;div id="user" 
+          data-id="1234567890" data-user="johndoe" data-date-of-birth>John Doe&lt;/div>
+      </pre>
+      <pre class="prettyprint" data-lang="javascript">
+        var el = document.querySelector('#user');
+
+        el.id == 'user'
+        el.dataset.id === '1234567890'
+        el.dataset.user === 'johndoe'
+        el.dataset.dateOfBirth === ''
+
+        el.dataset.dateOfBirth = '1960-10-03';
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Browser antiquato?</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;div id="user" 
+          data-id="1234567890" data-user="johndoe" data-date-of-birth>John Doe&lt;/div>
+      </pre>
+      <pre class="prettyprint" data-lang="javascript">
+        var el = document.getElementById('#user');
+
+        var id == el.getAttribute('data-user');
+
+        el.setAttribute('data-date-of-birth') = '1960-10-03';
+      </pre>
+      <p>Il markup resta comunque valido!</p>
+    </article>
+  </slide>
+
+  <slide class="segue">
+    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Selectors API</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <article>
+      <p>DOM API</p>
+      <pre class="prettyprint" data-lang="javascript">
+        var el = document.getElementById('section1');
+        el.focus();
+
+        var els = document.getElementsByTagName('div');
+        els[0].focus();
+
+        var els = document.getElementsByClassName('section');
+        els[0].focus();
+      </pre>
+      <p>Selectors API (selettori CSS)</p>
+      <pre class="prettyprint" data-lang="javascript">
+        var tds = document.querySelectorAll("table.test > tr > td");
+        var el = document.querySelector("table.test > tr > td");
+      </pre>
+      <p>element.classLList</p>
+      <pre class="prettyprint">
+        &lt;div id="main" class="class_1 class_2">&lt;/div>
+
+        var el = document.querySelector('#main').classList;
+        el.classList; // [0]: "class_1", [1]: "class_2"
+      <pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre data-src="../snippets/06_selectorsAPI.html"></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <section class="render-html">
+        <div class="weekday">
+          <ul>
+            <li>Concert</li>
+            <li>Shopping</li>
+            <li>Work</li>
+          </ul>
+        </div>
+        <div class="weekday">
+          <ul>
+            <li>Gym</li>
+            <li>Dance</li>
+            <li>Theater</li>
+          </ul>
+        </div>
+
+        <script>
+          var els = document.getElementsByClassName('weekday');
+          var i = els.length;
+          while (i--) {
+            els[i].style.backgroundColor = '#ccc';
+          }
+          
+          els = document.querySelectorAll("ul li:nth-child(odd)");
+          i = els.length;
+          while (i--) {
+            els[i].style.backgroundColor = '#ffa8a8';
+          }
+          </script>
+        </section>
     </article>
   </slide>
 

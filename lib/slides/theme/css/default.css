@@ -1221,12 +1221,12 @@ article.smaller q:before, article.smaller q:after {
 }
 /* line 812, ../scss/default.scss */
 .segue h2 {
-  color: #888;
+  color: #797979;
   font-size: 60px;
 }
 /* line 816, ../scss/default.scss */
 .segue h3 {
-  color: #e6e6e6;
+  color: #797979;
   line-height: 2.8;
 }
 /* line 820, ../scss/default.scss */
