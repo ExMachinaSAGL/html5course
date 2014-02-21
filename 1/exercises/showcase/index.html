@@ -2,23 +2,156 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>HTML5 Showcase</title>
-		<meta name="description" content="HTML5">
-		<meta name="author" content="ExMachina">
-		<style rel="stylesheet">
-
-			ul li:nth-child(odd) {
-				color: red;
-			}
-
-		</style>
-		<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<title></title>
 	</head>
 	<body>
 
-		
+		<!-- HTML -->
+		<div id="div1">div 1</div>
+		<div class="classe1">div con classe1</div>
+		<div class="classe1">div con classe 2</div>
+
+		<table>
+			<tbody>
+				<tr> 
+					<td id="td_1">td 1</td>
+					<td id="td_2">td 2</td>
+					<td id="td_3">td 3</td> 
+				</tr>
+			</tbody>
+		</table>
+
+
+		<!-- JAVASCRIPT -->
 		<script>
 
+			/*#######################################################
+				Recuperare elementi html
+			#######################################################*/
+			/*
+				Ritorna l'elemento html con l'id specificato.
+				Torna "null" se non trova nulla.
+				Se esistono piu' elementi nella pagina con lo stesso id (NON dovrebbe succedere), torna il primo.
+			*/
+			var div = document.getElementById("div1"); // Element: div1
+			
+			/*
+				Ritorna un array di tutti gli elementi html, col tag specificato.
+				Torna un array vuoto se non trova nulla.
+			*/
+			var divs = document.getElementsByTagName("div"); // Array: [div, div, div]
+
+			/*
+				Ritorna un array di tutti gli elementi html, con la classe specificata.
+				Torna un array vuoto se non trova nulla.
+			*/
+			var els = document.getElementsByClassName('classe1'); // Array: [div, div]
+
+			/*
+				Ritorna il primo degli elementi trovati che corrispondono al selettore specificato.
+				Torna "null" se non trova nulla.
+			*/
+	        var el = document.querySelector("table>tbody>tr>td"); // Element: td
+
+	        /*
+				Ritorna un array di tutti gli elementi html, recuperati dal selettore specificato.
+				Torna un array vuoto se non trova nulla.
+			*/
+			var tds = document.querySelectorAll("table>tbody>tr>td"); // Array: [td, td, td]
+
+
+			/*#######################################################
+				Dichiarare oggetti e array in javascript
+			#######################################################*/
+	        /* 
+	        	Creare un oggetto: metodo 1 (obsoleto)
+	        */
+	        var obj1 = new Object();
+	        obj1.proprieta_1 = "ciao";
+	        obj1.funzione_1 = function() { alert("sono la funzione"); };
+
+	        obj1.proprieta_1 = "ciao a tutti"; // sovrascrivo la proprietà
+	        obj1.funzione_1(); // invocazione della funzione
+
+	        /* 
+	        	Creare un oggetto: metodo 2
+	        */
+	        var obj2 = {};
+	        obj2.proprieta_1 = "ciao";
+	        obj2.funzione_1 = function() { alert("sono la funzione"); };
+
+	        obj2.proprieta_1 = "ciao a tutti"; // sovrascrivo la proprietà
+	        obj2.funzione_1(); // invocazione della funzione
+
+	        /* 
+	        	Creare un oggetto: metodo 3 (object literal, forma piu' breve del metodo 2)
+	        */
+	        var obj3 = {
+	        	proprieta_1: "ciao",
+	        	funzione_1: function() { alert("sono la funzione"); }
+	        };
+
+	        obj3.proprieta_1 = "ciao a tutti"; // sovrascrivo la proprietà
+	        obj3.funzione_1(); // invocazione della funzione
+
+	        /* 
+	        	Creare un array: metodo 1 (obsoleto)
+	        */
+	        var arr1 = new Array();
+	        arr1.push("a");
+	        arr1.push("b");
+	        arr1.push("c"); // ora arr1 = ["a", "b", "c"]
+
+			/* 
+	        	Creare un array: metodo 2
+	        */
+	        var arr2 = []; // new Array();
+	        arr2.push("a");
+	        arr2.push("b");
+	        arr2.push("c"); // ora arr2 = ["a", "b", "c"]
+
+			/* 
+	        	Creare un array: metodo 3
+	        */
+	        var arr3 = ["a", "b", "c"];
+	        arr3.push("d"); // ora arr3 = ["a", "b", "c", "d"]
+
+
+			/*#######################################################
+				Verificare che un certo metodo o oggetto esista
+			#######################################################*/
+			/* metodo 1 */
+			if (!document.querySelector) {
+	        	alert("manca querySelector");
+	        }
+	        else {
+	        	alert("esiste querySelector");
+	        }
+
+	        /* metodo 2 */
+	        if ("proprieta_1" in obj1) {
+	        	alert("esiste proprieta_1");
+	        }
+	        else {
+	        	alert("non esiste proprieta_1");
+	        }
+
+	        /* metodo 3 */
+	        if ( obj1.hasOwnProperty("funzione_1") ) {
+	        	alert("esiste funzione_1");
+	        }
+	        else {
+	        	alert("non esiste funzione_1");
+	        }
+
+	        /* ciclare sulle sole proprietà definite programmaticamente per l'oggetto (e non ereditate) */
+	        for (var p in obj1) {
+        		if ( obj1.hasOwnProperty(p) ) {
+        			alert("esiste: " + p);
+        		}
+        	}        
+
 		</script>
+
 	</body>
 </html>
