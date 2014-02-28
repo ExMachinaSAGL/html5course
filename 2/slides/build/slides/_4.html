@@ -1,0 +1,46 @@
+<slide>
+    <hgroup>
+        <h2>Attribute Selectors</h2>
+    </hgroup>
+    <article>
+        <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+            /* E[attr] */
+            input[type] {background: orange;}
+
+            /* E[attr=val] */
+            input[type="text"] {color: #fff;}
+
+            /* E[attr|=val] */
+            p[lang|=en] {color: blue;}
+
+            /* E[attr*=val] */
+            p[lang*=en] {text-decoration: line-through;}
+        </pre>
+        <article class="smaller" style="float: left; width: 40%; margin: 0;">
+            <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+                &lt;div>
+                &lt;input type="text" value="ciao">
+                &lt;input type="checkbox" checked>
+                &lt;p lang="en-US">Americano&lt;/p>
+                &lt;p lang="en">Inglese&lt;/p>
+                &lt;p lang="fooenfoo">Foo&lt;/p>
+                &lt;/div>
+            </pre>
+        </article>
+        <section class="render-html" style="float: right; width: 40%; margin: 0;">
+            <style scoped>
+                div.example input[type] {background: orange;}
+                div.example input[type="text"] {color: #fff;}
+                div.example p[lang|=en] {color: blue;}
+                div.example p[lang*=en] {text-decoration: line-through;}
+            </style>
+            <div class="example">
+                <input type="text" value="ciao">
+                <input type="email" value="me@myemail.com">
+                <p lang="en-US">Americano</p>
+                <p lang="en">Inglese</p>
+                <p lang="fooENfoo">Foo</p>
+            </div>
+        </section>
+    </article>
+</slide>

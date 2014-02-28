@@ -1,0 +1,36 @@
+<slide>
+    <hgroup>
+        <h2>8 / 13 : Range</h2>
+    </hgroup>
+    <article>
+        <article class="smaller">
+            <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                &lt;input type="range" value="0" name="quantity" min="0" max="20" step="2">
+            </pre>
+        </article>
+        <section class="render-html">
+            <div class="example">
+                <form action="" method="POST">
+                    <input type="range" value="0" name="quantity" min="0" max="20" step="2" id="rng">
+                    <span id="val"></span>
+                </form>
+            </div>
+        </section>
+    </article>
+    <span>Compatibility</span>
+    <div class="compat">
+
+        <span class="c_ok"></span>
+        <span class="f_ok"></span>
+        <span class="o_ok"></span>
+        <span class="s_ok"></span>
+        <span class="i_ok"></span>
+    </div>
+</slide>
+<script>
+    window.onload = function (){
+        document.getElementById('rng').onchange = function () {
+            document.getElementById('val').innerHTML = this.value;
+        }
+    }
+</script>

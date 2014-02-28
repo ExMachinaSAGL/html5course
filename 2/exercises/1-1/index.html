@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>AppUnti</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <!-- CSS -->
+      <link rel="stylesheet" href="css/style.css" media="screen, handheld">
+      <link rel="stylesheet" href="css/large.css" media="screen  and (min-width: 40.5em)">
+   </head>
+   <body id="page">
+
+   <!-- HEADER E NAVIGAZIONE -->
+      <header role="banner">
+         <div>
+            <h1 class="logo"><a href="#">AppUnti</a></h1>
+            <ul id="nav-anchors" class="nav-anchors">
+               <li><a href="#nav" id="menu-anchor">Menu</a></li>
+               <li><a href="#search" id="search-anchor">search</a></li>
+            </ul>
+            <form id="search" action="#" method="post" class="search reveal">
+               <fieldset>
+                  <legend></legend>
+                  <label for="search-site">search</label>
+                  <input type="search" id="search-site" placeholder="search">
+                  <input type="submit" value="search">
+               </fieldset>
+            </form>
+            <nav id="nav" class="nav reveal">
+               <ul role="navigation">
+                  <li><a href="#">aggiungi</a></li>
+                  <li><a href="#">leggi</a></li>
+               </ul>
+            </nav>
+         </div>
+      </header>
+
+      <div class="content" role="main">         
+         <!-- FILTRI -->
+         <section class="filters">
+            <form method="post" action="#" id="filter-form" class="filter-form">
+               <fieldset>
+                  <legend></legend>
+                  <div class="field size-field">
+                     <label for="size">Show n°</label>
+                     <select id="size" name="size">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                     </select>
+                  </div>
+                  <div class="submit-form">
+                     <input type="submit" class="btn" value="refresh">
+                  </div>
+               </fieldset>
+            </form>
+         </section>
+
+         <!-- LISTA APPUNTI -->
+         <section class="aux notes" id="notes">
+            <header id="tab-notes">
+               <a href="#" class="disabled open">
+                  <h2>Appunti</h2>
+               </a>
+            </header>
+            <div role="tabpanel">
+               <ol class="notes-list">
+                  <li>
+                     <!-- NOTA -->
+                     <article>
+                        <img src="images/avatar.png" alt="Author Name">
+                        <header>
+                           <div class="note-meta">
+                              <h3>Sogni</h3>
+                              <a href="#"><time datetime="2014-02-21">21/02/2014</time></a> By Giordano Bruno
+                           </div>
+                        </header>
+                        <div class="note-content">
+                           <p>Questa notte ho fatto un sogno strano: stare attenti a fuoco e campi di fiori.</p>
+                        </div>
+                     </article>
+                  </li>
+                  <li>
+                     <!-- NOTA -->
+                     <article>
+                        <img src="images/avatar.png" alt="Author Name">
+                        <header>
+                           <div class="note-meta">
+                              <h3>Mele e Balestre</h3>
+                              <a href="#"><time datetime="2014-02-21">21/02/2014</time></a> By William Tell
+                           </div>
+                        </header>
+                        <div class="note-content">
+                           <p>Migliorare la traiettoria della balestra. Calibrare mirando a una mela. Potrebbe servire una maggior precisione.</p>
+                        </div>
+                     </article>
+                  </li>
+                  <li>
+                     <!-- NOTA -->
+                     <article>
+                        <img src="images/avatar.png" alt="Author Name">
+                        <header>
+                           <div class="note-meta">
+                              <h3>La Forza</h3>
+                              <a href="#"><time datetime="2014-02-21">21/02/2014</time></a> By Yoda
+                           </div>
+                        </header>
+                        <div class="note-content">
+                           <p>La grandezza non conta; guarda me: giudichi forse me dalla grandezza? Non dovresti farlo infatti, perché mio alleato è la Forza, ed un potente alleato essa è!</p>
+                        </div>
+                     </article>
+                  </li>
+                  <li>
+                     <!-- NOTA -->
+                     <article>
+                        <img src="images/avatar.png" alt="Author Name">
+                        <header>
+                           <div class="note-meta">
+                              <h3>A Ring</h3>
+                              <a href="#"><time datetime="2014-02-21">21/02/2014</time></a> By Melkor il Morgoth
+                           </div>
+                        </header>
+                        <div class="note-content">
+                           <p>Ash nazg durbatulûk, ash nazg gimbatul, ash nazg thrakatulûk, agh burzum-ishi krimpatul.</p>
+                        </div>
+                     </article>
+                  </li>
+               </ol>
+            </div>
+         </section>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+         Copyright © <time datetime="2014-02-21">2014</time>
+      </footer>
+
+      <!-- SCRIPTS -->
+      <script src="js/jquery.js"></script>
+      <script src="js/init.js "></script>
+   </body>
+</html>

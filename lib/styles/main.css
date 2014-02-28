@@ -10,3 +10,11 @@ h2{
 section{
 	margin-bottom: 30px;
 }
+ul.lessons li{
+    line-height:30px;
+    height:30px;
+}
+
+i{
+    font-style: italic
+}

@@ -1,0 +1,30 @@
+<div class="weekday">
+  <ul>
+    <li>Concert</li>
+    <li>Shopping</li>
+    <li>Work</li>
+  </ul>
+</div>
+<div class="weekday">
+  <ul>
+    <li>Gym</li>
+    <li>Dance</li>
+    <li>Theater</li>
+  </ul>
+</div>
+
+<script>
+  // Nativo: getElementsByClassName (DOM API)
+  var els = document.getElementsByClassName('weekday');
+  var i = els.length;
+  while (i--) {
+    els[i].style.backgroundColor = '#ccc';
+  }
+  
+  // Recuperare elementi tramite i selettori CSS (Selectors API)
+  els = document.querySelectorAll("ul li:nth-child(odd)");
+  i = els.length;
+  while (i--) {
+    els[i].style.backgroundColor = '#ffa8a8';
+  }
+</script>

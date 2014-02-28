@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="../../lib/slides/theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../../lib/slides/theme/css/phone.css">
+  <link href="../../lib/syntax/prism.css" rel="stylesheet" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script src="slide_config.js"></script>
+  <script data-main="../../lib/slides/js/slides" src="../../lib/slides/js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Repository del corso</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <h2>https://github.com/ExMachinaSAGL/html5course</h2>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>Agenda</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Tag semantici</li>
+        <li>Nuovi attributi HTML (data-*)</li>
+        <li>Nuovi selettori CSS3</li>
+        <li>JS Selectors API</li>
+        <li>CSS3</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <h2 class="vcenter">
+        HTML5 =
+        <span class="html">HTML</span>
+        +
+        <span class="css">CSS3</span>
+        +
+        <span class="js">JS API</span>
+      </h2>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/SW.png)">
+    <h3>http://www.html5rocks.com/</h3>
+    <footer class="source white" style="font-size: 2em;">HTML5 rocks!</footer>
+  </slide>
+
+  <slide>
+    <article>
+      <ul>
+        <li>
+          Tag semantici
+          <ul>
+            <li>semantica piu' espressiva (accento sulla modularità e portabilità delle pagine web, o loro parti)</li>
+            <li>maggiore facilità di scrittura, uso, riutilizzo</li>
+            <li>maggiore facilità di accesso (insieme a microdata e WAI-ARIA) per umani e sistemi automatizzati</li>
+          </ul>
+        </li>
+        <li>
+          API javascript
+          <ul>
+            <li>API "standard" per semplificare task che prima richiedevano plug-in o tecnologie proprietarie (es. Flash)</li>
+          </ul>
+        </li>
+        <li>
+          CSS3
+          <ul>
+            <li>novità utili agli sviluppatori (meno markup non semantico, script complessi, immagini...)</li>
+            <li>markup piu' pulito e leggibile (piu' accessibile a uomini e macchine), codice piu' manutenibile, meno risorse non necessarie (immagini), caricamento piu' veloce</li>
+            <li>vendor prefix: non ancora del tutto standard (ogni browser implementa il suo)</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <ul>
+        <li>
+          Mobile
+          <ul>
+            <li>HTML5/API/CSS3 ottimamente supportati dai browser mobile</li>
+            <li>alcune tecnologie introdotte sono state sviluppate proprio considerando il mobile (form fields, offline web apps, web storage)</li>
+          </ul>
+        </li>
+        <li>
+          Retrocompatibilità coi vecchi browser
+          <ul>
+            <li>cambiando il doctype le cose continuano a funzionare (la pagina continua a essere valida e visualizzata nello stesso modo)</li>
+            <li>IE: supporto significativo da IE9+</li>
+            <ul>
+              <li>Verificare la fruibilità su browsere IE9- (fallback content, scripting, polyfills, shiv)</li>
+            </ul>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h3>diveinto.html5doctor.com/peeks-pokes-and-pointers.html</h3>
+    </hgroup>
+    <article>
+      <iframe data-src="http://diveinto.html5doctor.com/peeks-pokes-and-pointers.html"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>(X)HTML: Template di base</h2>
+    </hgroup>
+    <article>
+      <pre data-src="../snippets/01_XHTML_basic_template.html"></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>HTML5: Template di base</h2>
+    </hgroup>
+    <article>
+      <pre data-src="../snippets/02_HTML5_basic_template.html"></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Sintassi XHTML?</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;link rel="stylesheet" href="style.css" />
+        &lt;link rel="stylesheet" href="style.css">
+        &lt;LINK REL="stylesheet" HREF="style.css">
+        &lt;Link Rel="stylesheet" Href="style.css">
+        &lt;link rel=stylesheet href=style.css>
+
+        &lt;input type="text" disabled="disabled" />
+        &lt;input type="text" disabled>
+      </pre>
+      <p>Qualunque forma si scelga: condividiamo uno standard</p>
+    </article>
+  </slide>
+
+  <slide class="segue">
+    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Nuovi Tag Semantici</h2>
+    </hgroup>
+  </slide>
+
+   <slide>
+    <hgroup>
+      <h2>C'era una volta...</h2>
+    </hgroup>
+    <article>
+      <pre data-src="../snippets/03_cera_una_volta.html"></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2><a href="http://html5doctor.com">http://html5doctor.com</a></h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/HTML5Doctor.png" alt="HTML5Doctor" title="HTML5Doctor">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;header&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;header>
+          &lt;hgroup>
+            &lt;h1>Fight Club&lt;/h1>
+            &lt;h2>Le 8 Regole&lt;/h2>
+          &lt;/hgroup>
+        &lt;/header>
+      </pre>
+      <section class="centered render-html">
+        <header>
+          <hgroup>
+            <h1>Fight Club</h1>
+            <h2 style="font-size: 22px;">Le 8 regole</h2>
+          </hgroup>
+        </header>
+      </section>
+      <p>Definisce il titolo di una sezione qualsiasi all'interno della pagina (article, section o l'intera pagina). Puo' essere ripetuto.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;section&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;section>
+          &lt;article>regola 1...&lt;/article>
+          &lt;article>regola 2...&lt;/article>
+          &lt;article>regola 3...&lt;/article>
+        &lt;/section>
+      </pre>
+      <section class="render-html">
+        <section>
+          <article>Non dovete parlare mai del Fight Club</article>
+          <article>Non dovete parlare mai del Fight Club</article>
+          <article>Se qualcuno grida basta, si accascia o è spompato... fine del combattimento</article>
+        </section>
+      </section>
+      <p>Rappresenta una generica sezione di un documento o un'applicazione (gruppo tematico di contenuti).</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;article&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;article>&lt;header>Header&lt;/header>Contenuto...&lt;/article>
+
+        &lt;article>Contenuto...&lt;/article>
+      </pre>
+      <section class="render-html">
+          <article><header>Prima regola del Fight Club:</header>Non dovete parlare mai del Fight Club</article>
+          <br>
+          <article>Le lingue nazionali sono il tedesco, il francese, l’italiano e il romancio</article>
+      </section>
+      <p>Contenuto indipendente e "completo": in principio distribuibile o riutilizzabile indipendentemente dal resto.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;nav&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;nav>
+          &lt;ul>
+            &lt;li>&lt;a href="#">Brontolo&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Cucciolo&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Pisolo&lt;/a>&lt;/li>
+            &lt;li>&lt;a href="#">Gongolo&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/nav>
+      </pre>
+      <section class="render-html">
+          <nav>
+          <ul>
+            <li style="display: inline;"><a href="#">Brontolo</a></li> |
+            <li style="display: inline;"><a href="#">Cucciolo</a></li> | 
+            <li style="display: inline;"><a href="#">Pisolo</a></li> |
+            <li style="display: inline;"><a href="#">Gongolo</a></li>
+          </ul>
+        </nav>
+      </section>
+      <p>Un gruppo di link per la navigazione.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;aside&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;article>Adoro mangiare la raclette...&lt;/article>
+        &lt;aside>Raclette: specialità del Vallese...&lt;/aside>
+      </pre>
+      <section class="render-html" style="overflow: Auto;">
+          <article style="float: left; width: 50%;">In vacanza sul lago di Ginevra, adoro trascorrere la sera mangiando raclette...</article>
+          <aside style="float: left; width: 30%; font-size: 0.6em; background: lightgoldenrodyellow; padding: 0.5em;">Raclette: specialità del Vallese a base di formaggio fuso.</aside>
+      </section>
+      <p>Contenuto secondario, separato, ma concettualmente collegato al contenuto primario.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;footer&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;footer>
+          Copyright © &lt;time datetime="2014-02-21">2014&lt;/time>
+        &lt;/footer>
+      </pre>
+      <section class="centered render-html">
+        <footer>
+          Copyright © <time datetime="2014-02-21">2014</time>
+        </footer>
+      </section>
+      <p>Definisce il footer di una sezione qualsiasi all'interno della pagina (article, section o l'intera pagina). Puo' essere ripetuto.</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;time&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;!-- senza @datetime deve contenere una data/time/datetime valido -->
+        &lt;time>2014-02-21&lt;/time>
+        &lt;!-- se si @datetime il contenuto puo' essere di qualsiasi tipo -->
+        &lt;time datetime="2014-02-21">il 21 di Febbraio&lt;/time>
+        &lt;!-- time -->
+        &lt;time datetime="09:00">inizieremo alle 9&lt;/time>
+        &lt;!-- datetime con time-zone (con time zone offset) -->
+        &lt;time datetime="2014-02-21T09:00+00:00">Primo incontro HTML5&lt;/time>
+        &lt;!-- datetime con "Z" (UTC) -->
+        &lt;time datetime="2014-02-21T09:00Z">Primo incontro HTML5&lt;/time>        
+      </pre>
+      <p>Macchine e uomini leggono (e interpretano) le date in maniera differente.</p>
+      <article class="smaller">
+        <ul>
+          <li>Non va utilizzato per codificare date imprecisate (es: "lo scorso inveno")</li>
+          <li>La data non puo' essere "BC": deve essere una data positiva del calendario gregoriano</li>
+          <li>L'attributo "datetime" deve essere valorizzato con una data (stringa) valida</li>
+          <li>Se l'attributo "datetime" non è specificato, deve contenere una data/time/datetime valido</li>
+        </ul>
+      </article>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;figure&gt; e &lt;figcaption&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;figure>
+          &lt;figcaption>HTML5 Monster!&lt;/figcaption>
+          &lt;img src="/img.png" width="100" height="100" alt="descrizione">          
+        &lt;/figure>
+      </pre>
+      <section class="centered render-html">
+        <figure>
+              <figcaption>Fig. 1: Pericoloso mostro HTML5</figcaption>
+              <iframe data-src="http://m.cadsh.com/simao/monster.html"></iframe>              
+        </figure>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;meter&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;meter 
+          min="0" max="100" 
+          low="40" high="90" 
+          optimum="100" value="91">60Gb&lt;/meter>
+      </pre>
+      <section class="centered render-html">
+        <span>Spazio su disco utilizzato: <meter min="0" max="100" low="40" high="90" optimum="100" value="91">60Gb</meter></span>
+      </section>
+      <ul>
+      <li>Rappresenta un valore il cui range è noto: minimo (min) e massimo (max) sono definiti.</li>
+      <li>Permette di indicare quali valori vengono considerati bassi (low) e quali alti (high).</li>
+      <li>Permette di indicare quale viene considerato il valore "ideale" (optimum).</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;progress&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;progress>working...&lt;/progress>
+
+        &lt;progress value="75" max="100">3/4 complete&lt;/progress>
+      </pre>
+      <section class="render-html">
+        <p>Downloading... <progress>downloading...</progress></p>
+        <p>Processo completato: <progress value="75" max="100">3/4 complete</progress></p>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;datalist&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;input list="mountains" placeholder="Scegli una montagna"/>
+        &lt;datalist id="mountains">
+          &lt;option value="Everest"/>
+          &lt;option value="Kilimangiaro"/>
+          &lt;option value="Aconcagua"/>
+          &lt;option value="Elbrus"/>
+        &lt;/datalist>
+      </pre>
+      <section class="render-html">
+        <input list="mountains" placeholder="Scegli una montagna"/>
+        <datalist id="mountains">
+          <option value="Everest"/>
+          <option value="Kilimangiaro"/>
+          <option value="Aconcagua"/>
+          <option value="Elbrus"/>
+        </datalist>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>&lt;details&gt;</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;details>
+          &lt;summary>Montagne&lt;/summary>
+          &lt;ul>
+            &lt;li>option value="Everest"&lt;/li>
+            &lt;li>option value="Kilimangiaro"&lt;/li>
+            &lt;li>option value="Aconcagua"&lt;/li>
+            &lt;li>option value="Elbrus"&lt;/li>
+          &lt;/ul>
+        &lt;/details>
+      </pre>
+      <section class="render-html">
+        <details>
+          <summary>Montagne</summary>
+          <ul>
+            <li>option value="Everest"</li>
+            <li>option value="Kilimangiaro"</li>
+            <li>option value="Aconcagua"</li>
+            <li>option value="Elbrus"</li>
+          </ul>
+        </details>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Simple feature detection...</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+        function supports_geolocation() {
+          return !!navigator.geolocation;
+        }
+
+        function supports_canvas() {
+          return !!document.createElement('canvas').getContext;
+        }
+
+        if (supports_canvas()) {
+          //...
+        }
+        else {
+          //...
+        }
+      </pre>
+      <p>A seconda dell'elemento o proprietà che si desidera testare...</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>... oppure librerie (es: Modernizr)</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+        if (Modernizr.input.placeholder) {
+          // l'attributo "placeholder" del tag input esiste
+        } else {
+          // nessun supporto per "placeholder"
+        }
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>C'era una volta un blog</h2>
+    </hgroup>
+    <article>
+      <pre data-src="../snippets/04_possibile_blog_oldtime.html"></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Un Nuovo Blog! (fig.)</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/template_html5_page.png" alt="template_html5_page" title="template_html5_page">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Un Nuovo Blog! (markup)</h2>
+    </hgroup>
+    <article>
+      <pre data-src="../snippets/05_HTML5_blog.html"></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Validatore HTML5</h2>
+      <h3>http://html5.validator.nu/</h3>
+    </hgroup>
+    <article>
+      <iframe data-src="http://html5.validator.nu/"></iframe>
+    </article>
+  </slide>
+
+  <slide class="segue">
+    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>data-*</h2>
+      <h3>one-way data binding</h3>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;!-- non valido -->
+        &lt;img src="photo1.jpg" author="Me Medesimo" data="2014/02/21">
+
+        &lt;!-- valido -->
+        &lt;img src="photo.jpg" data-author="Me Medesimo" data-on="2014/02/21">
+      </pre>
+      <p>Metodo valido e standard per aggiungere dati ad un qualsiasi elemento HTML</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>el.dataset</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;div id="user" 
+          data-id="1234567890" data-user="johndoe" data-date-of-birth>John Doe&lt;/div>
+      </pre>
+      <pre class="prettyprint" data-lang="javascript">
+        var el = document.querySelector('#user');
+
+        el.id == 'user'
+        el.dataset.id === '1234567890'
+        el.dataset.user === 'johndoe'
+        el.dataset.dateOfBirth === ''
+
+        el.dataset.dateOfBirth = '1960-10-03';
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Browser antiquato?</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+        &lt;div id="user" 
+          data-id="1234567890" data-user="johndoe" data-date-of-birth>John Doe&lt;/div>
+      </pre>
+      <pre class="prettyprint" data-lang="javascript">
+        var el = document.getElementById('#user');
+
+        var id == el.getAttribute('data-user');
+
+        el.setAttribute('data-date-of-birth') = '1960-10-03';
+      </pre>
+      <p>Il markup resta comunque valido!</p>
+    </article>
+  </slide>
+
+  <slide class="segue">
+    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Selectors API</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <article>
+      <p>DOM API</p>
+      <pre class="prettyprint" data-lang="javascript">
+        var el = document.getElementById('section1');
+        el.focus();
+
+        var els = document.getElementsByTagName('div');
+        els[0].focus();
+
+        var els = document.getElementsByClassName('section');
+        els[0].focus();
+      </pre>
+      <p>Selectors API (selettori CSS)</p>
+      <pre class="prettyprint" data-lang="javascript">
+        var tds = document.querySelectorAll("table.test > tr > td");
+        var el = document.querySelector("table.test > tr > td");
+      </pre>
+      <p>element.classLList</p>
+      <pre class="prettyprint">
+        &lt;div id="main" class="class_1 class_2">&lt;/div>
+
+        var el = document.querySelector('#main').classList;
+        el.classList; // [0]: "class_1", [1]: "class_2"
+      <pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre data-src="../snippets/06_selectorsAPI.html"></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <section class="render-html">
+        <div class="weekday">
+          <ul>
+            <li>Concert</li>
+            <li>Shopping</li>
+            <li>Work</li>
+          </ul>
+        </div>
+        <div class="weekday">
+          <ul>
+            <li>Gym</li>
+            <li>Dance</li>
+            <li>Theater</li>
+          </ul>
+        </div>
+
+        <script>
+          var els = document.getElementsByClassName('weekday');
+          var i = els.length;
+          while (i--) {
+            els[i].style.backgroundColor = '#ccc';
+          }
+          
+          els = document.querySelectorAll(".weekday ul li:nth-child(odd)");
+          i = els.length;
+          while (i--) {
+            els[i].style.backgroundColor = '#ffa8a8';
+          }
+          </script>
+        </section>
+    </article>
+  </slide>
+
+  <slide class="segue">
+    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Selettori CSS</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>HTML5: vecchi browser e stili di default</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        article, aside, figure, footer, header, hgroup, nav, section {
+          display: block;
+        }
+      </pre>
+      <a href="http://css3pie.com/" target="_blank">http://css3pie.com</a>
+      <iframe style="height: 350px;" data-src="http://css3pie.com/"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Relational Selectors</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        /* descendant E F */
+        header h2 {color: blue;}
+
+        /* child E>F */
+        article>p {color: orange;}
+
+        /* adjacent siblings E+F */
+        li+li {text-decoration: underline;}
+
+        /* general siblings E~F */
+        header~p {text-decoration:line-through;}
+      </pre>
+      <article class="smaller" style="float: left; width: 40%; margin: 0;">
+        <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+          &lt;article>
+            &lt;header>
+              &lt;h2>Sottotitolo&lt;/h2>
+            &lt;/header>
+            &lt;p>testo qui... &lt;/p>
+            &lt;h2>Sottotitolo&lt;/h2>
+            &lt;div>
+              &lt;p>Secondo paragrafo...&lt;/p>
+              &lt;ul>
+                &lt;li>item 1&lt;/li>
+                &lt;li>item 2&lt;/li>
+              &lt;/ul>
+            &lt;/div>
+          &lt;/article>
+        </pre>
+      </article>
+      <section class="render-html" style="float: right; width: 40%; margin: 0;">
+        <style scoped>
+          header.example h2 {color: blue;}
+          article.example>p {color: orange;}
+          ul.example li {font-size: 14px;}
+          li.example+li.example {text-decoration: underline;}
+          header.example~p {text-decoration:line-through;}
+        </style>
+        <article class="example">
+          <header class="example">
+            <h2>Sottotitolo</h2>
+          </header>
+          <p>testo qui... </p>
+          <h2>Sottotitolo</h2>
+          <div>
+            <p>Secondo paragrafo...</p>
+            <ul class="example">
+              <li class="example">item 1</li>
+              <li class="example">item 2</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Attribute Selectors</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        /* E[attr] */
+        input[type] {background: orange;}
+
+        /* E[attr=val] */
+        input[type="text"] {color: #fff;}
+
+        /* E[attr|=val] */
+        p[lang|=en] {color: blue;}
+
+        /* E[attr*=val] */
+        p[lang*=en] {text-decoration: line-through;}
+      </pre>
+      <article class="smaller" style="float: left; width: 40%; margin: 0;">
+        <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+          &lt;div>
+            &lt;input type="text" value="ciao">
+            &lt;input type="checkbox" checked>
+            &lt;p lang="en-US">Americano&lt;/p>
+            &lt;p lang="en">Inglese&lt;/p>
+            &lt;p lang="fooenfoo">Foo&lt;/p>
+          &lt;/div>
+        </pre>
+      </article>
+      <section class="render-html" style="float: right; width: 40%; margin: 0;">
+        <style scoped>
+          div.example input[type] {background: orange;}
+          div.example input[type="text"] {color: #fff;}
+          div.example p[lang|=en] {color: blue;}
+          div.example p[lang*=en] {text-decoration: line-through;}
+        </style>
+        <div class="example">
+          <input type="text" value="ciao">
+          <input type="email" value="me@myemail.com">
+          <p lang="en-US">Americano</p>
+          <p lang="en">Inglese</p>
+          <p lang="fooENfoo">Foo</p>
+        </div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pseudo-classes</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        :hover, :visited, :focus
+        
+        :disabled, :checked, :required
+
+        a:hover {text-decoration: underline;}
+        input:disabled {background: pink;}
+      </pre>
+    </article>
+    <article class="smaller" style="float: left; width: 40%; margin: 0;">
+      <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+        &lt;a href="#">link 1&lt;/a>
+        &lt;input type="text" disabled" value="disabilitato">
+      </pre>
+    </article>
+    <section class="render-html" style="float: right; width: 40%; margin: 0;">
+      <style scoped>
+        .pseudo-test a {text-decoration: none;}
+        .pseudo-test a:hover {text-decoration: underline;}
+        .pseudo-test input:disabled {background: pink;}
+      </style>
+      <div class="pseudo-test">
+        <a href="#">link 1</a>
+        <br>
+        <input type="text" disabled value="disabilitato">
+      </div>
+    </section>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Strucutral Pseudo-classes</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        .row:nth-child(even) {background: #dde;}
+        .row:nth-child(odd) {background: white;}
+
+        h2:first-child {display:inline-block;}
+        h2:last-child {display:inline-block;}
+
+        li:nth-of-type(3) {text-decoration: underline;}
+
+        div:not(.box) {color: #00c;}
+        span:not(div>span) {display: block;}
+      </pre>
+    </article>
+    <article>
+      <section class="render-html">
+        <div class="weekday">
+          <ul>
+            <li>Concert</li>
+            <li>Shopping</li>
+            <li>Work</li>
+          </ul>
+        </div>
+        <div class="weekday">
+          <ul>
+            <li>Gym</li>
+            <li>Dance</li>
+            <li>Theater</li>
+          </ul>
+        </div>
+
+        <script>
+          var els = document.getElementsByClassName('weekday');
+          var i = els.length;
+          while (i--) {
+            els[i].style.backgroundColor = '#ccc';
+          }
+          
+          els = document.querySelectorAll(".weekday ul li:nth-child(odd)");
+          i = els.length;
+          while (i--) {
+            els[i].style.backgroundColor = '#ffa8a8';
+          }
+          </script>
+        </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Contenuto generato tramite CSS</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+        /* E:before, E:after */
+
+        a:after { content: attr(href) }
+        a:before { content: "link: " }
+      </pre>
+    </article>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+        &lt;div>
+          &lt;ul>
+            &lt;li>&lt;a class="generated" href="http://www.google.com">&lt;/a>&lt;/li>
+            &lt;li>&lt;a class="generated" href="http://www.exmachina.ch">&lt;/a>&lt;/li>
+            &lt;li>&lt;a class="generated" href="http://www.twitter.com">&lt;/a>&lt;/li>
+          &lt;/ul>
+        &lt;/div>
+      </pre>
+    </article>
+    <section class="render-html">
+      <style scoped>
+        a.generated:after { content: attr(href) }
+        a.generated:before { content: "link: " }
+      </style>
+      <div>
+        <ul>
+          <li><a class="generated" href="http://www.google.com"></a></li>
+          <li><a class="generated" href="http://www.exmachina.ch"></a></li>
+          <li><a class="generated" href="http://www.twitter.com"></a></li>
+        </ul>
+      </div>
+    </section>
+  </slide>
+
+  <slide class="segue">
+    <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>CSS3 !!!</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <section class="render-html" style="border: 0;">
+      <style scoped>
+        #ad1 {
+          background-color: #eee;
+          border-radius: 4px;
+          padding: 10px;
+          border: 1px solid #666;
+        }
+        #ad1 h1 {
+          text-shadow: #fff 1px 1px;
+          font-family: LeagueGothic, Tahoma, Geneva, sans-serif;
+          text-transform: uppercase;
+          line-height: 1;
+          font-family: AcknowledgementMedium;
+          letter-spacing: 0.1em;
+          font-size: 36px;
+          margin: 0 0 0 0;
+          text-align: center;
+        }
+        #ad1 p {
+          margin: 0;
+          text-transform: uppercase;
+          font-size: 20px;
+          text-align: center;
+          line-height: 1em;
+          color: #484848;
+        }
+        article#ad1 p+a {
+          display: block;
+          text-decoration: none;
+          border: 5px double;
+          color: #ffffff;
+          background-color: #484848;
+          background-image: -webkit-linear-gradient(top, rgba(177, 163, 163, 0.6) 0, rgba(204, 165, 165, 0) 37%, rgba(0,0,0,0) 83%, rgba(211, 211, 211, 0.26) 92%, rgba(31, 27, 27, 0) 98%);
+          text-align: center;
+          font-size: 28px;
+          margin: 5px 30px 30px 5px;
+          padding: 40px 0;
+          position: relative;
+          border-radius: 25px;
+          -webkit-box-shadow: 2px 5px 0 0 rgba(72,72,72,1);
+          -moz-box-shadow: 2px 5px 0 0 rgba(72,72,72,1);
+          box-shadow: 2px 5px 0 0 rgba(72,72,72,1);
+          text-shadow: 3px 3px 1px rgba(0, 0, 0, 0.5);
+          font-family: AcknowledgementMedium, sans-serif;
+          margin: 30px;
+        } 
+        #ad1 a.wanted:hover {
+          -webkit-box-shadow: 4px 10px #484848;
+          -moz-box-shadow: 4px 10px #484848;
+          box-shadow: 4px 10px #484848;
+          top: -5px;
+          left: -2px;
+          color: #fff!important;
+        }
+      </style>
+      <article id="ad1">
+        <h1>Wanted</h1>
+        <p>Dead or Alive</p>
+        <a href="#" class="wanted">$$$ Billy the Kid $$$</a>
+        <p>Reward $10.000</p>
+      </article>
+    </section>
+  </slide>
+
+  <slide>
+    <h3>http://css3please.com</h3>
+    <article>
+      <iframe data-src="http://css3please.com/"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <h3>http://www.css3maker.com</h3>
+    <article>
+      <iframe data-src="http://www.css3maker.com/"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>border-radius</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        -webkit-border-radius: 25px;    /* Chrome, Safari 3.1+ 
+          -moz-border-radius: 25px;     /* Firefox 3.5+ 
+            -ms-tborder-radius: 25px;   /* IE 9 
+              -o-border-radius: 25px;   /* Opera 10.50-12.00 
+                border-radius: 25px;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.borders1 {
+              border: 2px solid blue;
+              padding: 60px;
+              border-radius: 25px;
+          }
+        </style>
+        <div class="borders1"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        border-top-left-radius: 5px;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 50px;
+        border-bottom-left-radius: 90px;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.borders2 {
+              border: 2px solid blue;
+              padding: 60px;
+              border-top-left-radius: 5px;
+              border-top-right-radius: 25px;
+              border-bottom-right-radius: 50px;
+              border-bottom-left-radius: 90px;
+          }
+        </style>
+        <div class="borders2"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        border-top-left-radius: 5px 10px;
+        border-top-right-radius: 10px 20px;
+        border-bottom-right-radius: 15px 30px;
+        border-bottom-left-radius: 20px 40px;
+
+        /* shorthand */
+        border-radius: 20px / 10px;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.borders3 {
+              border: 2px solid blue;
+              padding: 60px;
+              border-top-left-radius: 5px 10px;
+              border-top-right-radius: 10px 20px;
+              border-bottom-right-radius: 15px 30px;
+              border-bottom-left-radius: 20px 40px;
+          }
+        </style>
+        <div class="borders3"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>box-shadow</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        -webkit-box-shadow: 2px 5px 4px 2px #666;
+          -moz-box-shadow: 2px 5px 4px 2px #666;
+            box-shadow: inset 2px 5px 4px 2px #666;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.shadow1 {
+              border: 2px solid blue;
+              padding: 30px;
+              border-radius: 25px;
+              -webkit-box-shadow: 2px 5px 4px 2px #666;
+                box-shadow: 2px 5px 4px 2px #666;
+          }
+          div.shadow1:hover {
+              -webkit-box-shadow: 12px 15px 24px 12px #fc0;
+                box-shadow: 12px 15px 24px 12px #fc0;
+          }
+        </style>
+        <div class="shadow1"></div>
+      </section>
+      <article class="smaller">
+        <ul>
+          <li>inset (opzionale)</li>
+          <li>offset orizzontale (positivo o negativo)</li>
+          <li>offset verticale (positivo o negativo)</li>
+          <li>sfumatura dell'ombra</li>
+          <li>spessore dal bordo di origine</li>
+          <li>colore</li>
+        </ul>
+      </article>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>box-shadow (inset)</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        box-shadow: 
+          inset 12px 15px 24px 12px #fc0, 
+          inset -12px -15px 24px 12px #fc0;
+      </pre>
+      <section class="centered render-html-no-border">
+        <style>
+          div.shadow2 {
+              border: 2px solid blue;
+              padding: 30px;
+              border-radius: 25px;
+              -webkit-box-shadow: 2px 5px 4px 2px #666;
+                box-shadow: 2px 5px 4px 2px #666;
+          }
+          div.shadow2:hover {
+              -webkit-box-shadow: inset 12px 15px 24px 12px #fc0, inset -12px -15px 24px 12px #fc0;
+                box-shadow: inset 12px 15px 24px 12px #fc0, inset -12px -15px 24px 12px #fc0;
+          }
+        </style>
+        <div class="shadow2"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>text-shadow</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        /* singola */
+        text-shadow: top left blur color;
+
+        /* multipla */
+        text-shadow: 
+          top1 left1 blur1 color1,
+          top2 left2 blur2 color2,
+          top3 left3 blur3 color3;
+      </pre>
+      <ul>
+        <li>offset orizzontale (positivo o negativo)</li>
+        <li>offset verticale (positivo o negativo)</li>
+        <li>sfumatura dell'ombra</li>
+        <li>colore</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>text-shadow</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        /* esempio */
+        text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          p.shadow3 {
+            font-family: sans-serif;
+            font-size: 40px;
+            font-weight: bold;
+            color: green;
+            -webkit-text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+            text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+          }
+          p.shadow3:hover {
+            -webkit-text-shadow: 13px 13px 12px rgba(0, 0, 0, 0.5);
+            text-shadow: 13px 13px 12px rgba(0, 0, 0, 0.5);
+          }
+        </style>
+        <p class="shadow3">Testo Ombra</p>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>gradient (linear)</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: linear-gradient(direction, #stopColor1 percentage1, #stopColor2 percentage2);
+
+        /* esempio */
+        background-image: linear-gradient(top, #fff 0%, #000 100%);
+        background-image: linear-gradient(270deg, #fff 0%, #000 100%);
+        background-image: linear-gradient(#fff 0%, #000 100%);
+        background-image: linear-gradient(#fff, #000);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient1 {
+            padding: 30px;
+            border-radius: 25px;
+            background-image: -webkit-linear-gradient(top, #fff 0%, #000 100%);
+            background-image: linear-gradient(top, #fff 0%, #000 100%);
+          }
+        </style>
+        <div class="gradient1"></div>
+      </section>
+      <article class="smaller">
+        <ul>
+          <li>direzione - angolo (deg) o lato (left, bottom, right, top)</li>
+          <li>colore e percentuale occupata prima dello stop</li>
+        </ul>
+      </article>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: linear-gradient(35deg, #fff 0%, #000 100%);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient2 {
+            padding: 30px;
+            border-radius: 25px;
+            background-image: -webkit-linear-gradient(35deg, #fff 0%, #000 100%);
+            background-image: linear-gradient(35deg, #fff 0%, #000 100%);
+          }
+        </style>
+        <div class="gradient2"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: linear-gradient(
+          45deg, 
+          #f00 0%, 
+          #f63 20%, 
+          #ff0 40%, 
+          #0f0 60%, 
+          #00f 80%, 
+          #a0a 
+          100%
+        );
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient3 {
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid #0f0;
+            background-image: -webkit-linear-gradient(45deg, #f00 0%, #f63 20%, #ff0 40%, #0f0 60%, #00f 80%, #a0a 100%);
+            background-image: linear-gradient(45deg, #f00 0%, #f63 20%, #ff0 40%, #0f0 60%, #00f 80%, #a0a 100%);
+          }
+        </style>
+        <div class="gradient3"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: linear-gradient(
+          45deg, 
+          #000 30%, 
+          #666 30%, 
+          #666 60%, 
+          #ccc 60%, 
+          #ccc 90%
+        );
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient4 {
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid #0f0;
+            background-image: -webkit-linear-gradient(45deg, #000 30%, #666 30%, #666 60%, #ccc 60%, #ccc 90%);
+            background-image: linear-gradient(45deg, #000 30%, #666 30%, #666 60%, #ccc 60%, #ccc 90%);
+          }
+        </style>
+        <div class="gradient4"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <h3>http://westciv.com/tools/gradients</h3>
+    <article>
+      <iframe data-src="http://westciv.com/tools/gradients/"></iframe>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>gradient (radial)</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: radial-gradient(positionCenter, shapeAndSize, #colors);
+
+        /* esempio */
+        background-image: radial-gradient(#fff, #000);
+        background-image: radial-gradient(center, #fff, #000);
+        background-image: radial-gradient(center, ellipse cover, #fff, #000);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient5 {
+            padding: 40px 30px;
+            border-radius: 25px;
+            background-image: -webkit-radial-gradient(center, ellipse cover, #fff, #000);
+            background-image: radial-gradient(center, ellipse cover, #fff, #000);
+          }
+        </style>
+        <div class="gradient5"></div>
+      </section>
+      <article class="smaller">
+        <ul>
+          <li>position: 15px 20px | 20% </li>
+          <li>shape: circle | ellipse</li>
+          <li>size: closest-side | closest-corner | farthest-side | farthest-corner</li>
+        </ul>
+      </article>
+    </article>
+  </slide>
+
+  <slide>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: radial-gradient(30px 30px, circle farthest-side, #fff, #0f0 30%, #fff);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient6 {
+            padding: 40px 30px;
+            border-radius: 25px;
+            background-image: -webkit-radial-gradient(30px 30px, circle farthest-side, #fff, #0f0 30%, #fff);
+            background-image: radial-gradient(30px 30px, circle farthest-side, #fff, #0f0 30%, #fff);
+          }
+        </style>
+        <div class="gradient6"></div>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>repeating gradient</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="css">
+        background-image: 
+          repeating-linear-gradient(left, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 30%),
+          repeating-radial-gradient(
+            top left, 
+            circle, 
+            rgba(0,0,0,0.9), rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5) 20%);
+      </pre>
+      <section class="centered render-html">
+        <style>
+          div.gradient7 {
+            width: 200px;
+            height: 200px;
+            border-radius: 25px;
+            background-image: 
+              -webkit-repeating-linear-gradient(left, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 30%),
+              -webkit-repeating-radial-gradient(top left, circle, rgba(0,0,0,0.9), rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5) 20%);
+            background-image: 
+              repeating-linear-gradient(left, rgba(0,0,0,0.5) 10%, rgba(0,0,0,0.1) 30%),
+              repeating-radial-gradient(top left, circle, rgba(0,0,0,0.9), rgba(0,0,0,0.1) 10%, rgba(0,0,0,0.5) 20%);
+          }
+        </style>
+        <div class="gradient7"></div>
+      </section>
+    </article>
+  </slide>
+
+
+
+
+
+
+  <slide>
+    <hgroup>
+      <h2>Links</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>
+          <a href="http://www.caniuse.com" target="_blank">http://www.caniuse.com</a>
+          <ul><li>browser support per ogni features HTML5, CSS, JS API...</li></ul>
+        </li>
+        <li>
+          <a href="http://html5please.us">http://html5please.us</a>
+          <ul><li>stadio di sviluppo di ogni feature, come usarla e relativi fallback, polyfill...</li></ul>
+        </li>
+        <li>
+          <a href="http://html5doctor.com" target="_blank">http://html5doctor.com</a>
+          <ul><li>helping you implement HTML5 today</li></ul>
+        </li>
+        <li>
+          <a href="http://modernizr.com" target="_blank">http://modernizr.com</a>
+          <ul><li>feature detection (progressive enhancement)</li></ul>
+        </li>
+        <li>
+          <a href="https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills" target="_blank">https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills</a>
+          <ul><li>The All-In-One Entirely-Not-Alphabetical No-Bullshit Guide to HTML5 Fallbacks</li></ul>
+        </li>
+        <li>
+          <a href="https://developer.mozilla.org" target="_blank">https://developer.mozilla.org</a>
+          <ul><li>Mozilla Developer Network</li></ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="../../lib/slides/images/exm_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Grazie!&gt;</h2>
+    </article>
+    <p>https://github.com/ExMachinaSAGL/html5course</p>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+<script src="../../lib/syntax/prism.js"></script>
+</body>
+</html>

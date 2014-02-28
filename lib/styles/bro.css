@@ -1,0 +1,38 @@
+div.compat{
+    padding:0px;
+    margin:0px;
+    display:inline-block;
+}
+div.compat span{
+    display:inline-block;
+    width:20px;
+    height:20px;
+}
+div.compat span.c_ok{background-image: url(../slides/images/bro/compatible_chrome2020.gif);}
+div.compat span.c_ko{background-image: url(../slides/images/bro/incompatible_chrome2020.gif);}
+
+div.compat span.i_ok{background-image: url(../slides/images/bro/compatible_ie2020.gif);}
+div.compat span.i_ko{background-image: url(../slides/images/bro/incompatible_ie2020.gif);}
+
+div.compat span.f_ok{background-image: url(../slides/images/bro/compatible_firefox2020.gif);}
+div.compat span.f_ko{background-image: url(../slides/images/bro/incompatible_firefox2020.gif);}
+
+div.compat span.s_ok{background-image: url(../slides/images/bro/compatible_safari2020.gif);}
+div.compat span.s_ko{background-image: url(../slides/images/bro/incompatible_safari2020.gif);}
+
+div.compat span.o_ok{background-image: url(../slides/images/bro/compatible_opera2020.gif);}
+div.compat span.o_ko{background-image: url(../slides/images/bro/incompatible_opera2020.gif);}
+
+
+.round5{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+
+
+/*
+
+
+ */

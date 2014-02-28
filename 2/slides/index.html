@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <!--This one seems to work all the time, but really small on ipad-->
+        <!--<meta name="viewport" content="initial-scale=0.4">-->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" media="all" href="../../lib/slides/theme/css/default.css">
+        <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../../lib/slides/theme/css/phone.css">
+        <link href="../../lib/syntax/prism.css" rel="stylesheet" />
+        
+        <link href="../../lib/styles/bro.css" rel="stylesheet" />
+        <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+        <script src="../../lib/scripts/exm.js"></script>
+        <script src="slide_config.js"></script>
+        <script data-main="../../lib/slides/js/slides" src="../../lib/slides/js/require-1.0.8.min.js"></script>
+        <style>
+            @font-face {
+                font-family: 'Airstream';
+                src: url('../../lib/fonts/Airstream-fontfacekit/web-fonts/airstream_regular_macroman/Airstream-webfont.eot'); /* IE 5-8 */ 
+                src: local('☺'),             /* sneakily trick IE */
+                url('../../lib/fonts/Airstream-fontfacekit/web-fonts/airstream_regular_macroman/Airstream-webfont.woff') format('woff'),    /* FF 3.6, Chrome 5, IE9 */
+                url('../../lib/fonts/Airstream-fontfacekit/web-fonts/airstream_regular_macroman/Airstream-webfont.ttf') format('truetype'), /* Opera, Safari */
+                url('../../lib/fonts/Airstream-fontfacekit/web-fonts/airstream_regular_macroman/Airstream-webfont.svg#font') format('svg'); /* iOS */
+            }
+        </style>
+    </head>
+    <body style="opacity: 0">
+        <slides class="layout-widescreen">
+            <slide class="title-slide segue nobackground">
+                <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+                <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+                <hgroup class="auto-fadein">
+                    <h1 data-config-title><!-- populated from slide_config.json --></h1>
+                    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+                    <p data-config-presenter><!-- populated from slide_config.json --></p>
+                </hgroup>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>Repository del corso</h2>
+                </hgroup>
+                <article class="flexbox vcenter">
+                    <h2>https://github.com/ExMachinaSAGL/html5course</h2>
+                </article>
+            </slide>
+            
+            <slide>
+            
+                <hgroup>
+                    <h2>Input tags</h2>
+                </hgroup>
+                <article>
+                    <style scoped>
+                        ol li span.tit{color:red; padding-right:20px; text-decoration:underline;}
+                        ol li {
+                            padding:10px;
+                        }
+                        ol li.odd{background-color:#eee;}
+                    </style>
+                    <div style="float:left;width:45%">
+                        <ol>
+                            <li class="round5">
+                                <span class="tit">color</span>
+                                <span class="desc">Select a color from a color-picker </span>
+                            </li>
+                            <li class="round5 odd">
+                                <span class="tit">date</span>
+                                <span class="desc">Input a date from a calendar</span>
+                            </li>
+                            <li class="round5">
+                                <span class="tit">datetime</span>
+                                <span class="desc">Input a date and time from a calendar (with timezone)</span>
+                            </li>
+                            <li class="round5 odd">
+                                <span class="tit">datetime-local</span>
+                                <span class="desc">Input a date and time from a calendar (no timezone)</span>
+                            </li>
+                            <li class="round5">
+                                <span class="tit">email</span>
+                                <span class="desc">Input an email</span>
+                            </li>
+                            <li class="round5 odd">
+                                <span class="tit">month</span>
+                                <span class="desc">Input a month and year</span>
+                            </li>
+                            <li class="round5">
+                                <span class="tit">number</span>
+                                <span class="desc">Your`re right... just a number!</span>
+                            </li>
+            
+                        </ol>
+                    </div>
+                    <div style="float:right;width:45%">
+                        <ol>
+                            <li class="round5 odd">
+                                <span class="tit">range</span>
+                                <span class="desc">As number but with slider, allowing steps</span>
+                            </li>
+                            <li class="round5">
+                                <span class="tit">search</span>
+                                <span class="desc">Accepts a search field</span>
+                            </li>
+                            <li class="round5 odd">
+                                <span class="tit">tel</span>
+                                <span class="desc">Input a telephone number</span>
+                            </li>
+                            <li class="round5">
+                                <span class="tit">time</span>
+                                <span class="desc">Input a time</span>
+                            </li>
+                            <li class="round5 odd">
+                                <span class="tit">url</span>
+                                <span class="desc">... </span>
+                            </li>
+                            <li class="round5">
+                                <span class="tit">week</span>
+                                <span class="desc">... </span>
+                            </li>
+            
+                        </ol>
+                    </div>
+                </article>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>1 / 13 : Color</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="color" value="" name="bg">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="color" value=""  name="bg">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ko"></span>
+                    <span class="i_ko"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>2 / 13 : Date</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="date" value="" name="birthdate">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="date" value=""  name="birthdate">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ko"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>3 / 13 : Datetime</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="datetime" value="" name="birthdate_time">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="datetime" value="" name="birthdate_time">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ko"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ko"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>4 / 13 : Datetime-local</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="datetime-local" value="" name="birthdate_time_loc">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="datetime-local" value="" name="birthdate_time_loc">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ko"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>5 / 13 : Email</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="email" value="" name="your_contact">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="email" value="" name="your_contact">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ok"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ko"></span>
+                    <span class="i_ok"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>6 / 13 : Month</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="month" value="" name="birthmonth">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="month" value="" name="birthmonth">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ko"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>7 / 13 : Number</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="number" value="" name="bg" min="1" max="20">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="number" value=""  name="bg" min="1" max="20">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ok"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>8 / 13 : Range</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="range" value="0" name="quantity" min="0" max="20" step="2">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="range" value="0" name="quantity" min="0" max="20" step="2" id="rng">
+                                <span id="val"></span>
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ok"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ok"></span>
+                </div>
+            </slide>
+            <script>
+                window.onload = function (){
+                    document.getElementById('rng').onchange = function () {
+                        document.getElementById('val').innerHTML = this.value;
+                    }
+                }
+            </script>
+            <slide>
+                <hgroup>
+                    <h2>9 / 13 : Search</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="search" value="" name="looking_for">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="search" value="" name="looking_for" >
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ko"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ko"></span>
+                </div>
+            </slide>
+            
+            <slide>
+                <hgroup>
+                    <h2>10 / 13 : Tel</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="tel" value="" name="telephone">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="tel" value=""  name="telephone">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ko"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ko"></span>
+                    <span class="s_ko"></span>
+                    <span class="i_ko"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>11 / 13 : Time</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="time" value="" name="what_time">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="time" value="" name="what_time">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ko"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>12 / 13 : Url</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="url" value="" name="bg">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="url" value=""  name="bg">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ok"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ko"></span>
+                    <span class="i_ok"></span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>13 / 13 : Week</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0;">
+                            &lt;input type="week" value="" name="week_num">
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div class="example">
+                            <form action="" method="POST">
+                                <input type="week" value="" name="week_num">
+                            </form>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+            
+                    <span class="c_ok"></span>
+                    <span class="f_ko"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ko"></span>
+                </div>
+            </slide>
+            
+            <slide>
+                <style scoped>
+                    div.symb{
+                        height:50px;
+                        line-height:50px;
+                        font-size:50px;
+                        margin:10px;
+                    }
+                </style>
+                <article class="flexbox vcenter">
+                  <h2 class="vcenter" style="text-align:center">
+                    WEB STANDARDS (<a href="http://dev.w3.org/html5/html-author/" target="_blank">W3C specs</a>)
+                    <div class="symb">&#8597;</div>
+                    &#9760; BOWSERS producers &#9760;
+                    <div class="symb">&#8623;</div>
+                    <span style="color:#ff0;text-shadow:1px 1px 5px #000000;">INCOMPATIBILITY &#8660; INUTILITY</span>
+                    <div class="symb">&#8623;</div>
+                    <span style="color:red">MUCH EFFORT</span>
+                    <div class="symb">&#8623;</div>
+                    <span style="color:green">WORKING SOLUTIONS</span>
+                    
+                  </h2>
+                </article>
+              </slide>
+
+            <!-- FONTS -->
+            <slide>
+                <article>
+                    <h2>... Fonts before</h2><br /><img src="images/fig02.jpg" />
+                </article>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>CSS3: @font-face</h2>
+                </hgroup>
+                <!-- <p style="padding:10px 0px">
+                    <a href="https://www.google.com/fonts">https://www.google.com/fonts</a>
+                </p> -->
+                http://www.fontsquirrel.com/fonts/
+            
+                <h3>.eot, woff, .ttf, .svg based</h3>
+                <article>
+                    <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
+            @font-face {
+                font-family: 'Airstream';
+                src: url('..//Airstream-webfont.eot'); /* IE 5-8 */ 
+                src: local('☺'),             /* sneakily trick IE */
+                url('../Airstream-webfont.woff') format('woff'),/* FF 3.6, Chrome 5, IE9 */
+                url('../Airstream-webfont.ttf') format('truetype'), /* Opera, Safari */
+                url('../Airstream-webfont.svg#font') format('svg'); /* iOS */
+            }
+            
+            h1, h2, h3 { font-family: 'Airstream', 'Georgia', serif; } 
+                    </pre>
+                    <article class="smaller" style="float: left; width: 40%; margin: 0;">
+                        <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
+                            &lt;h1&gt;Hello&lt;/h1&gt;
+                            &lt;h2&gt;this is&lt;/h2&gt;
+                            &lt;h3&gt;Outwrite&lt;/h3&gt;
+                        </pre>
+                    </article>
+                    <section class="render-html" style="float: right; width: 40%; margin: 0;">
+                        <style scoped>
+                            div.fontfaceexample { font-family: 'Airstream', 'Georgia', serif; }
+                            h1{font-size:64px;}
+                        </style>
+                        <div class="fontfaceexample">
+                            <h1>Hello</h1>
+                            <h2>this is</h2>
+                            <h3>Outwrite</h3>
+                        </div>
+                    </section>
+                </article>
+            </slide>
+
+            <slide class="thank-you-slide segue nobackground">
+                <aside class="gdbar right"><img src="../../lib/slides/images/exm_logo.png"></aside>
+                <article class="flexbox vleft auto-fadein">
+                    <h2>&lt;Grazie!&gt;</h2>
+                </article>
+                <p>https://github.com/ExMachinaSAGL/html5course</p>
+                <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+                </p>
+            </slide>
+            <slide class="backdrop"></slide>
+        </slides>
+        <!--[if IE]>
+          <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+          <script>CFInstall.check({mode: 'overlay'});</script>
+        <![endif]-->
+        <script src="../../lib/syntax/prism.js"></script>
+    </body>
+</html>
