@@ -511,15 +511,15 @@
                 </style>
                 <article class="flexbox vcenter">
                   <h2 class="vcenter" style="text-align:center">
-                    WEB STANDARDS (<a href="http://dev.w3.org/html5/html-author/" target="_blank">W3C specs</a>)
+                    WEB <u>STANDARDS</u> (<a href="http://dev.w3.org/html5/html-author/" target="_blank">W3C specs</a>)
                     <div class="symb">&#8597;</div>
                     &#9760; BOWSERS producers &#9760;
                     <div class="symb">&#8623;</div>
-                    <span style="color:#ff0;text-shadow:1px 1px 5px #000000;">INCOMPATIBILITY &#8660; INUTILITY</span>
+                    <span style="color:red;">INCOMPATIBILITY &#8660; INUTILITY</span>
                     <div class="symb">&#8623;</div>
-                    <span style="color:red">MUCH EFFORT</span>
+                    <span style="color:#ff0;text-shadow:1px 1px 5px #000000;">MUCH EFFORT &#8660; TIME</span>
                     <div class="symb">&#8623;</div>
-                    <span style="color:green">WORKING SOLUTIONS</span>
+                    <h2 style="color:green;font-size:80px;">WORKING SOLUTIONS</h2>
                     
                   </h2>
                 </article>
@@ -535,11 +535,6 @@
                 <hgroup>
                     <h2>CSS3: @font-face</h2>
                 </hgroup>
-                <!-- <p style="padding:10px 0px">
-                    <a href="https://www.google.com/fonts">https://www.google.com/fonts</a>
-                </p> -->
-                http://www.fontsquirrel.com/fonts/
-            
                 <h3>.eot, woff, .ttf, .svg based</h3>
                 <article>
                     <pre class="prettyprint" data-lang="css" style="line-height: inherit;">
@@ -558,7 +553,7 @@
                         <pre class="prettyprint" data-lang="html" style="padding-left: 0; width: 140%;">
                             &lt;h1&gt;Hello&lt;/h1&gt;
                             &lt;h2&gt;this is&lt;/h2&gt;
-                            &lt;h3&gt;Outwrite&lt;/h3&gt;
+                            &lt;h3&gt;Airstream&lt;/h3&gt;
                         </pre>
                     </article>
                     <section class="render-html" style="float: right; width: 40%; margin: 0;">
@@ -569,10 +564,88 @@
                         <div class="fontfaceexample">
                             <h1>Hello</h1>
                             <h2>this is</h2>
-                            <h3>Outwrite</h3>
+                            <h3>Airstream</h3>
                         </div>
                     </section>
                 </article>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>CSS3: @font-face main references</h2>
+                </hgroup>
+                <ul>
+                    <li><a href="http://www.w3.org/TR/WOFF/">Woff W<sup>3</sup>C</a></li>
+                    <li><a href="https://www.google.com/fonts">Google fonts</a></li>
+                    <li><a href="http://www.fontsquirrel.com/fonts/">Font squirrel</a></li>
+                </ul>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>CSS3: @font-face compatibility</h2>
+                </hgroup>
+                <br />
+                    <table summary="Browser support of @font-face formats">
+                    <thead>
+                    <tr>
+                      <th></th>
+                      <th scope="col">otf &amp; ttf</th>
+                      <th scope="col">svg</th>
+                      <th scope="col">woff</th>
+                      <th scope="col">eot</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <th scope="row">IE</th>
+                      <td>IE9</td>
+                      <td></td>
+                      <td>IE9</td>
+                      <td>IE5+</td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Firefox</th>
+                      <td>FF3.5</td>
+                      <td>FF3.5</td>
+                      <td>FF3.6</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Chrome</th>
+                      <td>Chrome 4</td>
+                      <td>Chrome 0.3</td>
+                      <td>Chrome 5</td> 
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Safari</th>
+                      <td>3.1</td>
+                      <td>3.1</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Opera</th>
+                      <td>Opera 10.00</td>
+                      <td>Opera 9</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">iOS</th>
+                      <td></td>
+                      <td>iOS 1</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Android</th>
+                      <td>2.2</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    </tbody>
+                </table>
             </slide>
 
             <slide class="thank-you-slide segue nobackground">
