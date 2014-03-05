@@ -10,7 +10,8 @@
     - HTML5: drag & drop.
     - CSS3: transforms, transitions, animation.
 
-4.  - HTML5: canvas VS svg
+4.  - HTML5: XXX canvas VS svg
+      GRAFICA HTML5: jqPlot, Fabric, Raphael (hammer)
 
 5.  - API: cross-document messaging: postMessage, WebSocket.
     - API: web workers.
