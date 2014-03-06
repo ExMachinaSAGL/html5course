@@ -1,0 +1,31 @@
+body{
+    background-color: yellow;
+}
+body, input{font-family:Verdana, sans-serif;}
+fieldset{
+    border:5px solid black;
+    background-color: white;
+}
+fieldset legend{
+    
+    background-color: black;
+    padding:10px;
+    color:white;
+
+}
+fieldset input{
+    border-style: solid;
+}
+ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
+li{
+    margin-top:20px;
+}
+.round5{
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
