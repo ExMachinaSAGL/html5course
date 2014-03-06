@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>        
+        <meta charset="utf-8">
+        <title>3-2.1: jQueryUI drag&drop</title>
+
+        <style rel="stylesheet">
+            #container { height: 300px; border: 1px solid green; }
+            #draggable-element { width: 200px; height: 200px; background: red; }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="draggable-element"> </div>
+        </div>
+
+
+        <!-- import librerie esterne -->
+        <script src="../../../lib/scripts/jquery-1.11.0.min.js"></script> <!-- jquery -->
+        <script src="../../../lib/scripts/jquery-ui.js"></script> <!-- jqueryUI -->
+
+        <script>
+            $('document').ready(function() {
+
+                $('#draggable-element').draggable();
+
+            });
+        </script>
+    </body>
+</html>

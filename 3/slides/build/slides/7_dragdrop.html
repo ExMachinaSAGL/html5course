@@ -1,0 +1,38 @@
+<slide>
+  <hgroup>
+    <h2>Drag & Drop - Aspetto ed eventi dell'area di drop</h2>
+  </hgroup>
+  <article>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="javascript">
+          var dropArea = document.querySelector("#drop-area");
+
+          dropArea.addEventListener('dragover', function(event) {
+            event.preventDefault();
+          }, false);
+
+          dropArea.addEventListener('dragenter', function(event) {
+            this.style.border = "2px dashed orange";
+          }, false);
+
+          dropArea.addEventListener('dragleave', function(event) {
+            this.style.border = "1px solid blue";
+          }, false);
+
+          dropArea.addEventListener('drop', function(event) {
+            this.style.border = "1px solid blue";    
+
+            // recupero il contenuto trasmesso col drag
+            var data = event.dataTransfer.getData("text");
+
+            // inserisco il contenuto nel div "drop-area"
+            this.innerHTML = data;
+
+            // stop propagation ed eventi indesiderati
+            event.stopPropagation();
+            event.preventDefault();
+          }, false);
+      </pre>
+    </article>
+  </article>
+</slide>

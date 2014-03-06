@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <!--This one seems to work all the time, but really small on ipad-->
+        <!--<meta name="viewport" content="initial-scale=0.4">-->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" media="all" href="../../lib/slides/theme/css/default.css">
+        <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../../lib/slides/theme/css/phone.css">
+        <link href="../../lib/syntax/prism.css" rel="stylesheet" />
+        
+        <link href="../../lib/styles/bro.css" rel="stylesheet" />
+        <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+        <script src="../../lib/scripts/exm.js"></script>
+        <script src="slide_config.js"></script>
+        <script data-main="../../lib/slides/js/slides" src="../../lib/slides/js/require-1.0.8.min.js"></script>
+    </head>
+    <body style="opacity: 0">
+        <slides class="layout-widescreen">
+            <slide class="title-slide segue nobackground">
+                <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+                <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+                <hgroup class="auto-fadein">
+                    <h1 data-config-title><!-- populated from slide_config.json --></h1>
+                    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+                    <p data-config-presenter><!-- populated from slide_config.json --></p>
+                </hgroup>
+            </slide>
+            <slide>
+            <hgroup>
+              <h2>Agenda</h2>
+            </hgroup>
+            <article>
+              <ul>
+                <li>HTML5: drag & drop nativo ("vanilla" javascript)</li>
+                <li>HTML5: drag & drop nativo (ios-drag-drop.js + fallback)</li>
+                <li>HTML5: drag & drop nativo (con jQuery)</li>
+                <li>Drag & drop con jQueryUI (desktop e touch!)</li>
+                <li>Geolocation ("vanilla" e jQuery)</li>
+              </ul>
+            </article>
+            </slide>
+            <slide class="segue">
+            	<aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+            	<hgroup class="auto-fadein">
+            	  <h2>HTML5: Drag & Drop Nativo</h2>
+            	</hgroup>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>Drag & Drop - Definire un elemento draggabile</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html">&lt;div draggable="true" ondragstart="startHandler(event)" ondragend="endHandler(event)">&lt;/div>
+                        </pre>
+                    </article>
+                    <section class="render-html">
+                        <div>
+                            <div draggable="true" style="width: 80px; height: 80px; background: red;"></div>
+                        </div>
+                    </section>
+                </article>
+                <span>Compatibility</span>
+                <div class="compat">
+                    <span class="c_ok"></span>
+                    <span class="f_ok"></span>
+                    <span class="o_ok"></span>
+                    <span class="s_ok"></span>
+                    <span class="i_ok"></span>
+                    <span style="width: 200px; font-size: smaller;">mobile: !@#!</span>
+                </div>
+            </slide>
+            <slide>
+                <hgroup>
+                    <h2>Drag & Drop - Definire un elemento come zona di "drop"</h2>
+                </hgroup>
+                <article>
+                    <article class="smaller">
+                        <pre class="prettyprint" data-lang="html">
+                        &lt;div 
+                            ondragover="return false"
+                            ondragenter="enterHandler(event)"
+                            ondragleave="leaveHandler(event)"
+                            ondrop="dropHandler(event)">
+                        &lt;/div>
+                        </pre>
+                    </article>
+                    <section class="render-html">
+            
+                    </section>
+                </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>Drag & Drop - Aspetto ed eventi dell'elemento draggabile</h2>
+              </hgroup>
+              <article>
+                <article>
+                  <pre class="prettyprint" data-lang="javascript">
+                    var el = document.querySelector("#id"); 
+            
+                    el.addEventListener('dragstart', function(event) {
+                      // "this" indica l'oggetto che ha scatenato l'evento (event.target)
+                      this.style.color = "yellow";
+                      this.style.cursor = "move";
+            
+                      event.dataTransfer.effectAllowed = 'copy';
+                      event.dataTransfer.dropEffect = 'copy';
+            
+                      event.dataTransfer.setData('text', this.innerHTML);
+                    }, false);
+            
+                    el.addEventListener('dragend', function(event) {
+                      this.style.color = "white";
+                    }, false);
+                  </pre>
+                </article>
+              </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>Drag & Drop - datatransfer object</h2>
+              </hgroup>
+              <article>
+                <article class="smaller">
+                  <pre class="prettyprint" data-lang="javascript">
+                    // DRAG
+                    event.dataTransfer.setData(format, data);
+                    event.dataTransfer.effectAllowed = "copy";        // none | copy | move ...
+                    event.dataTransfer.dropEffect = "copy";           // none | copy | link | move
+                    event.dataTransfer.setDragImage(imgElement, x, y); // icona di drag custom
+                    
+                    // DROP
+                    event.dataTransfer.getData(format);
+                  </pre>
+                </article>
+                <section class="render-html" style="overflow: auto;">
+            
+                  <div style="display: inline-block; margin-right: 50px; overflow: auto;">
+                    <div id="draggable-6" draggable="true" style="width: 50px; height: 50px; background: red; color: #fff;">XXX</div>
+                  </div>
+                    <div id="drop-area-6" style="display: inline-block; width: 200px; height: 100px; border: 1px solid green;"></div>
+            
+                  <script>
+                    var el = document.querySelector("#draggable-6"); 
+                    el.addEventListener('dragstart', function(event) {
+                      // "this" indica l'oggetto che ha scatenato l'evento (event.target)
+                      this.style.color = "#fc0";
+            
+                      event.dataTransfer.effectAllowed = 'copy';
+                      event.dataTransfer.dropEffect = 'copy';
+            
+                      event.dataTransfer.setData('text', this.innerHTML);
+                    }, false);
+                    el.addEventListener('dragend', function(event) {
+                      this.style.color = "#fff";
+                    }, false);
+                  </script>
+            
+                </section>
+              </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>Drag & Drop - Aspetto ed eventi dell'area di drop</h2>
+              </hgroup>
+              <article>
+                <article class="smaller">
+                  <pre class="prettyprint" data-lang="javascript">
+                      var dropArea = document.querySelector("#drop-area");
+            
+                      dropArea.addEventListener('dragover', function(event) {
+                        event.preventDefault();
+                      }, false);
+            
+                      dropArea.addEventListener('dragenter', function(event) {
+                        this.style.border = "2px dashed orange";
+                      }, false);
+            
+                      dropArea.addEventListener('dragleave', function(event) {
+                        this.style.border = "1px solid blue";
+                      }, false);
+            
+                      dropArea.addEventListener('drop', function(event) {
+                        this.style.border = "1px solid blue";    
+            
+                        // recupero il contenuto trasmesso col drag
+                        var data = event.dataTransfer.getData("text");
+            
+                        // inserisco il contenuto nel div "drop-area"
+                        this.innerHTML = data;
+            
+                        // stop propagation ed eventi indesiderati
+                        event.stopPropagation();
+                        event.preventDefault();
+                      }, false);
+                  </pre>
+                </article>
+              </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>Drag & Drop</h2>
+              </hgroup>
+              <article>
+                <section class="render-html">
+            
+                  <div style="display: inline-block; margin-right: 50px;">
+                    <div id="draggable-8" draggable="true" style="width: 50px; height: 50px; background: red; color: #fff;">XXX</div>
+                  </div>
+                    <div id="drop-area-8" style="display: inline-block; width: 200px; height: 100px; border: 1px solid green;"></div>
+            
+                  <script>
+                    var el = document.querySelector("#draggable-8"); 
+                    el.addEventListener('dragstart', function(event) {
+                      // "this" indica l'oggetto che ha scatenato l'evento (event.target)
+                      this.style.color = "#fc0";
+                      this.style.cursor = "move";
+            
+                      event.dataTransfer.effectAllowed = 'copy';
+                      event.dataTransfer.dropEffect = 'copy';
+            
+                      event.dataTransfer.setData('text', this.innerHTML);
+                    }, false);
+                    el.addEventListener('dragend', function(event) {
+                      this.style.color = "#fff";
+                    }, false);
+            
+                    var dropArea = document.querySelector("#drop-area-8");
+            
+                      dropArea.addEventListener('dragover', function(event) {
+                        event.preventDefault();
+                      }, false);
+            
+                      dropArea.addEventListener('dragenter', function(event) {
+                        this.style.border = "2px dashed orange";
+                      }, false);
+            
+                      dropArea.addEventListener('dragleave', function(event) {
+                        this.style.border = "1px solid blue";
+                      }, false);
+            
+                      dropArea.addEventListener('drop', function(event) {
+                        this.style.border = "1px solid blue";    
+            
+                        // recupero il contenuto trasmesso col drag
+                        var data = event.dataTransfer.getData("text");
+            
+                        // inserisco il contenuto nel div "drop-area"
+                        this.innerHTML = data;
+            
+                        // stop propagation ed eventi indesiderati
+                        event.stopPropagation();
+                        event.preventDefault();
+                      }, false);
+                  </script>
+            
+                </section>
+              </article>
+            </slide>
+              <slide>
+                <hgroup>
+                  <h2>Drag & Drop - Links</h2>
+                </hgroup>
+                <article>
+                  <ul>
+                    <li>
+                      <a href="https://developer.mozilla.org/en-US/docs/DragDrop/Drag_Operations#dragstart" target="_blank">developer.mozilla.org/en-US/docs/DragDrop/Drag_Operations#dragstart</a>
+                      <ul><li>MDN on drag & drop</li></ul>
+                    </li>
+                    <li>
+                      <a href="https://developer.mozilla.org/en-US/docs/DragDrop/Recommended_Drag_Types">developer.mozilla.org/en-US/docs/DragDrop/Recommended_Drag_Types</a>
+                      <ul><li>drag & drop types</li></ul>
+                    </li>
+                    <li>
+                      <a href="http://www.html5rocks.com/en/tutorials/dnd/basics/" target="_blank">www.html5rocks.com/en/tutorials/dnd/basics/</a>
+                      <ul><li>Tutorial su drag & drop nativo</li></ul>
+                    </li>
+                    <li>
+                      <a href="http://blog.teamtreehouse.com/implementing-native-drag-and-drop" target="_blank">blog.teamtreehouse.com/implementing-native-drag-and-drop</a>
+                      <ul><li>Tutto sul drag & drop (tutorial)</li></ul>
+                    </li>
+                    <li>
+                      <a href="http://www.html5rocks.com/en/mobile/touch/" target="_blank">www.html5rocks.com/en/mobile/touch/</a>
+                      <ul><li>Drag & drop multi-touch!</li></ul>
+                    </li>
+                    <li>
+                      <a href="http://touchpunch.furf.com/" target="_blank">touchpunch.furf.com/</a>
+                      <ul><li>Touch Event Support for jQuery UI</li></ul>
+                    </li>
+                    <li>
+                      <a href="https://github.com/timruffles/ios-html5-drag-drop-shim" target="_blank">github.com/timruffles/ios-html5-drag-drop-shim</a>
+                      <ul><li>iOS shim for HTML 5 drag'n'drop</li></ul>
+                    </li>
+                  </ul>
+                </article>
+              </slide>
+            <slide class="segue">
+            	<aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+            	<hgroup class="auto-fadein">
+            	  <h2>Geolocation API</h2>
+            	</hgroup>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>Geolocation - navigator.geolocation object</h2>
+              </hgroup>
+              <article>
+                <article class="smaller">
+                  <pre class="prettyprint" data-lang="javascript">
+              // getCurrentPosition
+              navigator.geolocation.getCurrentPosition(
+                successHandlerFunction, 
+                errorHandlerFunction, 
+                optionsObject
+              );
+                
+              // watchPosition 
+              var posIdx = navigator.geolocation.watchPosition(
+                successHandlerFunction, 
+                errorHandlerFunction, 
+                optionsObject
+              );
+            
+              // clear watcher
+              navigator.geolocation.clearWatch(posIdx);
+                  </pre>
+                </article>
+              </article>
+              <span>Compatibility</span>
+              <div class="compat">
+                  <span class="c_ok"></span>
+                  <span class="f_ok"></span>
+                  <span class="o_ok"></span>
+                  <span class="s_ok"></span>
+                  <span class="i_ok"></span>
+              </div>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>Geolocation - getCurrentPosition</h2>
+              </hgroup>
+              <article>
+                <article>
+                  <pre class="prettyprint" data-lang="javascript">
+            // verifichiamo che l'API sia disponibile nel browser
+            if (navigator.geolocation) {
+            
+              navigator.geolocation.getCurrentPosition(
+                successHandlerFunction, 
+                errorHandlerFunction, 
+                optionsObject
+              );
+                
+            } else {
+                alert("Geolocation API non supportata.");
+            }
+                  </pre>
+                </article>
+              </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>navigator.geolocation.getCurrentPosition - response</h2>
+              </hgroup>
+              <article>
+                <article>
+                  <pre class="prettyprint" data-lang="javascript">
+            var position = {
+              "timestamp": 1394143954471,
+              "coords": {
+                "speed": null,
+                "heading": null,
+                "altitudeAccuracy": null,
+                "accuracy": 104,
+                "altitude": null,
+                "longitude": 8.9454028,
+                "latitude": 46.005544799999996
+              }
+            }
+                  </pre>
+                </article>
+              </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>navigator.geolocation.getCurrentPosition - options</h2>
+              </hgroup>
+              <article>
+                <article>
+                  <pre class="prettyprint" data-lang="javascript">
+            var options = {
+              enableHighAccuracy: true,     // boolean
+              timeout: 10000,               // millisecondi
+              maximumAge: 3000              // millisecondi
+            };
+                  </pre>
+                </article>
+              </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>navigator.geolocation.getCurrentPosition - success handler function</h2>
+              </hgroup>
+              <article>
+                <article>
+                  <pre class="prettyprint" data-lang="javascript">
+            function successHandlerFunction(position) {
+                // default options
+                var latlng = new google.maps.LatLng(
+                  position.coords.latitude, 
+                  position.coords.longitude
+                );
+                var options = {
+                  center: latlng,
+                  zoom: 15
+              };
+            var map = new google.maps.Map(document.querySelector("#map"), options);
+            var marker = new google.maps.Marker({
+                  position: latlng,
+                  map: map
+              });
+            }
+                  </pre>
+                </article>
+              </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>navigator.geolocation.getCurrentPosition - error handler function</h2>
+              </hgroup>
+              <article>
+                <article>
+                  <pre class="prettyprint" data-lang="javascript">
+            function errorHandlerFunction(error) {
+                var info = 'Errore di geolocalizzazione: ';
+                switch(error.code) {
+                    case error.TIMEOUT:
+                        info += 'timeout.';
+                        break;
+                    case error.PERMISSION_DENIED:
+                        info += 'accesso alla geoloaction API non consentito.';
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        info += 'impossibile determinare la posizione.';
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        info += 'errore sconosciuto.';
+                        break;
+                }
+                document.querySelector('#location-info').innerHTML = info;
+            }
+                  </pre>
+                </article>
+              </article>
+            </slide>
+              <slide>
+                <hgroup>
+                  <h2>Drag & Drop - Links</h2>
+                </hgroup>
+                <article>
+                  <ul>
+                    <li>
+                      <a href="https://developer.mozilla.org/en/docs/WebAPI/Using_geolocation" target="_blank">developer.mozilla.org/en/docs/WebAPI/Using_geolocation</a>
+                      <ul><li>MDN on geolocation</li></ul>
+                    </li>
+                    <li>
+                      <a href="https://developers.google.com/maps/">developers.google.com/maps/</a>
+                      <ul><li>Google Maps API</li></ul>
+                    </li>
+                  </ul>
+                </article>
+              </slide>
+            <slide class="thank-you-slide segue nobackground">
+                <aside class="gdbar right"><img src="../../lib/slides/images/exm_logo.png"></aside>
+                <article class="flexbox vleft auto-fadein">
+                    <h2>&lt;/Grazie!&gt;</h2>
+                </article>
+                <p>https://github.com/ExMachinaSAGL/html5course</p>
+                <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+                </p>
+            </slide>
+            <slide class="backdrop"></slide>
+        </slides>
+        <!--[if IE]>
+          <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+          <script>CFInstall.check({mode: 'overlay'});</script>
+        <![endif]-->
+        <script src="../../lib/syntax/prism.js"></script>
+    </body>
+</html>

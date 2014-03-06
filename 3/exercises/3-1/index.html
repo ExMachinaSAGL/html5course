@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+    <head>        
+        <meta charset="utf-8">
+        <title>Analisi di Laboratorio</title>
+        <!-- impedisce lo zoom su dispositivi touch -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+        <!-- CSS =============================================================================-->
+        <!-- import librerie esterne -->
+        <link href="css/jquery.jqplot.min.css" rel="stylesheet"> <!-- jqplot -->
+        
+        <!-- css dell'applicazione -->
+        <link href="css/style.css" rel="stylesheet">
+        <!--==================================================================================-->
+    </head>
+    <body>
+    	<!-- HTML ============================================================================-->
+    	<!-- lista pazienti -->
+    	<section id="lista-pazienti">
+    		<ul>
+    			<li draggable="true">
+    				<article data-id="111456781" data-values="[[2, 6, 7, 10, 4, 8], [7, 5, 3, 2, 1, 9]]">				
+    					<header>ID: <span style="font-weight: bold;">111456781</span></header>
+    					<p>Nome: <span>Mario Rossi</span></p>
+    					<p>Data esame: <time datetime="2014-02-21">2014/01/15</time></p>
+    				</article>
+    			</li>
+    			<li draggable="true">
+    				<article data-id="222456782" data-values="[[4, 1, 12, 5, 2, 6], [5, 7, 2, 9, 3, 1]]">
+    					<header>ID: <span style="font-weight: bold;">222456782</span></header>
+    					<p>Nome: <span>Lisa Minelli</span></p>
+    					<p>Data esame: <time datetime="2014-02-21">2014/02/21</time></p>
+    				</article>
+    			</li>
+    			<li draggable="true">
+    				<article data-id="333456783" data-values="[[1, 2, 3, 4, 3, 2], [1, 10, 2, 9, 3, 8]]">
+    					<header>ID: <span style="font-weight: bold;">333456783</span></header>
+    					<p>Nome: <span>Carlo Marrone</span></p>
+    					<p>Data esame: <time datetime="2014-02-21">2014/03/01</time></p>
+    				</article>
+    			</li>
+    		</ul>
+    	</section>
+
+    	
+    	<!-- dati paziente -->
+    	<section id="report-paziente">
+    		<div>
+    			<header><h3>Località elaborazione dati</h3></header>
+    			<div>
+    				<button id="btn-get-location" type="button" class="btn">localizza</button>
+	    			<button id="btn-show-map" type="button" class="btn">mappa</button>
+	    			<button id="btn-geo-params" type="button" class="btn">geo response</button>
+	    			<button id="btn-reset" type="button" class="btn">reset</button>
+    			</div>
+	    		<form>
+	    			<input id="loc-via" type="text" placeholder="via">
+	    			<input id="loc-npa" type="text" placeholder="npa">
+	    			<input id="loc-citta" type="text" placeholder="città">	    			
+	    			<input id="loc-nazione" type="text" placeholder="nazione">
+	    			<div><span id="location-info" class="help"></span></div>
+	    		</form>
+	    		<div id="map"></div>
+	    		<div id="log-geo-params"><pre></pre></div>
+	    	</div>
+
+	    	<div>
+	    		<header><h3>Dati paziente</h3></header>
+	    		<div id="drop-area">trascinare qui un paziente</div>
+	    		<div id="data-area">
+	    			<div id="chart"></div>
+	    			<div id="chart-info"></div>
+	    		</div>
+    		</div>
+    	</section>
+        <!--==================================================================================-->
+
+
+        <!-- JAVASCRIPT ======================================================================-->
+        <!-- import librerie esterne -->
+        <script src="../../../lib/scripts/jquery-1.11.0.min.js"></script> <!-- jquery -->
+        <script src="../../../lib/scripts/jquery-ui.js"></script> <!-- jqueryUI -->
+        <script src="js/ios-drag-drop.js"></script> <!-- native HTML5 drag & drop iOS shim -->
+        <script src="../../../lib/scripts/jquery.jqplot.min.js"></script> <!-- jqplot -->
+        <script src="js/jqplot.barRenderer.min.js"></script> <!-- jqplot -->
+        <script src="js/jqplot.categoryAxisRenderer.min.js"></script> <!-- jqplot -->
+        <script src="http://maps.google.com/maps/api/js?sensor=false"></script> <!-- google maps API -->
+        
+        <!-- implementazione con "vanilla" javascript -->
+        <script src="js/drag_and_drop.js"></script> <!-- drag & drop -->
+        <script src="js/geolocation.js"></script>  <!-- geolocation -->
+        
+        <!-- implementazione alternativa utilizzando jQuery -->        
+        <!-- <script src="js/drag_and_drop_jquery.js"></script> -->
+        <!-- <script src="js/geolocation_jquery.js"></script> -->
+        <!--==================================================================================-->
+    </body>
+</html>

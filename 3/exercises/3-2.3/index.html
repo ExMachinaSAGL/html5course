@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>        
+        <meta charset="utf-8">
+        <title>3-2.3: jQueryUI drag&drop</title>
+
+        <style rel="stylesheet">
+            #container { height: 300px; border: 1px solid green; }
+            .draggable-element { width: 200px; height: 200px;  }
+            .draggable-element.ui-draggable-dragging { /* classe aggiunta da jqueryUI */
+                border: 2px solid blue; 
+                opacity: 0.6; 
+                background: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="draggable-element" style="background: red;"> </div>
+        </div>
+
+
+        <!-- import librerie esterne -->
+        <script src="../../../lib/scripts/jquery-1.11.0.min.js"></script> <!-- jquery -->
+        <script src="../../../lib/scripts/jquery-ui.js"></script> <!-- jqueryUI -->
+
+        <script>
+            $('document').ready(function() {
+
+                // eventi per l'oggetto "draggable"
+                $('.draggable-element').draggable({
+                    containment: 'parent',      // parent | document | window | selector | [x1,y1,x2,y2]
+                    cursor: 'move',
+                    snap: '#container',
+                    helper: function(event) {   // original | clone | function(event) { return HTML markup }
+                        return '<div class="draggable-element">SPOSTAMI</div>';
+                    },
+                    start: function() { //... },
+                    drag: function() { //... },
+                    stop: function(event, element) {                        
+                        var offsetXPos = parseInt( element.offset.left );
+                        var offsetYPos = parseInt( element.offset.top );
+                        console.log( "Drag terminato alla posizione: (" + offsetXPos + ", " + offsetYPos + ")");
+                    }
+                });
+
+            });
+        </script>
+    </body>
+</html>
