@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Form validation: PURE js, reusable</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body id="page">
+
+        <!-- FORM -->
+        <section class="filters">
+            <form method="post" action="../sub.php" id="form">
+                <fieldset class="round5">
+                    <legend class="round5">Input data (pure less dumb)</legend>
+                    <ul>
+                        <li>
+                            <p class="field">Url</p>
+                            <input type="text" id="url" name="url" value="http://www.google.co m" placeholder="your site" />
+                        </li>
+                        <li>
+                            <p class="field">Email</p>
+                            <input type="text" id="email" name="email" value="" placeholder="your email" />
+                        </li>
+                        <li>
+                            <p class="field">Age</p>
+                            <label for="age1">18-24</label>
+                            <input type="radio" id="age1" name="age" value="18-24" />
+                            <label for="age2">24-36</label>
+                            <input type="radio" id="age2" name="age" value="24-36" />
+                            <label for="age3">36-42</label>
+                            <input type="radio" id="age3" name="age" value="36-42" data-msg="Selezionare un etá, prego"/>
+                        </li>
+                        <li>
+                            <p class="field">OS</p>
+                            <label for="mac">MacOS</label>
+                            <input type="checkbox" id="mac" name="product" value="Mac" />
+                            <label for="lin">Linux</label>
+                            <input type="checkbox" id="lin" name="product" value="Linux" />
+                            <label for="win">Windows</label>
+                            <input type="checkbox" id="win" name="product" value="Windows" />
+                        </li>
+                        <li>
+                            <p class="field">Provenienza</p>
+                            <select name="from" id="from">
+                                <option value="">-- selezionare provenienza --</option>
+                                <option value="ch">Svizzera</option>
+                                <option value="it">Italia</option>
+                                <option value="fr">Francia</option>
+                            </select>
+                        </li>
+                        <li>
+                            <p class="field">Commento</p>
+                            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+                        </li>
+                        <li>
+                            <input type="submit" class="btn" value="submit">
+                            <input type="reset" class="btn" value="reset">
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
+        </section>
+
+        <!-- SCRIPTS -->
+        <!--
+        
+        Namespace contenente diverse funzioni utility
+             - gestione eventi
+             - due funzioni manipolazione dom -->
+        <script src="js/lib.js "></script>
+        <!--
+
+        Basilare oggetto di validazione
+        -->
+        <script src="js/validator.js "></script>
+
+        <!--
+
+        Script utente
+        -->
+        <script src="js/init.js "></script>
+        
+    </body>
+</html>
