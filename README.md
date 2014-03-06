@@ -15,7 +15,7 @@
 5.  - API: cross-document messaging: postMessage, WebSocket.
     - API: web workers.
 
-6.  - API: file API.
+6.  - API: file API (desktop drag-in/drag-out???).
     - API: storage: application cache (manifest + offline use), Web Storage, Local Storage, Session Storage, history API.
 
 7.  - CSS3: media query.
