@@ -7,7 +7,7 @@ $('document').ready(function() {
 		else { return el.getAttribute("data-" + property); }
 	}
 
-	/*
+	
 	// cross-browser (vecchi browser)
 	function bindEvent(evnt, elem, func) {
 	    if (elem.addEventListener) {  // W3C DOM
@@ -18,7 +18,7 @@ $('document').ready(function() {
 			return r;
 	    }
 	}
-	*/
+	
 
 
 	// DRAG
@@ -114,7 +114,6 @@ $('document').ready(function() {
      
         $('#chart').bind('jqplotDataClick', 
             function (ev, seriesIndex, pointIndex, data) {
-            	debugger;
             	var f = ["Aspirina", "Pomata", "Bende emostatiche", "H2O", "NaCl", "H725"];
                 $('#chart-info').html("Farmaco utilizzato: " + f[pointIndex] + " (" + data[1] + ")");
             }
