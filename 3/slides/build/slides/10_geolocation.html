@@ -1,0 +1,23 @@
+<slide>
+  <hgroup>
+    <h2>Geolocation - getCurrentPosition</h2>
+  </hgroup>
+  <article>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+// verifichiamo che l'API sia disponibile nel browser
+if (navigator.geolocation) {
+
+  navigator.geolocation.getCurrentPosition(
+    successHandlerFunction, 
+    errorHandlerFunction, 
+    optionsObject
+  );
+    
+} else {
+    alert("Geolocation API non supportata.");
+}
+      </pre>
+    </article>
+  </article>
+</slide>

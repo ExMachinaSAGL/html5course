@@ -1,0 +1,146 @@
+/*************************************************************************
+ reset di base per corpo pagina 
+**************************************************************************/
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: #666;
+}
+p {
+	margin: 0;
+}
+header h3 {
+	margin-top: 0;
+	border-bottom: 1px solid #e5e5e5;
+}
+.help {
+	font-weight: bold;
+	color: #f00;
+}
+.visible {
+	display: block!important;
+}
+.clearfix { 
+	clear:both; 
+	content:'.'; 
+	display:block; 
+	height:0; 
+	line-height:0; 
+	font-size:0; 
+	visibility:hidden; 
+	padding:0; 
+	margin:0; 
+}
+
+
+
+/*************************************************************************
+ sezione sinistra: lista-pazienti
+**************************************************************************/
+section#lista-pazienti {
+	float: left;
+	width: 20%; 
+	height: 100%;
+	overflow: auto;
+	background: #4BB2C5;
+	color: #fff; 	
+}
+
+
+	/*### DRAG & DROP ###*/
+	/* ul */
+	section#lista-pazienti ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+		section#lista-pazienti ul li {
+			border-bottom: 1px solid #fff;
+			padding: 10px;
+			cursor: move;
+		}
+			section#lista-pazienti ul li.dragging {
+				color: #fc0;
+			}
+			section#lista-pazienti ul li article span,
+			section#lista-pazienti ul li article time {
+				font-weight: bold;
+			}
+
+
+
+/*************************************************************************
+ sezione destra: report-paziente
+**************************************************************************/
+section#report-paziente {
+	float: left;
+	width: 80%; 
+	height: 100%;
+	overflow: auto;
+	background: #fff; 
+}
+	section#report-paziente>div {
+		padding: 10px;
+	}
+
+
+	/*### GEOLOCATION ###*/
+	/* form */
+	section#report-paziente form {
+		margin: 10px 0;
+	}
+	section#report-paziente form label {
+		margin-right: 20px;
+		width: 80px;
+		display: inline-block;
+		text-align: right;
+	}
+	section#report-paziente form input {
+		background-color: #fff;
+		border: 1px solid #ccc;
+		height: 20px;
+		line-height: 20px;
+		padding: 4px 6px;
+		color: #555;
+		border-radius: 4px;
+	}
+
+
+	/* map */
+	section#report-paziente div#map,
+	section#report-paziente div#log-geo-params {
+		width: 100%; 
+		height: 200px; 
+		margin: 10px 10px 10px 0;
+		display: none;
+		border-radius: 6px;
+		background: rgb(229, 227, 223);
+	}
+		section#report-paziente div#log-geo-params {
+			height: auto;
+			overflow: auto;
+		}
+
+
+	/*### DRAG & DROP ###*/
+	/* drop-area */
+	section#report-paziente div#drop-area {
+		min-height: 50px; 		 
+		border: 2px dashed #4BB2C5; 
+		border-radius: 6px;
+		margin: 10px 0px;
+		padding: 10px;
+	}
+		section#report-paziente div#drop-area.over {
+			border-color: #fc0;
+		}
+		section#report-paziente div#drop-area.dropped {
+			background: #4BB2C5;
+			color: #fff;
+			border: 0;
+		}
