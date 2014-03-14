@@ -25,8 +25,8 @@ $.jqplot(target, [line1], {
       sizeAdjust: 7.5
     },
     cursor: {
-      show: false
-      //,tooltipLocation:'sw'
+      show: true
+      ,tooltipLocation:'se'
     }
 });
 

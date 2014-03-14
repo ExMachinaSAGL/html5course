@@ -10,7 +10,7 @@ $.jqplot(target, lines, {
     seriesDefaults: {
         renderer: $.jqplot.BarRenderer,
         rendererOptions:{barMargin: 25},
-        pointLabels:{show:true, stackedValue: true}
+        pointLabels:{show:true, stackedValue: false}
     },
     axes: {
         xaxis:{renderer:$.jqplot.CategoryAxisRenderer}

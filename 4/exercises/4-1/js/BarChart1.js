@@ -1,5 +1,5 @@
 $.jqplot(target, json, {
-        stackSeries:true,
+        stackSeries:false,
         captureRightClick: true,
         seriesDefaults:{
             renderer:$.jqplot.BarRenderer,
@@ -19,13 +19,15 @@ $.jqplot(target, json, {
     },
     legend: {
         show: true,
-        location: 'ne',
+        location: 'se',
         placement: 'inside'
     }
 });
 
 $('#' + target).bind('jqplotDataClick',
+    /* */
     function (ev, seriesIndex, pointIndex, data) {
+        //console.dir(arguments)
         $('#info1').html('series: ' + seriesIndex + ', point: ' + pointIndex + ', data: ' + data);
     }
 );

@@ -43,16 +43,21 @@ $('#' + target).bind('jqplotDataClick',
 )
 .bind('jqplotDataRightClick',
     function (ev, seriesIndex, pointIndex, data) {
-        $('#info1').html(
-            'RIGHTCLICK series: ' + seriesIndex +
-            ', point: ' + pointIndex +
-            ', data: '+data
-        );
+        json[seriesIndex][pointIndex]--;
+        jQuery('#'+target).empty();
+        plot = null;
+        plot = doPlot();
     }
 )
 .bind('jqplotDataHighlight',
     function (ev, seriesIndex, pointIndex, data) {
-        $('#info1').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data+ ', pageX: '+ev.pageX+', pageY: '+ev.pageY);
+        $('#info1').html(
+            'IN series: ' + seriesIndex +
+            ', point: ' + pointIndex +
+            ', data: ' + data +
+            ', pageX: ' + ev.pageX +
+            ', pageY: '+ev.pageY
+        );
     }
 )
 .bind('jqplotDataUnhighlight',
