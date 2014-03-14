@@ -23,21 +23,25 @@ Eye.prototype.init = function () {
         stroke : "#888"
     });
 };
-var eye1 = new Eye(200, 240),
-    eye2 = new Eye(440, 240);
-eyes = [eye1, eye2];
 
-eye1.init();
-eye2.init();
+var eyeL = new Eye(200, 240),
+    eyeR = new Eye(440, 240);
+eyes = [eyeL, eyeR];    
+
+eyeL.init();
+eyeR.init();
 
 function reactor(e) {
     var left = e.clientX - position.left,
         top = e.clientY - position.top,
         dist,
         angle,
+        cutoff = 65,
         max = Math.sqrt(440 * 440 + 200 * 200);
     for (var i = 0, l = eyes.length; i < l; i++) {
-        dist = 65 * Math.sqrt((eyes[i].y - top)*(eyes[i].y - top) + (eyes[i].x - left)*(eyes[i].x - left)) / max;
+        dist = cutoff * Math.sqrt((eyes[i].y - top)*(eyes[i].y - top) + (eyes[i].x - left)*(eyes[i].x - left)) / max;
+        dist *= 2;
+        if (dist > cutoff) dist = cutoff;
         angle = Math.atan2(eyes[i].y - top, eyes[i].x - left); //* 2 * Math.PI;
         eyes[i].irid.attr({cx : eyes[i].x - dist*Math.cos(angle), cy :  eyes[i].y - dist*Math.sin(angle) } );
     }

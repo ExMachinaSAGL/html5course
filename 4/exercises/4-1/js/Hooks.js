@@ -30,10 +30,13 @@ var plot = doPlot();
 
 $('#' + target).bind('jqplotDataClick',
     function (ev, seriesIndex, pointIndex, data) {
-        $('#info1').html('series: ' + seriesIndex + ', point: ' + pointIndex + ', data: ' + data);
+        $('#info1').html(
+            'series: ' + seriesIndex +
+            ', point: ' + pointIndex +
+            ', data: ' + data
+        );
         
         json[seriesIndex][pointIndex]++;
-        console.debug(json)
         jQuery('#'+target).empty();
         plot = null;
         plot = doPlot();
@@ -41,7 +44,11 @@ $('#' + target).bind('jqplotDataClick',
 )
 .bind('jqplotDataRightClick',
     function (ev, seriesIndex, pointIndex, data) {
-        $('#info1').html('RIGHTCLICK series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+        $('#info1').html(
+            'RIGHTCLICK series: ' + seriesIndex +
+            ', point: ' + pointIndex +
+            ', data: '+data
+        );
     }
 )
 .bind('jqplotDataHighlight',
