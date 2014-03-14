@@ -6,31 +6,29 @@ var line1 = [
     ['20-Feb-09', 346.51], ['20-Mar-09', 325.99], ['24-Apr-09', 386.15]
 ];
 $.jqplot(target, [line1], {
-      title:'Data Point Highlighting + Cursor',
-      axes:{
-        xaxis:{
-          renderer:$.jqplot.DateAxisRenderer,
-          tickOptions:{
-            formatString:'%b&nbsp;%#d'
-          }
-        },
-        yaxis:{
-          tickOptions:{
-            formatString:'$%.2f'
-            }
+    title:'Data Point Highlighting + Cursor',
+    axes:{
+      xaxis:{
+        renderer:$.jqplot.DateAxisRenderer,
+        tickOptions:{
+          formatString:'%b&nbsp;%#d'
         }
       },
-      highlighter: {
-        show: true,
-        sizeAdjust: 7.5
-      },
-      cursor: {
-        show: false
-        //,tooltipLocation:'sw'
+      yaxis:{
+        tickOptions:{
+          formatString:'$%.2f'
+          }
       }
-  });
-
-
+    },
+    highlighter: {
+      show: true,
+      sizeAdjust: 7.5
+    },
+    cursor: {
+      show: false
+      //,tooltipLocation:'sw'
+    }
+});
 
 $('#' + target).bind('jqplotDataClick',
     function (ev, seriesIndex, pointIndex, data) {

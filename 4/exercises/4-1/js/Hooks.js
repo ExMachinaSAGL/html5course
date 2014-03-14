@@ -27,7 +27,6 @@ function doPlot() {
 }
 var plot = doPlot();
 
-
 $('#' + target).bind('jqplotDataClick',
     function (ev, seriesIndex, pointIndex, data) {
         $('#info1').html(
@@ -63,11 +62,3 @@ $('#' + target).bind('jqplotDataClick',
 );
 
 
-
-plot.eventListenerHooks.push(['jqplotMouseMove', myMove]);
-
-
-
-function myMove() {
-    console.dir(arguments)
-}
