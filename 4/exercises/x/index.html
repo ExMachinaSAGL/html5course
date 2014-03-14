@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>4-1: jQplot</title>
+        <style>
+            #main{
+                border:1px solid black;
+            }
+            ul{
+                background-color:#aaa;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="main">
+            <div>
+                <ul data-action="_x">
+                    <li><a href="javascript:;" data-action="_a">a</a></li>
+                    <li><a href="javascript:;" data-action="_b">b</a></li>
+                    <li><a href="javascript:;" data-action="_c">c</a></li>
+                    <li><a href="javascript:;" data-action="_d">d</a></li>
+                    <li><a href="javascript:;" data-action="_e">e</a></li>
+                </ul>
+            </div>
+            <button data-action="tutti_a">tutti _a</button>
+            <span>xxxx</span>            
+        </div>
+
+
+        <script src="../../../lib/scripts/jquery-1.11.0.min.js"></script>
+    
+        <script>
+            var EOC = {};
+            $( function (){
+                $('#main').on('click', function(e){
+                    EOC.utility.manageClick(e);
+                });
+            });
+        </script>
+        <script src="js/ext.js"></script>        
+
+    </body>
+</html>
