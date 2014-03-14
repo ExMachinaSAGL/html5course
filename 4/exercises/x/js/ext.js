@@ -1,19 +1,28 @@
+/*
 EOC.utility = {
     hello : function (){ alert('hello'); },
     
     manageClick : function (e){
-        console.debug(e);
         EOC.eventHandler.react(e.type, e.target);  
-        console.debug(e.isPropagationStopped())   
     }
 };
+*/
+
+EOC.makeNS('EOC.utility', {
+    hello : function (){ alert('hello'); },
+    
+    manageClick : function (e){
+        EOC.eventHandler.react(e.type, e.target);  
+        //e.stopPropagation();
+    }
+});
 
 
-EOC.eventHandler = {
+// oppure, si puó anche chiamare passando
+// come terzo parametro il contesto (EOC)
+// 
+EOC.makeNS('eventHandler', {
     react : function (eventType, node){
-
-
-        debugger;
         var act = jQuery(node).attr('data-action');
 
         if(node.tagName.match(/span/i)) {
@@ -22,7 +31,6 @@ EOC.eventHandler = {
         }
 
         if (!act) {return false; }
-
 
         if(node.tagName.match(/button/i)) {
             jQuery('a').attr('data-action', '_a');
@@ -33,7 +41,7 @@ EOC.eventHandler = {
                     (act in this) && this[act](); 
                 break
             }
-            //return false;
+            return false;
         }
     },
     _a : function (){
@@ -46,4 +54,4 @@ EOC.eventHandler = {
     _x : function (){
         console.debug('chiamato _x');  
     }
-};
+}, EOC);
