@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>4-1: jQplot</title>
+        <meta charset="UTF-8" />
+    </head>
+    <body>
+        <div id="map"></div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
+        <script>
+            window.onload = function (){
+                var node = document.getElementById("map"),
+                    mapOptions = {
+                        center: new google.maps.LatLng(-34.397, 150.644),
+                        zoom: 8
+                    },
+                    map = new google.maps.Map(node, mapOptions);
+
+                function myobj(){}
+                myobj.prototype.super = map;
+                myobj.prototype.show = function (){
+                    node.style.width = "600px";
+                    node.style.height = "400px";
+                }
+
+                var mo = new myobj();    
+                mo.show();
+            }
+        </script>
+    </body>
+</html>

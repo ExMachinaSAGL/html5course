@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>4-1: jQplot</title>
+        <meta charset="UTF-8" />
+        <link type="text/css" href="css/style.css" rel="stylesheet" />
+        <link type="text/css" href="../../../lib/scripts/jqplot/jquery.jqplot.min.css" rel="stylesheet" />
+        <link type="text/css" href="../style.css" rel="stylesheet" />
+        <link href="../lib/rainbow-dev-custom/themes/zenburnesque.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <label>script</label>
+                <select name="script"></select>
+                <span class="sep"></span>
+                <span id="source">
+                    <label>dataset</label>
+                    <select name="source"></select>
+                    <span class="sep"></span>
+                </span>
+                <label for="getcode">inlcude code</label>
+                <input id="getcode" type="checkbox" checked="checked"/>
+                <span class="sep"></span>
+                <button id="doplot">Plot</button>
+            </nav>
+        </header>
+        <section id="body">
+            <div id="plot">
+                <div id="plot1" class="jqtarget" style="width:500px;"></div>
+                <p id="info1">&nbsp;</p>
+            </div>
+            <div id="code">
+                <pre><code data-language="javascript" id="js_code"></code></pre>
+            </div>
+            <br class="clearer" />
+        </section>
+        <section id="form1">
+            <form action="">
+                <ul>
+                    <li>
+                        <label for="val">Valore</label>
+                        <input type="text" id="val" name="val" />
+                    </li>
+                    <li>
+                        <input type="submit" value="add">
+                    </li>
+                </ul>
+            </form>
+        </section>
+
+        
+        <!-- jQuery -->
+        <script src="../../../lib/scripts/jquery-1.11.0.min.js"></script>
+
+        <!-- jQplot -->
+        <script src="../../../lib/scripts/jqplot/jquery.jqplot.min.js"></script>
+        
+        <!-- jQuery validation -->
+        <script src="../../../lib/scripts/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script>
+
+        
+        <!-- jQplot renderers -->
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.barRenderer.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.cursor.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.donutRenderer.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.highlighter.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.pointLabels.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.pieRenderer.min.js"></script>
+        <script src="../../../lib/scripts/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+
+        <!-- rainbow synthax highlighter -->
+        <script src="../lib/rainbow-dev-custom/rainbow.min.js"></script>
+        <script src="../lib/rainbow-dev-custom/language/generic.js"></script>
+        <script src="../lib/rainbow-dev-custom/language/javascript.js"></script>
+        <script src="../lib/rainbow-dev-custom/language/html.js"></script>
+        <script src="../lib/rainbow-dev-custom/language/css.js"></script>
+
+        <!-- binding script-datasets -->
+        <script src="js/_bind.js"></script>
+
+        <!-- samples scripts -->
+        <script src="../lib/main.js"></script>
+
+    </body>
+</html>
