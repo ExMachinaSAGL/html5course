@@ -1,0 +1,27 @@
+<slide>
+  <hgroup>
+    <h2>navigator.geolocation.getCurrentPosition - success handler function</h2>
+  </hgroup>
+  <article>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+function successHandlerFunction(position) {
+    // default options
+    var latlng = new google.maps.LatLng(
+      position.coords.latitude, 
+      position.coords.longitude
+    );
+    var options = {
+      center: latlng,
+      zoom: 15
+  };
+var map = new google.maps.Map(document.querySelector("#map"), options);
+var marker = new google.maps.Marker({
+      position: latlng,
+      map: map
+  });
+}
+      </pre>
+    </article>
+  </article>
+</slide>

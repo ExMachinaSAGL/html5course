@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Webworker: primi</title>
+
+</head>
+<body>
+	<p>Il numero piu' alto fin'ora calcolato: <output id="result"></output></p>
+	<button id="calcola">Calcola</button>
+	<button id="stop">Stop</button>
+	
+	
+	<script>
+	   
+		var worker;
+	   
+		document.querySelector('#calcola').addEventListener('click', function() {
+		   	// creo un webworker
+		   	worker = new Worker('primi.js');
+
+		   	// ascolto i messaggi provenienti dal webworker
+			worker.addEventListener('message', function(e) {
+				document.querySelector('#result').textContent = e.data;
+			});
+			
+			// listener degli errori
+			worker.addEventListener('error', function(e) {
+				console.debug(e.message);
+			});
+		});
+		
+		document.querySelector('#stop').addEventListener('click', function() {
+			// blocca il webworker
+			// per farlo ripartire occorre chiamare di nuovo "new Worker('primi.js')"
+			worker.terminate();
+		});
+			
+	</script>
+
+</body>
+</html>

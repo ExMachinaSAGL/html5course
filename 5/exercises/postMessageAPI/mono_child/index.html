@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>postMessage: chiamante</title>
+
+</head>
+<body>
+	<div id="log"></div>
+
+	<script>
+
+		/* ========================================================================
+			vecchia modalità interazione con finestra figlia
+			SOLO nello stesso dominio
+		======================================================================== */
+		// solo se la finestra figlia si trova nel medesimo dominio della chiamante
+		// posso utilizzare codice della finestra figlia
+		/*
+		var childWindow_1 = window.open('child_1_mono.html','childWindow1');
+		childWindow_1.sayHello();
+		*/
+
+
+		/* ========================================================================
+			HTML5 postMessage API:
+			comunicazione cross-origin
+		======================================================================== */
+		// apre una finestra figlia in un dominio differente
+		var calledDomain = 'http://dominiotest.dev';
+		var childWindow_1 = window.open(calledDomain + '/child_1_mono.html','childWindow1');
+
+		// invia un messaggio ogni 5 secondi
+		setInterval(function() {
+			var message = 'Messaggio dalla finestra principale - time: ' + (new Date().getTime());
+			// anche se in un dominio differente, posso interagire con la finestra figlia
+			childWindow_1.postMessage(message, calledDomain);			
+		}, 3000);
+
+		// ascolta messaggi in entrata da altre finestre
+		window.addEventListener('message', function(event) {
+			// controllo l'origine del messaggio
+			// se non arriva da un origine autorizzata scarto il messaggio
+			if (event.origin !== calledDomain) return;
+
+			console.log('Risposta ricevuta: ', event.data);
+
+			document.querySelector('#log').innerHTML += ('<p style="color: blue;">' + 'CHILD 1 - ' + event.data + '</p>');
+		});
+
+	</script>
+
+</body>
+</html>

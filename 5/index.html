@@ -5,10 +5,57 @@
         <meta charset="UTF-8" />
         <link type="text/css" href="../lib/styles/reset.css" rel="stylesheet" />
         <link type="text/css" href="../lib/styles/main.css" rel="stylesheet" />
+        <style>
+            section>header,
+            ul li ul {
+                margin-bottom: 10px;
+            }
+            ul li {
+                padding: 3px;
+            }
+        </style>
     </head>
     <body>
-        <ul>
-            <li><a href="5-1/index.html">Exercise 1</a></li>
-        </ul>
+        <section>
+            <header>Slides</header>
+            <ul>
+                <li>
+                    <a href="slides/index.html" target="_blank">postMessage API, websockets, webworkers</a>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <header>Esercizi</header>
+            <ul>
+                <li>
+                    <ul>
+                        <li><a href="exercises/postmessageAPI/mono_child/index.html" target="_blank">postMessage API - mono child (NB: l'esercizio richiede che la finestra "child" sia implementata in un dominio differente. Es: http://dominiotest.dev)</a></li>
+                        <li><a href="exercises/postmessageAPI/multi_child/index.html" target="_blank">postMessage API - multi child (NB: l'esercizio richiede che le finestre "child" siano implementate in un dominio differente. Es: http://dominiotest.dev)</a></li>
+                        <li><a href="exercises/postmessageAPI/iframe/index.html" target="_blank">postMessage API - iframe (NB: l'esercizio richiede che il contenuto dell'iframe sia implementato in un dominio differente. Es: http://dominiotest.dev)</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul>
+                        <li><a href="exercises/websockets/ws_online/index.html" target="_blank">Websockets - online examples</a></li>
+                        <li><a href="exercises/websockets/ws_localhost/index.html" target="_blank">Websockets - localhost (NB: richiede Node.js in ascolto all'indirizzo "http://localhost:8088")</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul>
+                        <li><a href="exercises/webworkers/numeri_primi_no_webworker.html" target="_blank">Webworkers - Calcolo numeri primi senza ausilio di webworkers (DANGEROUS!)</a></li>
+                        <li><a href="exercises/webworkers/basic_messagge/index.html" target="_blank">Webworkers - Basic webworkers</a></li>
+                        <li><a href="exercises/webworkers/numeri_primi_webworker/primi.html" target="_blank">Webworkers - Calcolo numeri primi con ausilio di webworkers</a></li>
+                        <li><a href="exercises/webworkers/importScripts/index.html" target="_blank">Webworkers - Utilizzo di script esterni in un webworker</a></li>
+                        <li><a href="exercises/webworkers/inline/blob_string.html" target="_blank">Webworkers - Inline come stringa</a></li>
+                        <li><a href="exercises/webworkers/inline/blob_script.html" target="_blank">Webworkers - Inline come &lt;script&gt; tag</a></li>
+                        <li><a href="exercises/webworkers/transferrable/index.html" target="_blank">Webworkers - Transferrable objects</a></li>
+                        <li><a href="exercises/webworkers/canvas_renderer/blur.html" target="_blank">Webworkers - Rendering condiviso di un immagine</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </section>
     </body>
 </html>

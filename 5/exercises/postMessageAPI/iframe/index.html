@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>postMessage: chiamante</title>
+
+	<style rel="stylesheet">
+		iframe#childIframe {
+			width: 400px; height: 300px; float: left; margin-right: 30px;
+		}
+		div#log {
+			float: left;
+		}
+	</style>
+</head>
+<body>
+
+	<iframe id="childIframe" src="http://dominiotest.dev/iframe.html"></iframe>
+
+	<div id="log"></div>
+
+
+	<script>
+
+		// riferimenti al dominio e contenuto dell'iframe
+		var domain = 'http://dominiotest.dev';
+		var iframe = document.querySelector('#childIframe').contentWindow;
+
+		// invia un messaggio ogni 5 secondi
+		setInterval(function() {
+			var message = 'Messaggio dalla finestra principale - time: ' + (new Date().getTime());
+			iframe.postMessage(message, domain);
+		}, 3000);
+
+		// ascolta messaggi in entrata da altre finestre
+		window.addEventListener('message', function(event) {
+			// controllo l'origine del messaggio
+			// se non arriva da un origine autorizzata scarto il messaggio
+			if (event.origin !== domain) return;
+
+			console.log('Risposta ricevuta: ', event.data);
+
+			document.querySelector('#log').innerHTML += ('<p style="color: blue;">' + 'CHILD 1 - ' + event.data + '</p>');
+		});
+
+	</script>
+
+</body>
+</html>

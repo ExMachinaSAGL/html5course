@@ -1,0 +1,24 @@
+<slide>
+	<hgroup>
+		<h2>webworker API: chiamante</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint smaller" data-lang="javascript">
+// creo il worker
+// 'worker.js' è uno script js esterno
+var worker = new Worker('worker.js');
+
+// listeners
+worker.addEventListener('message', function(event) {
+	// event.data
+});
+worker.addEventListener('error', function(event) {
+	// event.lineno, event.filename, event.message
+});
+
+// metodi
+worker.postMessage('Messaggio...');
+worker.terminate();
+		</pre>
+	</article>
+</slide>

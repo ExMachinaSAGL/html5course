@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Webworker: transferrable</title>
+</head>
+<body>
+	
+	<script>		
+
+		var data = {
+		    str: "testo...",
+		    ab: new ArrayBuffer(1000),
+		    i8: new Int8Array(200)
+		};
+
+		var worker = new Worker('worker.js');
+
+
+		// prima del post al webworker
+		console.debug(data.str);
+		console.debug(data.ab.byteLength);
+		console.debug(data.i8);
+
+
+		// CLONE
+		/* 
+			i dati originali sono clonati/copiati per inviarli al webworker
+			sia lo script d'origine che il webworker hanno una copia dell'oggetto
+			approccio meno performante
+		*/
+		//worker.postMessage(data);
+
+
+		// TRANSFERRABLE OBJECT
+		/*
+			i dati specificati nell'array del secondo parametro vengono "trasferiti" al webworker
+			di conseguenza lo script originale non puo' piu' accedere all'oggetto trasferito
+			approccio piu' performante
+		*/
+		worker.postMessage(data, [data.ab, data.i8.buffer]);
+
+
+		// dopo il post al webworker
+		console.debug(data.str);
+		console.debug(data.ab.byteLength);
+		console.debug(data.i8);
+			
+	</script>
+
+</body>
+</html>

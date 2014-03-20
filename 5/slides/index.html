@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <!--This one seems to work all the time, but really small on ipad-->
+        <!--<meta name="viewport" content="initial-scale=0.4">-->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" media="all" href="../../lib/slides/theme/css/default.css">
+        <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../../lib/slides/theme/css/phone.css">
+        <link href="../../lib/syntax/prism.css" rel="stylesheet" />
+        
+        <link href="../../lib/styles/bro.css" rel="stylesheet" />
+        <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+        <script src="../../lib/scripts/exm.js"></script>
+        <script src="slide_config.js"></script>
+        <script data-main="../../lib/slides/js/slides" src="../../lib/slides/js/require-1.0.8.min.js"></script>
+    </head>
+    <body style="opacity: 0">
+        <slides class="layout-widescreen">
+            <slide class="title-slide segue nobackground">
+                <aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+                <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+                <hgroup class="auto-fadein">
+                    <h1 data-config-title><!-- populated from slide_config.json --></h1>
+                    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+                    <p data-config-presenter><!-- populated from slide_config.json --></p>
+                </hgroup>
+            </slide>
+
+            <slide class="segue">
+            	<aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+            	<hgroup class="auto-fadein">
+            	  <h2>API: postMessage</h2>
+            	</hgroup>
+            </slide>
+            <slide>
+            	<article>
+            		<ul>
+            			<li>Abilita in modo sicuro la comunicazione cross-origin tra window/iframe</li>
+            			<li>La comunicazione tra le finestre avviene tramite un API di messaggistica standard (condivisa anche da websocket e webworkers)</li>
+            			<li>Messaggistica asincrona (listener su eventi definiti dall'API)</li>
+            			<li>
+            				Accento sulla sicurezza
+            				<ul>
+            					<li>E' possibile controllare l'origine/sorgente del messaggio ricevuto</li>
+            					<li>Nessuna condivisione di script/sandbox tra le finestre</li>
+            				</ul>
+            			</li>
+            		</ul>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>Mittente del messaggio</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint" data-lang="javascript">window.postMessage(message, targetOrigin, [transfer]);
+            		</pre>
+            
+            		<ul>
+            			<li>window: riferimento alla finestra cui mandare il messaggio</li>
+            			<li>message: dati da inviare</li>
+            			<li>
+            				targetOrigin: specifica il dominio della finestra a cui inviare il messaggio
+            				<ul>
+            					<li>controllo di sicurezza</li>
+            					<li>se il target specificato non esiste o non coincide, il messaggio non viene inviato</li>
+            					<li>se non si vuole specificarlo, implementare la wildcard "*"</li>
+            				</ul>
+            			</li>
+            			<li>transfer: transferrable objects (array di oggetti da "clonare" e trasferire al ricevente - saranno disponibili solo per il ricevente, non piu' per il mittente)</li>
+            		</ul>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>Ricevente del messaggio</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint" data-lang="javascript">
+            window.addEventListener('message', function(event) {
+            	// event.data
+            	// event.origin
+            	// event.source
+            });
+            		</pre>
+            		<ul>
+            			<li>event.data: oggetti di dati trasmesso dalla fienstra mittente</li>
+            			<li>event.origin: dominio/schema della finestra che ha inviato il messaggio</li>
+            			<li>event.source: riferimento all'oggetto "window" che ha inviato il messaggio</li>
+            		</ul>
+            	</article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>postMessage API - Links</h2>
+              </hgroup>
+              <article>
+                <ul>
+                  <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window.postMessage" target="_blank">developer.mozilla.org/en-US/docs/Web/API/Window.postMessage</a>
+                    <ul><li>MDN on postMessage</li></ul>
+                  </li>
+                  <li>
+                    <a href="http://javascript.info/tutorial/cross-window-messaging-with-postmessage" target="_blank">javascript.info/tutorial/cross-window-messaging-with-postmessage</a>
+                    <ul><li>Cross-window messaging with postMessage</li></ul>
+                  </li>
+                  <li>
+                    <a href="http://blog.teamtreehouse.com/cross-domain-messaging-with-postmessage" target="_blank">blog.teamtreehouse.com/cross-domain-messaging-with-postmessage</a>
+                    <ul><li>Cross-Domain Messaging With postMessage</li></ul>
+                  </li>
+                </ul>
+              </article>
+            </slide>
+
+            <slide class="segue">
+            	<aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+            	<hgroup class="auto-fadein">
+            	  <h2>API: Websockets</h2>
+            	</hgroup>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>Websockets</h2>
+            	</hgroup>
+            	<article>
+            		<ul>
+            			<li>Comunicazione realt-time, full-duplex e bidirezionale tra client e server</li>
+            			<li>Canale sempre aperto</li>
+            			<li>No refresh, ajax, iframe, polling, Comet...</li>
+            			<li>Latenza zero (o quasi)</li>
+            			<li>Implementata e funzionante sull'infrastruttura HTTP esistente...</li>
+            			<li>...ma senza il peso/latenza/dati non necessari di una richiesta/risposta HTTP</li>			
+            		</ul>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>Websocket handshake</h2>
+            	</hgroup>
+            	<article class="flexbox vcenter smaller">
+            		<img src="images/socket.png" alt="websocket request/response" title="websocket request/response">
+            		<ul>
+            			<li>Ciclo di vita di un websocket: HTTP > upgrade a websocket (se disponibile)</li>
+            			<li>Una volta effettuato l'upgrade, la connessione HTTP viene interrotta...</li>
+            			<li>... e rimpiazzata da un websocket sullo stesso canale TCP/IP</li>
+            			<li>Rimane comunque completamente compatibile col protocollo HTTP pre-websocket (fallback, se websocket non disponibile)</li>
+            		</ul>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>Polling vs. websocket</h2>
+            	</hgroup>
+            	<article class="flexbox vcenter smaller">
+            		<img src="images/poll-ws-compare.gif" alt="polling vs websocket" title="polling vs websocket">
+            		<ul style="font-size: 14px;">
+            			<li>
+            			A - polling: 1,000 polling/secondo: traffico rete (871 x 1,000) = 871,000 bytes = 6,968,000 bits/secondo (6.6 Mbps).<br>
+            			A - websocket: 1 messaggio al secondo a 1000 client: traffico rete (2 x 1,000) = 2,000 bytes = 16,000 bits/secondo (0.015 Mbps).
+            			</li>
+            			<li>
+            			B - polling: 10,000 polling/secondo: traffico rete (871 x 10,000) = 8,710,000 bytes = 69,680,000 bits/secondo (66 Mbps).<br>
+            			B - websocket: 1 messaggio al secondo a 10.000 client: traffico rete (2 x 10,000) = 20,000 bytes = 160,000 bits/secondo (0.153 Mbps).
+            			</li>
+            			<li>
+            			C - polling: 100,000 polling/second: traffico rete (871 x 100,000) = 87,100,000 bytes = 696,800,000 bits/second (665 Mbps).<br>
+            			C - websockets: 1 messaggio al secondo a 100.000 client: traffico rete (2 x 100,000) = 200,000 bytes = 1,600,000 bits/secondo (1.526 Mbps).
+            			</li>
+            		</ul>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>Client websocket API</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint smaller" data-lang="javascript">
+            // creo un websocket
+            var ws = new WebSocket('ws://nodejs-html5testserver.rhcloud.com:8000');
+            
+            // listeners
+            ws.addEventListener('open', function(e) {
+            	// e = Event
+            });
+            ws.addEventListener('message', function(e) {	
+            	// https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent
+            	// e = MessageEvent: e.data, e.origin
+            });	
+            ws.addEventListener('close', function(e) {	
+            	// https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent
+            	// e = CloseEvent: e.code, e.reason, e.wasClean
+            });	
+            
+            // metodi
+            ws.send("Messaggio..."); 
+            ws.close();
+            		</pre>
+            	</article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>Websockets - Links</h2>
+              </hgroup>
+              <article>
+                <ul>
+                  <li>
+                    <a href="http://www.websocket.org/" target="_blank">websocket.org/</a>
+                    <ul><li>Tutto sui websocket</li></ul>
+                  </li>
+                  <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/WebSockets" target="_blank">developer.mozilla.org/en-US/docs/WebSockets</a>
+                    <ul><li>MDN sui websocket</li></ul>
+                  </li>
+                  <li>
+                    <a href="http://refcardz.dzone.com/refcardz/html5-websocket" target="_blank">refcardz.dzone.com/refcardz/html5-websocket</a>
+                    <ul><li>HTML5 WebSocket (con link a implementazioni server in diversi linguaggi)</li></ul>
+                  </li>
+                </ul>
+              </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>Websockets - Link correlati</h2>
+              </hgroup>
+              <article>
+                <ul>
+                  <li>
+                    <a href="http://nodejs.org/" target="_blank">nodejs.org</a>
+                    <ul><li>NodeJS</li></ul>
+                  </li>
+                  <li>
+                    <a href="http://socket.io/" target="_blank">socket.io</a>
+                    <ul><li>Implementazione client e server dei websocket</li></ul>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Worlize/WebSocket-Node" target="_blank">github.com/Worlize/WebSocket-Node</a>
+                    <ul><li>Implementazione server dei websocket per NodeJS (usata negli esempi)</li></ul>
+                  </li>
+                  <li>
+                    <a href="https://www.openshift.com/" target="_blank">www.openshift.com</a>
+                    <ul><li>Openshift: The Open Hybrid Cloud Application Platform by Red Hat</li></ul>
+                  </li>
+                </ul>
+              </article>
+            </slide>
+
+            <slide class="segue">
+            	<aside class="gdbar"><img src="../../lib/slides/images/exm_logo.png"></aside>
+            	<hgroup class="auto-fadein">
+            	  <h2>API: Webworkers</h2>
+            	</hgroup>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>Webworkers: why?</h2>
+            	</hgroup>
+            	<article class="flexbox vcenter">
+            		<img src="images/unresponsivejs.png" alt="unresponsive script" title="unresponsive script">
+            		<ul style="margin-top: 20px;">
+            			<li>javascript: single-threaded environment (un solo script alla volta)</li>
+            			<li>un processo lungo o pesante puo' rallentare il browser o bloccarlo del tutto</li>
+            			<li>simulazione di "processi concorrenti": setTimeout(), setInterval(), XMLHttpRequest, event handlers... </li>
+            			<li>... asincroni, ma sempre sequenziali (uno in coda all'altro)</li>
+            		</ul>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>Webworkers: isolated thread</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint smaller" data-lang="javascript">
+            var worker = new Worker('worker.js');
+            		</pre>
+            		<p>I webworker lavorano in un thread isolato, quindi occorre definirli in un file a parte.</p>
+            		<p>Quando implementati, vengono scaricati dal browser in maniera asincrona (il worker inizia il suo lavoro solo a download completato).</p>
+            		<p>Errore 404: il worker fallisce silentemente, senza errori</p>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>webworker API: chiamante</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint smaller" data-lang="javascript">
+            // creo il worker
+            // 'worker.js' è uno script js esterno
+            var worker = new Worker('worker.js');
+            
+            // listeners
+            worker.addEventListener('message', function(event) {
+            	// event.data
+            });
+            worker.addEventListener('error', function(event) {
+            	// event.lineno, event.filename, event.message
+            });
+            
+            // metodi
+            worker.postMessage('Messaggio...');
+            worker.terminate();
+            		</pre>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>webworker API: worker</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint smaller" data-lang="javascript">
+            // nel worker, 
+            // sia "this" che "self" si riferiscono al contensto globale del worker
+            self.addEventListener('message', function(event) {
+            	// event.data: dati ricevuti dal chiamante
+            
+            	// worker code...
+            
+            	// invio messaggio al chiamante
+            	self.postMessage("risposta: " + e.data);
+            }, false);
+            		</pre>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>webworker API: transferrable objects</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint smaller" data-lang="javascript">
+            var data = {
+                str: "testo...",
+                ab: new ArrayBuffer(1000),
+                i8: new Int8Array(200)
+            };
+            
+            var worker = new Worker('worker.js');
+            
+            // trasferisco "ab" e "i8" al worker, "str" viene invece copiato
+            worker.postMessage(data, [data.ab, data.i8.buffer]);
+            		</pre>
+            		<p>I dati passati dal chiamante al webworker vengono copiati/clonati (structured cloning), non condivisi, perchè lavorano in contesti differenti.</p>
+            		<p>Se devo trasferire oggetti grandi/pesanti il processo non è molto efficiente.</p>
+            		<p>=> Transferrable objects: trasferisco i dati da un contesto all'altro (il contesto di partenza non avrà piu' a disposizione il dato trasferito al webworker).</p>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>webworker API: importScripts</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint smaller" data-lang="javascript">
+            importScripts('ext_script1.js', 'ext_script2.js');
+            
+            // ext_script1.js > addDate()
+            // ext_script2.js > addRandom()
+            self.addEventListener('message', function(e) {
+            	var msg = addDate() + " - " + addRandom();
+            
+            	self.postMessage(msg);
+            });
+            		</pre>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>webworker API: inline workers - Blob</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint smaller" data-lang="javascript">
+            // dichiaro un worker inline come "Blob"
+            var blob = new Blob([
+                "onmessage = function(e) { postMessage('Risposta dal worker'); }"
+            ]);
+            
+            // crea un URL 
+            // che puo' essere utilizzato come riferimento a oggetti presenti nel DOM
+            var blobURL = window.URL.createObjectURL(blob);
+            
+            // creo il webworker puntando al Blob
+            var worker = new Worker(blobURL);
+            		</pre>
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>webworker API: inline workers - &lt;script&gt; tag</h2>
+            	</hgroup>
+            	<article>
+            		<pre class="prettyprint smaller" data-lang="javascript">
+            &lt;-- Lo script non viene "letto" dal browser 
+            perchè dichiarato come type="javascript/worker" --&gt;
+            &lt;script id="worker" type="javascript/worker"&gt;
+            	self.onmessage = function(e) {
+            		self.postMessage('risposta dal webworker');
+            	};
+            &lt;/script&gt;
+            
+            // leggo il worker inline e lo trasformo in una risorsa utilizzabile
+            var blob = new Blob([document.querySelector('#worker').textContent]);
+            var worker = new Worker(window.URL.createObjectURL(blob));
+            		</pre>
+            
+            		<p>Per visualizzare i webworker inline in Chrome: chrome://blob-internals/</p>
+            
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>webworker API: vincoli</h2>
+            	</hgroup>
+            	<article>
+            		<ul>
+            			<li>Per motivi di sicurezza, almeno in Chrome, i webworker non funzionano da filesystem (meglio farli girare in un host).</li>
+            			<li>I webworker devono essere file esterni al chiamante, con uno schema/dominio uguale a quello del chiamante.</li>
+            		</ul>	
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>webworker API: accesso consentito a</h2>
+            	</hgroup>
+            	<article>
+            		<ul>
+            			<li>navigator object</li>
+            			<li>location object (read-only)</li>
+            			<li>XMLHttpRequest</li>
+            			<li>setTimeout()/clearTimeout() e setInterval()/clearInterval()</li>
+            			<li>application cache</li>
+            			<li>Script esterni utilizzando importScripts()</li>
+            			<li>subworkers (ma poco supportato)</li>
+            		</ul>	
+            	</article>
+            </slide>
+            <slide>
+            	<hgroup>
+            		<h2>Supporto???</h2>
+            	</hgroup>
+            	<article class="flexbox">
+            		<ul>
+            			<li>Subworkers (worker chiamato in un worker)?</li>
+            			<li>Shared workers (worker condiviso da piu' client)?</li>
+            		</ul>
+            	</article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>Webworkers - Links</h2>
+              </hgroup>
+              <article>
+                <ul>
+                  <li>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Performance/Using_web_workers" target="_blank">developer.mozilla.org/en-US/docs/Web/Guide/Performance/Using_web_workers</a>
+                    <ul><li>MDN on using web workers</li></ul>
+                  </li>
+                  <li>
+                    <a href="http://msdn.microsoft.com/en-us/hh549259.aspx" target="_blank">msdn.microsoft.com/en-us/hh549259.aspx</a>
+                    <ul><li>Introduction to HTML5 Web Workers: The JavaScript Multi-threading Approach</li></ul>
+                  </li>
+                  <li>
+                    <a href="http://www.html5rocks.com/en/tutorials/workers/basics/" target="_blank">www.html5rocks.com/en/tutorials/workers/basics/</a>
+                    <ul><li>The Basics of Web Workers</li></ul>
+                  </li>
+                </ul>
+              </article>
+            </slide>
+
+            <slide class="thank-you-slide segue nobackground">
+                <aside class="gdbar right"><img src="../../lib/slides/images/exm_logo.png"></aside>
+                <article class="flexbox vleft auto-fadein">
+                    <h2>&lt;/Grazie!&gt;</h2>
+                </article>
+                <p>https://github.com/ExMachinaSAGL/html5course</p>
+                <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+                </p>
+            </slide>
+            <slide class="backdrop"></slide>
+        </slides>
+        <!--[if IE]>
+          <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+          <script>CFInstall.check({mode: 'overlay'});</script>
+        <![endif]-->
+        <script src="../../lib/syntax/prism.js"></script>
+    </body>
+</html>

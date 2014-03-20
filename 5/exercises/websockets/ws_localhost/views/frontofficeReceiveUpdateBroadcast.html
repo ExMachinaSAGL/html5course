@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Websocket: frontoffice receives broadcast update</title>
+</head>
+<body>
+	<h2 id="author">Autore...</h2>
+	<div id="text">Testo...</div>
+	
+	<script src="../lib/jquery-1.11.0.min.js"></script>
+	<script>
+
+		$(document).ready(function() {
+
+			// websocket
+			// ===========================================
+			var ws = new WebSocket('ws://localhost:8088');
+			
+			ws.addEventListener('message', function(e) {
+				var data = JSON.parse(e.data);
+				var nome = $('#author').html(data.nome + " " + data.cognome);
+				var cognome = $('#text').html(data.testo);
+			}, false);
+
+		});
+
+	</script>
+
+</body>
+</html>

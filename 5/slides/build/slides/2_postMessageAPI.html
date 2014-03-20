@@ -1,0 +1,23 @@
+<slide>
+	<hgroup>
+		<h2>Mittente del messaggio</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint" data-lang="javascript">window.postMessage(message, targetOrigin, [transfer]);
+		</pre>
+
+		<ul>
+			<li>window: riferimento alla finestra cui mandare il messaggio</li>
+			<li>message: dati da inviare</li>
+			<li>
+				targetOrigin: specifica il dominio della finestra a cui inviare il messaggio
+				<ul>
+					<li>controllo di sicurezza</li>
+					<li>se il target specificato non esiste o non coincide, il messaggio non viene inviato</li>
+					<li>se non si vuole specificarlo, implementare la wildcard "*"</li>
+				</ul>
+			</li>
+			<li>transfer: transferrable objects (array di oggetti da "clonare" e trasferire al ricevente - saranno disponibili solo per il ricevente, non piu' per il mittente)</li>
+		</ul>
+	</article>
+</slide>

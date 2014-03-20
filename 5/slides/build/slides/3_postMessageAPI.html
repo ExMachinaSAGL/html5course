@@ -1,0 +1,19 @@
+<slide>
+	<hgroup>
+		<h2>Ricevente del messaggio</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint" data-lang="javascript">
+window.addEventListener('message', function(event) {
+	// event.data
+	// event.origin
+	// event.source
+});
+		</pre>
+		<ul>
+			<li>event.data: oggetti di dati trasmesso dalla fienstra mittente</li>
+			<li>event.origin: dominio/schema della finestra che ha inviato il messaggio</li>
+			<li>event.source: riferimento all'oggetto "window" che ha inviato il messaggio</li>
+		</ul>
+	</article>
+</slide>

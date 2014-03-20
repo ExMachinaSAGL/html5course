@@ -1,0 +1,14 @@
+<slide>
+	<hgroup>
+		<h2>Websocket handshake</h2>
+	</hgroup>
+	<article class="flexbox vcenter smaller">
+		<img src="images/socket.png" alt="websocket request/response" title="websocket request/response">
+		<ul>
+			<li>Ciclo di vita di un websocket: HTTP > upgrade a websocket (se disponibile)</li>
+			<li>Una volta effettuato l'upgrade, la connessione HTTP viene interrotta...</li>
+			<li>... e rimpiazzata da un websocket sullo stesso canale TCP/IP</li>
+			<li>Rimane comunque completamente compatibile col protocollo HTTP pre-websocket (fallback, se websocket non disponibile)</li>
+		</ul>
+	</article>
+</slide>

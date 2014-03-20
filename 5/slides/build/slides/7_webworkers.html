@@ -1,0 +1,20 @@
+<slide>
+	<hgroup>
+		<h2>webworker API: inline workers - Blob</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint smaller" data-lang="javascript">
+// dichiaro un worker inline come "Blob"
+var blob = new Blob([
+    "onmessage = function(e) { postMessage('Risposta dal worker'); }"
+]);
+
+// crea un URL 
+// che puo' essere utilizzato come riferimento a oggetti presenti nel DOM
+var blobURL = window.URL.createObjectURL(blob);
+
+// creo il webworker puntando al Blob
+var worker = new Worker(blobURL);
+		</pre>
+	</article>
+</slide>

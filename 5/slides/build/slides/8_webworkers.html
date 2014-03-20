@@ -1,0 +1,23 @@
+<slide>
+	<hgroup>
+		<h2>webworker API: inline workers - &lt;script&gt; tag</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint smaller" data-lang="javascript">
+&lt;-- Lo script non viene "letto" dal browser 
+perchè dichiarato come type="javascript/worker" --&gt;
+&lt;script id="worker" type="javascript/worker"&gt;
+	self.onmessage = function(e) {
+		self.postMessage('risposta dal webworker');
+	};
+&lt;/script&gt;
+
+// leggo il worker inline e lo trasformo in una risorsa utilizzabile
+var blob = new Blob([document.querySelector('#worker').textContent]);
+var worker = new Worker(window.URL.createObjectURL(blob));
+		</pre>
+
+		<p>Per visualizzare i webworker inline in Chrome: chrome://blob-internals/</p>
+
+	</article>
+</slide>

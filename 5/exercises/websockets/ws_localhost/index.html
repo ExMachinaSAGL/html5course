@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Websocket API</title>
+	<link href="lib/rainbow-dev-custom/themes/zenburnesque.css" rel="stylesheet">
+	<style>
+		a {text-decoration:none;}
+		.round5 {
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			border: 1px solid #5787F0;
+		}
+		header {
+			font-size: 30px;
+			margin-bottom: 10px;
+			color: #5787F0;
+		}
+		section {
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+		section ul li {
+			margin-top: 10px;
+		}
+		section ul li a {
+			color: #5787F0;
+		}
+		section ul li a:hover {
+			color: #0000ff;
+		}
+		p {
+			padding-top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<header>API - ws://localhost:8088</header>
+
+	<section class="round5">
+		<header>echo</header>
+		<p>Restituisce la stringa inviata dal client.</p>
+		<pre><code data-language="javascript">
+			/*
+			Apertura connessione col websocket
+			*/
+			var ws = new WebSocket('ws://localhost:8088');
+			
+			/*	
+			RICHIESTA
+			fn: "echo" [servizio richiesto al server]
+			text: "stringa"	[stringa inviata al server]
+			*/
+			ws.addEventListener('open', function(e) {	
+				var message = {
+					fn: "echo",
+					text: "Connessione col socket aperta."
+				};		
+				message = JSON.stringify(message);	
+				ws.send(message);	
+			});
+			
+			/* 
+			RISPOSTA
+			e.data [stringa ritornata dal server]
+			*/
+			ws.addEventListener('message', function(e) {	
+				console.log("Risposta: " + e.data); // stampa "Risposta: Connessione col socket aperta."
+			});	
+		</code></pre>
+		<h3>Demo</h3>
+		<ul>
+			<li><a href="http://localhost:8088/views/echo.html" target="_blank">echo</a></li>
+		</ul>
+	</section>
+	
+	<section class="round5">
+		<header>chartRandom</header>
+		<p>Aggiorna i punti di un grafico con valori random (solo sul client che ha fatto la chiamata)</p>
+		<pre><code data-language="javascript">
+			/*
+			Apertura connessione col websocket
+			*/
+			var ws = new WebSocket('ws://localhost:8088');
+			
+			/*	
+			RICHIESTA
+			fn: "chartRandom" [servizio richiesto al server]
+			x: valore per il calcolo della nuova ascissa
+			*/
+			ws.addEventListener('open', function(e) {	
+				var message = {
+					fn: "chartRandom",
+					x: 1
+				};		
+				message = JSON.stringify(message);	
+				ws.send(message);	
+			});
+			
+			/* 
+			RISPOSTA
+			e.data [dato ritornato dal server]
+			e.data.x
+			e.data.y
+			*/
+			ws.addEventListener('message', function(e) {
+				console.debug(JSON.parse(e.data)); // il server restituisce il nuovo punto da aggiungere al grafico
+			});	
+		</code></pre>
+		<h3>Demo</h3>
+		<ul>
+			<li><a href="http://localhost:8088/views/chart.html" target="_blank">random chart</a></li>
+		</ul>
+	</section>
+	
+	<section class="round5">
+		<header>chartBroadcast</header>
+		<p>Aggiorna i punti di un grafico con valori random (in broadcast a tutti i client connessi)</p>
+		<pre><code data-language="javascript">
+			/*
+			Apertura connessione col websocket
+			*/
+			var ws = new WebSocket('ws://localhost:8088');
+			
+			/*	
+			RICHIESTA
+			fn: "chartBroadcast" [servizio richiesto al server]
+			x: valore per il calcolo della nuova ascissa
+			*/
+			ws.addEventListener('open', function(e) {	
+				var message = {
+					fn: "chartBroadcast",
+					x: 1
+				};		
+				message = JSON.stringify(message);	
+				ws.send(message);	
+			});
+			
+			/* 
+			RISPOSTA
+			e.data [dato ritornato dal server]
+			e.data.x
+			e.data.y
+			*/
+			ws.addEventListener('message', function(e) {
+				console.debug(JSON.parse(e.data)); // il server restituisce il nuovo punto da aggiungere al grafico
+			});	
+		</code></pre>
+		<h3>Demo</h3>
+		<ul>
+			<li><a href="http://localhost:8088/views/chartBroadcast.html" target="_blank">chart broadcast</a></li>
+		</ul>
+	</section>
+	
+	<section class="round5">
+		<header>chartUserUpdateBroadcast</header>
+		<p>Permette all'utente di specificare un nuovo punto, definito tramite ascissa/ordinata, e inviarlo al server, che lo invierà in broadcast a tutti i client connessi</p>
+		<pre><code data-language="javascript">
+			/*
+			Apertura connessione col websocket
+			*/
+			var ws = new WebSocket('ws://localhost:8088');
+			
+			/*	
+			RICHIESTA
+			fn: "chartUserUpdateBroadcast" [servizio richiesto al server]
+			x: valore per il calcolo della nuova ascissa
+			y: valore per il calcolo della nuova ordinata
+			*/
+			ws.addEventListener('open', function(e) {	
+				var message = {
+					fn: "chartUserUpdateBroadcast",
+					x: 1,
+					y: 2
+				};		
+				message = JSON.stringify(message);	
+				ws.send(message);	
+			});
+			
+			/* 
+			RISPOSTA
+			e.data [dato ritornato dal server]
+			e.data.x
+			e.data.y
+			*/
+			ws.addEventListener('message', function(e) {
+				console.debug(JSON.parse(e.data)); // il server restituisce il nuovo punto da aggiungere al grafico
+			});	
+		</code></pre>
+		<h3>Demo</h3>
+		<ul>
+			<li><a href="http://localhost:8088/views/chartUserUpdate.html" target="_blank">chart user update broadcast</a></li>
+		</ul>
+	</section>
+	
+	<section class="round5">
+		<header>backofficeUpdateBroadcast</header>
+		<p>Permette all'utente di compilare un form ed inviarne i dati al server, che li invierà in broadcast a tutti i client connessi</p>
+		<pre><code data-language="javascript">
+			/*
+			Apertura connessione col websocket
+			*/
+			var ws = new WebSocket('ws://localhost:8088');
+			
+			/*	
+			RICHIESTA
+			fn: "backofficeUpdateBroadcast" [servizio richiesto al server]
+			nome: "stringa"
+			cognome: "stringa"
+			test: "stringa"
+			*/
+			ws.addEventListener('open', function(e) {	
+				var message = {
+					fn: "backofficeUpdateBroadcast",
+					nome: $('#nome').val(), 
+					cognome: $('#cognome').val(),
+					testo: $('#testo').val()
+				};		
+				message = JSON.stringify(message);	
+				ws.send(message);	
+			});
+			
+			/* 
+			RISPOSTA
+			e.data [oggetto ritornato dal server]
+			e.data.nome
+			e.data.cognome
+			e.data.testo
+			*/
+			ws.addEventListener('message', function(e) {
+				var data = JSON.parse(e.data);
+				$('#nome').val(data.nome);
+				$('#cognome').val(data.cognome);
+				$('#testo').val(data.testo);
+			});	
+		</code></pre>
+		<h3>Demo</h3>
+		<ul>
+			<li><a href="http://localhost:8088/views/backofficeSendUpdateBroadcast.html" target="_blank">backoffice sends update broadcast</a></li>
+			<li><a href="http://localhost:8088/views/frontofficeReceiveUpdateBroadcast.html" target="_blank">frontoffice receives update broadcast</a></li>
+		</ul>
+	</section>
+
+
+	<script src="lib/rainbow-dev-custom/rainbow.min.js"></script>
+	<script src="lib/rainbow-dev-custom/language/generic.js"></script>
+	<script src="lib/rainbow-dev-custom/language/javascript.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<slide>
+	<hgroup>
+		<h2>webworker API: transferrable objects</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint smaller" data-lang="javascript">
+var data = {
+    str: "testo...",
+    ab: new ArrayBuffer(1000),
+    i8: new Int8Array(200)
+};
+
+var worker = new Worker('worker.js');
+
+// trasferisco "ab" e "i8" al worker, "str" viene invece copiato
+worker.postMessage(data, [data.ab, data.i8.buffer]);
+		</pre>
+		<p>I dati passati dal chiamante al webworker vengono copiati/clonati (structured cloning), non condivisi, perchè lavorano in contesti differenti.</p>
+		<p>Se devo trasferire oggetti grandi/pesanti il processo non è molto efficiente.</p>
+		<p>=> Transferrable objects: trasferisco i dati da un contesto all'altro (il contesto di partenza non avrà piu' a disposizione il dato trasferito al webworker).</p>
+	</article>
+</slide>

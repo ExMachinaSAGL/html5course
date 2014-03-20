@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Websocket: backoffice send broadcast update</title>
+</head>
+<body>
+	<div><span>Nome: </span><br><input type="text" name="nome" id="nome"></div>
+	<div><span>Cognome: </span><br><input type="text" name="cognome" id="cognome"></div>
+	<div><span>Testo: </span><br><textarea id="testo" rows="10" cols="50"></textarea></div>
+	<div>
+		<button type="button" id="submit-btn">Submit</button>
+		<button type="button" id="close-btn">Close WS</button>
+		<button type="button" id="real-time-btn">Enable real-time</button>
+	</div>
+	
+	<script src="../lib/jquery-1.11.0.min.js"></script>
+	<script>
+
+		$(document).ready(function() {
+
+			// websocket
+			// ===========================================
+			var ws = new WebSocket('ws://nodejs-html5testserver.rhcloud.com:8000');
+
+			ws.addEventListener('open', function() {
+
+				$('#submit-btn').bind('click', function(e) {
+					sendMessage();
+				});
+
+				$('#close-btn').bind('click', function(e) {
+					ws.close();
+				});
+
+				var realTime = false;
+				$('#real-time-btn').bind('click', function(e) {
+					realTime = !realTime;
+					realTime ? $('#testo').css("border", "2px solid #fc0") : $('#testo').css("border", "1px solid #ccc");
+				});
+
+				$('#testo').bind('keyup', function(e) {
+					if (!realTime) return;
+					sendMessage();					
+				});
+				
+				function sendMessage() {
+					var message = {
+						fn: "backofficeUpdateBroadcast",
+						nome: $('#nome').val(), 
+						cognome: $('#cognome').val(),
+						testo: $('#testo').val()
+					};		
+					message = JSON.stringify(message);	
+					ws.send(message);
+				}
+
+			}, false);
+			
+			ws.addEventListener('message', function(e) {
+				var data = JSON.parse(e.data);
+				$('#nome').val(data.nome);
+				$('#cognome').val(data.cognome);
+				$('#testo').val(data.testo);
+			}, false);
+
+		});
+
+	</script>
+
+</body>
+</html>
