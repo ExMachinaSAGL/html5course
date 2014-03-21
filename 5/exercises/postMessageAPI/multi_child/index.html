@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>postMessage: chiamante</title>
+
+</head>
+<body>
+	<div id="log"></div>
+
+	<script>
+
+		// apre una finestra figlia
+		var calledDomain = 'http://dominiotest.dev';
+		var childWindow_1 = window.open(calledDomain + '/child_1.html','childWindow1');
+		var childWindow_2 = window.open(calledDomain + '/child_2.html','childWindow2');
+
+		// invia un messaggio ogni 5 secondi
+		setInterval(function() {
+			var message = 'Messaggio dalla finestra principale - time: ' + (new Date().getTime());
+			childWindow_1.postMessage(message, calledDomain);
+			childWindow_2.postMessage(message, calledDomain);
+		}, 3000);
+
+		// ascolta messaggi in entrata da altre finestre
+		window.addEventListener('message', function(event) {
+			// controllo l'origine del messaggio
+			// se non arriva da un origine autorizzata scarto il messaggio
+			if (event.origin !== calledDomain) return;
+
+			console.log('Risposta ricevuta: ', event.data);
+
+			// messaggi che arrivano da finestre diverse, ma con medesima origine:
+			// controllo quale finestra ha inviato il messaggio ed agisco di conseguenza
+			var response = JSON.parse(event.data);
+			switch (response.origin) {
+				case "child_1":
+					document.querySelector('#log').innerHTML += ('<p style="color: blue;">' + 'CHILD 1 - ' + event.data + '</p>');
+					break;
+				case "child_2":
+					document.querySelector('#log').innerHTML += ('<p style="color: red;">' + 'CHILD 2 - ' + event.data + '</p>');
+					break;
+			}
+		});
+
+	</script>
+
+</body>
+</html>

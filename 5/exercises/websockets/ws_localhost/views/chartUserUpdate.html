@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Websocket: chart user update</title>
+	<link rel="stylesheet" href="../lib/jquery.jqplot.min.css">
+</head>
+<body>
+	<div id="chart"></div>
+
+	<div><span>X: </span><input type="text" id="X"><button type="button" id="setX-btn">set</button></div>
+	<div><span>Y: </span><input type="text" id="Y"><button type="button" id="setY-btn">set</button></div>
+	<button type="button" id="broadcast-btn">Broadcast</button>
+	
+	<script src="../lib/jquery-1.11.0.min.js"></script>
+    <script src="../lib/jquery.jqplot.min.js"></script>
+	<script>
+
+		$(document).ready(function(){
+			// random chart data
+			// ===========================================
+			var chartData = [];			
+			
+			for (var i = 0; i < 10; i++) {		
+				var x = chartData.length;
+				var y = Math.floor(Math.random() * (9 - 0 + 1)) + 0;
+				chartData.push([x,y]);
+			}
+		
+
+			// websocket
+			// ===========================================
+			var ws = new WebSocket('ws://localhost:8088');
+
+			ws.addEventListener('open', function() {
+				
+				$('#broadcast-btn').bind('click', function(e) {
+					var message = {
+						fn: "chartUserUpdateBroadcast",
+						x: $('#X').val(),
+						y: $('#Y').val()
+					};		
+					message = JSON.stringify(message);	
+					ws.send(message);
+				});
+
+			}, false);
+
+			$('#setX-btn').bind('click', function(e) {
+				$('#X').val(chartData.slice(-1).pop()[0] + 1);
+			});
+
+			$('#setY-btn').bind('click', function(e) {
+				$('#Y').val(Math.floor(Math.random() * (9 - 0 + 1)) + 0);
+			});
+			
+			ws.addEventListener('message', function(e) {
+				var newChartData = chartData.slice(1);
+				newChartData.push(JSON.parse(e.data));
+				chartData = newChartData;
+				plot();
+			}, false);
+
+
+			// chart plotter
+			// ===========================================
+			function plot() {
+				$.jqplot("chart", [chartData], {
+					seriesDefaults : {
+						pointLabels: { show:true }
+					}
+				})
+				.replot();
+			}
+			plot();
+
+		});
+
+	</script>
+
+</body>
+</html>

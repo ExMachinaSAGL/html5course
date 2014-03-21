@@ -1,0 +1,13 @@
+<slide>
+	<hgroup>
+		<h2>Webworkers: isolated thread</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint smaller" data-lang="javascript">
+var worker = new Worker('worker.js');
+		</pre>
+		<p>I webworker lavorano in un thread isolato, quindi occorre definirli in un file a parte.</p>
+		<p>Quando implementati, vengono scaricati dal browser in maniera asincrona (il worker inizia il suo lavoro solo a download completato).</p>
+		<p>Errore 404: il worker fallisce silentemente, senza errori</p>
+	</article>
+</slide>

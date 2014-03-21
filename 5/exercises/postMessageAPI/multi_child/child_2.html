@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>postMessage: child window 2</title>
+
+</head>
+<body>
+	<h2>Child 2</h2>
+	<div id="log"></div>
+
+	<script>
+
+		// risponde al messaggio proveniente dalla finestra principale
+		var sourceDomain = 'http://localhost';
+
+		window.addEventListener('message', function(event) {
+			if (event.origin !== sourceDomain) return;
+			
+			console.log('Messaggio ricevuto:  ' + event.data, event);
+			document.querySelector('#log').innerHTML += ("<p>" + event.data + "</p>");
+
+			var msg = { origin: "child_2", data: event.data };
+			msg = JSON.stringify(msg);
+			event.source.postMessage(msg, event.origin);
+		});
+
+	</script>
+
+</body>
+</html>

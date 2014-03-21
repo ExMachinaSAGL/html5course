@@ -1,0 +1,28 @@
+<slide>
+	<hgroup>
+		<h2>Client websocket API</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint smaller" data-lang="javascript">
+// creo un websocket
+var ws = new WebSocket('ws://nodejs-html5testserver.rhcloud.com:8000');
+
+// listeners
+ws.addEventListener('open', function(e) {
+	// e = Event
+});
+ws.addEventListener('message', function(e) {	
+	// https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent
+	// e = MessageEvent: e.data, e.origin
+});	
+ws.addEventListener('close', function(e) {	
+	// https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent
+	// e = CloseEvent: e.code, e.reason, e.wasClean
+});	
+
+// metodi
+ws.send("Messaggio..."); 
+ws.close();
+		</pre>
+	</article>
+</slide>

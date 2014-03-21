@@ -1,0 +1,18 @@
+<slide>
+	<hgroup>
+		<h2>webworker API: importScripts</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint smaller" data-lang="javascript">
+importScripts('ext_script1.js', 'ext_script2.js');
+
+// ext_script1.js > addDate()
+// ext_script2.js > addRandom()
+self.addEventListener('message', function(e) {
+	var msg = addDate() + " - " + addRandom();
+
+	self.postMessage(msg);
+});
+		</pre>
+	</article>
+</slide>

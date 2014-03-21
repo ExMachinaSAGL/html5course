@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Webworker: basic</title>
+</head>
+<body>
+
+	<div id="log"></div>
+	
+	<script>
+	   
+		var worker = new Worker('worker.js');
+
+		// rimango in attesa di messaggi dal webworker
+		worker.addEventListener('message', function(e) {
+			console.log(e.data);
+			document.querySelector('#log').innerHTML = 'Risposta dal worker<br>' + e.data;
+		}, false);
+
+		// invio messaggio al worker
+		worker.postMessage('Ciao webworker');
+			
+	</script>
+
+</body>
+</html>

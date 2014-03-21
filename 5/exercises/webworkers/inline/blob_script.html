@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Webworker: inline</title>
+</head>
+<body>
+
+	<div id="log"></div>
+
+
+	<!--
+		Questo script non viene "letto" dal browser perchè dichiara type="javascript/worker" 
+	 -->
+	<script id="worker" type="javascript/worker">
+		self.onmessage = function(e) {
+			self.postMessage('risposta dal webworker');
+		};
+	</script>
+
+
+	<script>
+
+		// leggo il worker inline e lo trasformo in una risorsa utilizzabile
+		var blob = new Blob([document.querySelector('#worker').textContent]);
+		var worker = new Worker(window.URL.createObjectURL(blob));
+
+		worker.onmessage = function(e) {
+			var msg = "Ricevuto dal webworker: " + e.data;
+			document.querySelector("#log").appendChild(document.createTextNode(msg));
+		}
+		
+		// avvio il worker
+		worker.postMessage("");
+
+	</script>
+
+</body>
+</html>

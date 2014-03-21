@@ -1,0 +1,22 @@
+<slide>
+	<hgroup>
+		<h2>Polling vs. websocket</h2>
+	</hgroup>
+	<article class="flexbox vcenter smaller">
+		<img src="images/poll-ws-compare.gif" alt="polling vs websocket" title="polling vs websocket">
+		<ul style="font-size: 14px;">
+			<li>
+			A - polling: 1,000 polling/secondo: traffico rete (871 x 1,000) = 871,000 bytes = 6,968,000 bits/secondo (6.6 Mbps).<br>
+			A - websocket: 1 messaggio al secondo a 1000 client: traffico rete (2 x 1,000) = 2,000 bytes = 16,000 bits/secondo (0.015 Mbps).
+			</li>
+			<li>
+			B - polling: 10,000 polling/secondo: traffico rete (871 x 10,000) = 8,710,000 bytes = 69,680,000 bits/secondo (66 Mbps).<br>
+			B - websocket: 1 messaggio al secondo a 10.000 client: traffico rete (2 x 10,000) = 20,000 bytes = 160,000 bits/secondo (0.153 Mbps).
+			</li>
+			<li>
+			C - polling: 100,000 polling/second: traffico rete (871 x 100,000) = 87,100,000 bytes = 696,800,000 bits/second (665 Mbps).<br>
+			C - websockets: 1 messaggio al secondo a 100.000 client: traffico rete (2 x 100,000) = 200,000 bytes = 1,600,000 bits/secondo (1.526 Mbps).
+			</li>
+		</ul>
+	</article>
+</slide>

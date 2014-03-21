@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Websocket: echo</title>
+</head>
+<body>
+  
+  <script>  
+  
+	var ws = new WebSocket('ws://nodejs-html5testserver.rhcloud.com:8000');
+
+	// on open
+	ws.addEventListener('open', function(e) {	
+		console.log("Connessione aperta.");
+		console.debug(e);	// Event: non molto interessante
+		
+		var message = {
+			fn: "echo",
+			text: "Connessione col socket aperta."
+		};		
+		message = JSON.stringify(message);	
+		ws.send(message);	
+	});
+	
+	// on message
+	ws.addEventListener('message', function(e) {	
+		console.log("Origine: " + e.origin + " - Dati: " + e.data);
+		console.debug(e);	// MessageEvent: e.data, e.origin (https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent)
+		
+		// simula chiusura del socket
+		ws.close();
+	});	
+	
+	// on close
+	ws.addEventListener('close', function(e) {	
+		console.log("Connessione chiusa - Code: " + e.code + " - Reason: " + e.reason + " - Was clean: " + e.wasClean);
+		console.debug(e);	// CloseEvent: e.code, e.reason, e.wasClean (https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent)
+	});	
+	
+	// on error
+	ws.addEventListener('error', function(e) {	
+		console.log("Errore");
+		console.debug(e);
+	});	
+  
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Webworker: inline</title>
+</head>
+<body>
+	
+	<script>
+
+		// visualizzare i webworker inline in Chrome:
+		// chrome://blob-internals/
+	   
+
+	   	// worker inline
+		var blob = new Blob([
+		    "onmessage = function(e) { postMessage('Risposta dal worker'); }"
+		]);
+
+		// window.URL.createObjectURL():
+		// crea un URL che puo' essere utilizzato come riferimento a oggetti presenti nel DOM
+		// un blob URL è unico e dura quanto l'applicazione
+		// puo' essere rilasciato chiamando: window.URL.revokeObjectURL(blobURL);
+		var blobURL = window.URL.createObjectURL(blob);
+
+		var worker = new Worker(blobURL);
+
+		worker.onmessage = function(e) {
+			console.log(e.data);
+		};
+		
+		// avvia in maniera esplicita il worker
+		worker.postMessage("");
+			
+	</script>
+
+</body>
+</html>

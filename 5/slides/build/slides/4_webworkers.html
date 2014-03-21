@@ -1,0 +1,19 @@
+<slide>
+	<hgroup>
+		<h2>webworker API: worker</h2>
+	</hgroup>
+	<article>
+		<pre class="prettyprint smaller" data-lang="javascript">
+// nel worker, 
+// sia "this" che "self" si riferiscono al contensto globale del worker
+self.addEventListener('message', function(event) {
+	// event.data: dati ricevuti dal chiamante
+
+	// worker code...
+
+	// invio messaggio al chiamante
+	self.postMessage("risposta: " + e.data);
+}, false);
+		</pre>
+	</article>
+</slide>
