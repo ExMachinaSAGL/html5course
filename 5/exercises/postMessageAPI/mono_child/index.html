@@ -18,7 +18,9 @@
 		// posso utilizzare codice della finestra figlia
 		/*
 		var childWindow_1 = window.open('child_1_mono.html','childWindow1');
-		childWindow_1.sayHello();
+		childWindow_1.window.onload = function() {
+			childWindow_1.sayHello();
+		}
 		*/
 
 
@@ -30,13 +32,15 @@
 		var calledDomain = 'http://dominiotest.dev';
 		var childWindow_1 = window.open(calledDomain + '/child_1_mono.html','childWindow1');
 
+		
 		// invia un messaggio ogni 5 secondi
 		setInterval(function() {
 			var message = 'Messaggio dalla finestra principale - time: ' + (new Date().getTime());
 			// anche se in un dominio differente, posso interagire con la finestra figlia
 			childWindow_1.postMessage(message, calledDomain);			
-		}, 3000);
+		}, 2000);
 
+		
 		// ascolta messaggi in entrata da altre finestre
 		window.addEventListener('message', function(event) {
 			// controllo l'origine del messaggio
@@ -47,7 +51,7 @@
 
 			document.querySelector('#log').innerHTML += ('<p style="color: blue;">' + 'CHILD 1 - ' + event.data + '</p>');
 		});
-
+		
 	</script>
 
 </body>

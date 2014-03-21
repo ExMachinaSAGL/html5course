@@ -6,7 +6,7 @@
 
 </head>
 <body>
-	<h2>Child 1</h2>
+	<h2>Child 12</h2>
 	<div id="log"></div>
 
 	<script>
@@ -16,11 +16,10 @@
 			SOLO nello stesso dominio
 		======================================================================== */
 		// funziona solo se la chiamata è fatta dallo stesso dominio
-		/*
 		function sayHello() {
 			alert("Ciao, dalla finestra figlia.");
 		}
-		*/
+	
 
 
 		/* ========================================================================
@@ -31,11 +30,12 @@
 		var sourceDomain = 'http://localhost';
 
 		window.addEventListener('message', function(event) {
-			if (event.origin !== sourceDomain) return;
+			//if (event.origin !== sourceDomain) return;
 			
 			console.log('Messaggio ricevuto:  ' + event.data, event);
 			document.querySelector('#log').innerHTML += ("<p>" + event.data + "</p>");
 
+			// event.source, event.data, event.origin
 			event.source.postMessage("Echo: " + event.data, event.origin);
 		});
 

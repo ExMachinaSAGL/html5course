@@ -12,8 +12,9 @@
 
 	// on open
 	ws.addEventListener('open', function(e) {	
+		// Event: non molto interessante
 		console.log("Connessione aperta.");
-		console.debug(e);	// Event: non molto interessante
+		console.debug(e);	
 		
 		var message = {
 			fn: "echo",
@@ -25,17 +26,19 @@
 	
 	// on message
 	ws.addEventListener('message', function(e) {	
+		// MessageEvent: e.data, e.origin (https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent)
 		console.log("Origine: " + e.origin + " - Dati: " + e.data);
-		console.debug(e);	// MessageEvent: e.data, e.origin (https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent)
+		console.debug(e);	
 		
-		// simula chiusura del socket
+		// chiusura del socket scatenata dal client
 		ws.close();
 	});	
 	
 	// on close
 	ws.addEventListener('close', function(e) {	
+		// CloseEvent: e.code, e.reason, e.wasClean (https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent)
 		console.log("Connessione chiusa - Code: " + e.code + " - Reason: " + e.reason + " - Was clean: " + e.wasClean);
-		console.debug(e);	// CloseEvent: e.code, e.reason, e.wasClean (https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent)
+		console.debug(e);	
 	});	
 	
 	// on error

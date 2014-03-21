@@ -86,6 +86,7 @@
             	// event.data
             	// event.origin
             	// event.source
+            	event.source.postMessage("Echo: " + event.data, event.origin);
             });
             		</pre>
             		<ul>
