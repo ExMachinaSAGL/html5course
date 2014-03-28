@@ -1,0 +1,65 @@
+CACHE MANIFEST
+
+
+
+# HINT: metterlo sempre come prima linea (http://manifest-validator.com/)
+
+# FASE 1: online
+# l'utente richiede una pagina che carica n risorse
+# il questo file viene stabilito quali risorse debbano essere 
+# salvate nell'appcache (html5)
+
+
+# Fase 2: offline
+# per qualche motivo l'utente va offline e tenta di accedere alla risorsa.
+# Il browser mostra le risorse salvate, in accrodo con le direttive di
+# questo file
+
+# --------------------------------------------------------------------
+# SEZIONI
+# -------
+#
+# CACHE (o sotto CACHE MANIFEST)
+# Lista delle risorse che devono essere incluse nella cache
+#
+# NETWORK
+# [ha effetto solo quando ONLINE]
+# é una ONLINE-WHITELIST: le risorse qui contenute
+# DEVONO essere recuperate dal server, anche invalidando ogni
+# tipo di cache lato client (appcache, browser)
+#
+# FALLBACK
+# [ha effetto solo quando ONLINE]
+# qui vengono listate delle coppie di risorse (files o dir)
+# A B
+# se la richiesta di A fallisce allora viene fatta una richiesta per B
+#
+#
+# --------------------------------------------------------------------
+#
+#
+
+CACHE:
+# index.html implicito (contiene il manifest)
+# v5
+css/style.css
+images/avatar.png
+# js/script.js
+
+NETWORK:
+*
+
+FALLBACK:
+images/avatar.png images/avatarbig.png
+
+
+
+
+
+
+
+
+
+
+
+

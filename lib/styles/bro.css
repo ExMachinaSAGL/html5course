@@ -23,6 +23,12 @@ div.compat span.s_ko{background-image: url(../slides/images/bro/incompatible_saf
 div.compat span.o_ok{background-image: url(../slides/images/bro/compatible_opera2020.gif);}
 div.compat span.o_ko{background-image: url(../slides/images/bro/incompatible_opera2020.gif);}
 
+div.compat span.an_ok{background-image: url(../slides/images/bro/compatible_an2020.gif);}
+div.compat span.an_ko{background-image: url(../slides/images/bro/incompatible_an2020.gif);}
+
+div.compat span.ip_ok{background-image: url(../slides/images/bro/compatible_ip2020.gif);}
+div.compat span.ip_ko{background-image: url(../slides/images/bro/incompatible_ip2020.gif);}
+
 
 .round5{
     -moz-border-radius: 5px;

@@ -27,7 +27,9 @@
             <span>xxxx</span>   
             
             <div id="minor">
-                <a href="javascript:;" data-action="_a">A</a>
+                <a href="javascript:;" data-action="_a">A
+                    <h3 data-action="_b">B</h3>
+                </a>
                 <span>yyy</div>
             </div>
 
@@ -66,6 +68,7 @@
                  * @return {Object}     il ns voluto
                  *
                  */
+                
                 function makens(str, obj, ctx) {
                     var els = str.split(/\.|\//),
                         l = els.length,
@@ -175,9 +178,13 @@
             // EOC.makeNS()
             // 
             $( function (){
-                $('#main, #minor').on('click', function(e){
+                $('#minor').on('click', function(e){
                     EOC.utility.manageClick(e);
                 });
+                
+                document.getElementById('main').addEventListener('click', function(e){
+                    EOC.utility.manageClick(e);
+                }, true);
             });
         </script>
         <script src="js/ext.js"></script>        

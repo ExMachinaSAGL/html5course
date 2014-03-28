@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!--
+Same Origin rules
+-->
+<html manifest="sample.appcache">
+<!-- 
+# old bro support requires add mimetype in Apache (.htaccess)
+AddType text/cache-manifest .appcache
+-->
+
+    <head>
+        <title>6-5: Offline</title>
+        <meta charset="UTF-8" />
+        <link href="css/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <section id="body">No script loaded</section>
+        <script src="js/script.js"></script>
+    </body>
+</html>

@@ -26,7 +26,7 @@ EOC.makeNS('eventHandler', {
         var act = jQuery(node).attr('data-action');
 
         if(node.tagName.match(/span/i)) {
-            //jQuery('a').removeAttr('data-action');
+
             $('#main').off('click');
         }
 
@@ -46,8 +46,7 @@ EOC.makeNS('eventHandler', {
     },
     _a : function (){
         console.debug('chiamato _a');
-    }
-    ,
+    },
     _b : function (){
         console.debug('chiamato _b');
     },
