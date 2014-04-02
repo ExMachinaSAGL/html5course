@@ -19,7 +19,7 @@ jQuery(function () {
      * crea un nuovo elemento in history
      * 
      * 
-     * metodo replaceState()
+     * metodo replaceState(Object stateObject, String title, String file)
      * ---------------------
      * modifica lo state o url dell'item corrente in history
      * 
@@ -32,16 +32,19 @@ jQuery(function () {
      * 
      */
     window.onpopstate = function(event) {
-        console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+        console.log(
+            "location: " + document.location + ", state: " +
+            JSON.stringify(event.state)
+        );
         console.debug(history.state);
     };
 
     jQuery('#butt1').on('click', function (e){
-        history.pushState({page: 1}, "title 1", "back.html");
+        history.pushState({page: 1, name:'john'}, "title 1", "back.html");
     });
 
     jQuery('#butt2').on('click', function (e){
-        history.replaceState({page: 0}, "title 0", "?page=1");
+        history.replaceState({page: 0}, "title 0", "?p=1");
     });
 
     // show crosscompatibility

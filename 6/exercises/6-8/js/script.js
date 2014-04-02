@@ -1,6 +1,6 @@
-jQuery(function () {
+$(function () {
 
-    var body = jQuery('#body'),
+    var body = $('#body'),
         tmp, out,
         mode = 'local', // 'session',
         storage;
@@ -8,20 +8,21 @@ jQuery(function () {
     EOC.supports.localStorage(body[0]);
     EOC.supports.sessionStorage(body[0]);
 
-    storage = window[mode + 'Storage'];
+    storage = sessionStorage;
 
 
-
+    var fw= function(){};
+    function fe(){};var t = 'ffff';
 
 
     if (window.addEventListener) {
         window.addEventListener("storage", handle_storage, false);
     } else {
         window.attachEvent("onstorage", handle_storage);
-    };
+    }
     // 
     // OPPURE 
-    // jQuery(window).bind('storage', handle_storage);
+    // $(window).bind('storage', handle_storage);
     // USANDO e.originalEvent
 
     function handle_storage(e){
@@ -34,6 +35,8 @@ jQuery(function () {
             console.debug('nothing done')
         }
     }
+
+
     out = (function (){
         var assoc = {};
         for (var j in storage) {
@@ -49,7 +52,9 @@ jQuery(function () {
         }
 
         return function (name, val){
+            
             storage.setItem(name, val);
+
             if (storage.getItem(name)) {
                 assoc[name] = assoc[name] || _(name);
                 assoc[name].innerHTML = val;
@@ -58,6 +63,7 @@ jQuery(function () {
             }
         }
     })();
+
     out.debug = function () {
         for (var j in storage){
             console.log(j + ' : ' + storage[j]);
@@ -68,8 +74,15 @@ jQuery(function () {
     };
 
 
+
+
+
     out('name', 'Frances');
     out('surname', 'Farmer');
+
+
+
+
     
     window.out = out;
     // show crosscompatibility

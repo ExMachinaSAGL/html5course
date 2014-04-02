@@ -19,12 +19,12 @@
     <body>
         <section id="body">            
             <input type="file" id="files" name="file" /> Read bytes: 
-                <span class="readBytesButtons">
-                    <button data-startbyte="0" data-endbyte="4">1-5</button>
-                    <button data-startbyte="5" data-endbyte="14">6-15</button>
-                    <button data-startbyte="6" data-endbyte="7">7-8</button>
-                    <button>entire file</button>
-                </span>
+            <span class="readBytesButtons">
+                <button data-startbyte="0" data-endbyte="9">1-10</button>
+                <button data-startbyte="10" data-endbyte="49">11-50</button>
+                <button data-startbyte="50" data-endbyte="99">51-100</button>
+                <button>entire file</button>
+            </span>
             <div id="byte_range"></div>
             <div id="byte_content"></div>
         </section>
@@ -33,9 +33,9 @@
         <script src="../../../lib/scripts/jquery-1.11.0.min.js"></script>
 
         <script src="../../../lib/scripts/cross.js"></script>
-
         <script src="../lib/core.js"></script>
         <script src="../lib/featurecheck.js"></script>
+        
         <script src="js/script.js"></script>
     </body>
 </html>

@@ -29,10 +29,12 @@ jQuery(function () {
 
     
     //localStorage.clear();
+    console.debug('1')
     storage.setItem('name', 'Willy');
+    console.debug('2')
     storage.setItem('surname', 'One-eyed');
 
-    // console.dir(storage); //no ff
+    //console.dir(storage); //no ff
     console.debug(JSON.stringify(storage));
 
     for (var j in storage) {

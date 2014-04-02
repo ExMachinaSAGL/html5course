@@ -13,16 +13,18 @@ jQuery(function () {
     dbgTarget.style.margin = '10px 0px';
 
     body[0].appendChild(dbgTarget);
-
+/*
     db.transaction(function (tx) {
+
         tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');
         tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "foobar")');
         tx.executeSql('INSERT INTO LOGS (id, log) VALUES (2, "logmsg")');
 
         msg = '<p>Log message created and row inserted.</p>';
         dbgTarget.innerHTML += msg;
-    });
 
+    });
+*/
     db.transaction(function (tx) {
         tx.executeSql(
             'SELECT * FROM LOGS',

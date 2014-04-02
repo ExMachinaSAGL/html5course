@@ -1,26 +1,26 @@
 window.addEventListener('load', function(e) {
 
 
-    window.addEventListener('online', function(e) {
-        
-        console.debug('online');
+    var appCache = window.applicationCache;
 
-        var appCache = window.applicationCache;
-        appCache.update(); // Attempt to update the user's cache.
-        if (appCache.status == window.applicationCache.UPDATEREADY) {
-            appCache.swapCache();  // The fetch was successful, swap in the new cache.
-        }
+    appCache.update(); // Attempt to update the user's cache.
+    if (appCache.status == window.applicationCache.UPDATEREADY) {
+        appCache.swapCache();  // The fetch was successful, swap in the new cache.
+    }
 
-        appCache.addEventListener('updateready', function(e) {
-            if (appCache.status == appCache.UPDATEREADY) {
-                // Browser downloaded a new app cache.
-                if (confirm('A new version of this site is available. Load it?')) {
-                    window.location.reload();
-                }
-            } else {
-                // Manifest didn't changed. Nothing new to server.
+    appCache.addEventListener('updateready', function(e) {
+        if (appCache.status == appCache.UPDATEREADY) {
+            // Browser downloaded a new app cache.
+            if (confirm('A new version of this site is available. Load it?')) {
+                window.location.reload();
             }
-        }, false);
+        } else {
+            // Manifest didn't changed. Nothing new to server.
+        }
+    }, false);
+
+    window.addEventListener('online', function(e) {
+        console.debug('online');
     });
 
     window.addEventListener('offline', function(e) {

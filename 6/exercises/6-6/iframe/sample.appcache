@@ -6,7 +6,7 @@ CACHE MANIFEST
 
 # FASE 1: online
 # l'utente richiede una pagina che carica n risorse
-# il questo file viene stabilito quali risorse debbano essere 
+# il questo file viene stabilito quali risorse debbano essere
 # salvate nell'appcache (html5)
 
 
@@ -41,10 +41,10 @@ CACHE MANIFEST
 
 CACHE:
 # index.html implicito (contiene il manifest)
-# v5
+# v8
 css/style.css
-images/avatar.png
-# js/script.js
+#images/avatar.png
+js/script.js
 
 NETWORK:
 *

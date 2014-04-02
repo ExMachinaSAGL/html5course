@@ -1,7 +1,2 @@
 AddType text/cache-manifest .appcache
 
-
-<ifmodule mod_expires.c>    
- ExpiresActive On
- ExpiresDefault
-</ifmodule>

@@ -12,16 +12,16 @@ jQuery(function (){
 
     function errorHandler(evt) {
         switch(evt.target.error.code) {
-        case evt.target.error.NOT_FOUND_ERR:
-            alert('File Not Found!');
+            case evt.target.error.NOT_FOUND_ERR:
+                alert('File Not Found!');
             break;
-        case evt.target.error.NOT_READABLE_ERR:
-            alert('File is not readable');
+            case evt.target.error.NOT_READABLE_ERR:
+                alert('File is not readable');
             break;
-        case evt.target.error.ABORT_ERR:
+            case evt.target.error.ABORT_ERR:
             break; // noop
-        default:
-            alert('An error occurred reading this file.');
+            default:
+                alert('An error occurred reading this file.');
         };
     }
 
@@ -38,13 +38,17 @@ jQuery(function (){
     }
 
     function handleFileSelect(evt) {
+        evt = evt.originalEvent;
+
         // Reset progress indicator on new file selection.
         progress.style.width = '0%';
         progress.textContent = '0%';
 
         reader = new FileReader();
+
         reader.onerror = errorHandler;
         reader.onprogress = updateProgress;
+        
         reader.onabort = function(e) {
             alert('File read cancelled');
         };
@@ -62,7 +66,7 @@ jQuery(function (){
         reader.readAsBinaryString(evt.target.files[0]);
     }
 
-    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+    jQuery('#files').on('change', handleFileSelect);
     
 
 

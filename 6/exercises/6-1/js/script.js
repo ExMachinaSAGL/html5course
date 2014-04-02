@@ -1,4 +1,7 @@
 jQuery(function (){
+
+
+
     function handleFileSelect(e) {
         // get file list 
         // 
@@ -18,7 +21,13 @@ jQuery(function (){
         jQuery('#out').html('<ul>' + output.join('') + '</ul>');
     }
 
+
+
+
+
     jQuery('#file').on('change', handleFileSelect);
+
+    
 
     cross(jQuery('#body')[0], {f:'> 9.0', c: true, s : false, o : false, i : false});
 });
