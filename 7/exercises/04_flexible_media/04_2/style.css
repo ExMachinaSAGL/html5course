@@ -1,0 +1,36 @@
+
+/* general styles */
+body { color: #666; font-size: 24px; }
+header { padding: 10px; }
+#wrapper { background: #e5e5e5; overflow: auto; margin: 0 auto; padding: 10px; max-width: 960px; }
+
+
+/*------------------------------------------------------------------------
+FLEXIBLE MEDIA
+------------------------------------------------------------------------*/
+/* ridimensiona l'immagine al variare dello spazio disponibile */
+img, video {
+	max-width: 100%;
+}
+
+#wrapper section {
+	height: 0;
+	
+	/* parent del media con posizione "absolute" */
+	position: relative;		/* 	attiva "absolute" dei figli 													*/
+	width: 100%;			/* 	larghezza a 100%: scala (stretch) in relazione alle dimensioni del viewport 	*/
+	padding-bottom: 56.25%; /* 	video 16/9: 9/16 = 0.5625 														*/
+}
+iframe, 
+video {
+	/* 
+		per essere completamente responsive, il media desiderato 
+		deve essere posizionato in maniera "absolute"
+		all'interno di un contenitore posizionato come "relative"
+	*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

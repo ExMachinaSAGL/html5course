@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flexbox</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+	<header>Responsive Design V - Flexbox</header>
+
+	<div class="wrapper">
+
+		<div id="ex_1" class="ex">
+			<header>{ display: flex; }</header>
+			<div>
+				<div id="main-axis">main axis</div>
+				<div id="cross-axis">cross axis</div>
+				
+				<section>1</section>
+				<section>2</section>
+				<section>3</section>
+			</div>
+		</div>
+
+		<div id="ex_2" class="ex">
+			<header>{ flex-direction: row-reverse; }</header>
+			<div>				
+				<section>1</section>
+				<section>2</section>
+				<section>3</section>
+			</div>
+		</div>
+
+		<div id="ex_3" class="ex">
+			<header>{ flex-direction: column; }</header>
+			<div>				
+				<section>1</section>
+				<section>2</section>
+				<section>3</section>
+			</div>
+		</div>
+
+		<div id="ex_4" class="ex">
+			<header>{ justify-content: center; }</header>
+			<div style="float: left; width: 400px;">				
+				<section>1</section>
+				<section>2</section>
+				<section>3</section>
+			</div>	
+			<img src="justify-content.svg" style="float: right;" height="220">
+			<span class="clearfix"></span>		
+		</div>
+
+		<div id="ex_5" class="ex">
+			<header>{ align-items: center; justify-content: center; }</header>
+			<div style="float: left; width: 400px;">				
+				<section>1</section>
+				<section>2</section>
+				<section>3</section>
+			</div>	
+			<img src="align-items.svg" style="float: right;" height="220">
+			<span class="clearfix"></span>		
+		</div>
+
+	</div>
+
+
+	<header>E qui ha inizio la meraviglia...</header>
+
+
+	<div class="wrapper">
+
+		<div id="ex_6" class="ex">
+			<header>{ order: 1; }</header>
+			<div>				
+				<section>1</section>
+				<section>2</section>
+				<section>3</section>
+			</div>
+		</div>
+
+		<div id="ex_7" class="ex">
+			<header>Il sacro Graal: { margin: auto; }</header>
+			<div style="float: left; width: 45%;">				
+				<section>1</section>
+				<section>2</section>
+				<section>3</section>
+			</div>
+			<div style="float: right; width: 45%;">				
+				<section>1</section>
+			</div>
+			<span class="clearfix"></span>
+		</div>
+
+		<div id="ex_8" class="ex">
+			<header>{ align-self: flex-end; }</header>
+			<div>				
+				<section>1</section>
+				<section>2</section>
+				<section>3</section>
+			</div>
+		</div>
+
+		<div id="ex_9" class="ex">
+			<header>{ flex: 3; }</header>
+			<div>				
+				<section>1</section>
+				<section>2</section>
+				<section>3</section>
+			</div>
+		</div>
+
+	</div>
+
+	<ul>
+		<li>CSS Flexible Box Layout: <a href="http://dev.w3.org/csswg/css-flexbox/" target="_blank">dev.w3.org/csswg/css-flexbox</a></li>
+		<li>Using CSS flexible boxes: <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes" target="_blank">developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes</a></li>
+		<li>Dive into flexbox: <a href="http://weblog.bocoup.com/dive-into-flexbox/" target="_blank">weblog.bocoup.com/dive-into-flexbox</a></li>
+		<li>Flexbox playground: <a href="http://the-echoplex.net/flexyboxes/" target="_blank">the-echoplex.net/flexyboxes</a></li>
+	</ul>
+
+</body>
+</html>

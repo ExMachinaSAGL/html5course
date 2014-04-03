@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Flexible Layout</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+	<header>Responsive Design I - Flexible Layout</header>
+
+	<div id="wrapper">
+
+		<div>
+			<div>max-width: 960px</div>
+			
+			<section id="left">64.583333%</section>
+			<aside id="right">31.25%</aside>
+
+			<div class="clearfix"></div>
+
+			<ul>
+				<li>elementi inseriti in una griglia FLUIDA, in grado di ridimensionarsi</li>
+				<li>larghezza degli elementi ELASTICA</li>
+				<li>dimensioni (width, margin, padding) definitite tramite unità di misura RELATIVE (%, em, ...)</li>	
+				<li>è possibile controllare le dimensione con: min-width, max-width, ...</li>	
+				<li>la dimensione di ogni elemento va messa in relazione al contesto in cui si trova (l'elemento che lo contiene):</li>		
+			</ul>
+
+			<div class="emphasys">target / contesto = dimensione</div>
+		</div>
+
+	</div>
+
+	<ul>
+		<li>Unità di misura relative: <a href="http://dev.w3.org/csswg/css-values/#relative-lengths" target="_blank">dev.w3.org/csswg/css-values/#relative-lengths</a></li>
+		<li>Fluid Grids (by Ethan Marcotte): <a href="http://alistapart.com/article/fluidgrids" target="_blank">http://alistapart.com/article/fluidgrids</a></li>
+	</ul>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html> 
+<head>
+  <meta charset="UTF-8">
+  <title>Device Orientation</title>
+  
+  <style>
+    body {
+      font-size: 24px;
+    }
+    .main {
+      background-color: #e5e5e5;
+      margin: 0 auto;
+    }   
+    .img-container {
+      -webkit-perspective: 300; 
+      perspective: 300;
+    } 
+    .img-container img {
+      margin: 5em auto;
+      display: block;
+    }    
+  </style>
+</head>
+<body>
+
+  <div class="main">
+    <h2>Device Orientation</h2>
+    <table>
+      <tr>
+        <td>DIREZIONE (alpha)</td>
+        <td id="alpha"></td>
+      </tr>
+      <tr>
+        <td>FRONT/BACK (beta)</td>
+        <td id="beta"></td>
+      </tr>
+      <tr>
+        <td>LEFT/RIGHT (gamma)</td>
+        <td id="gamma"></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="img-container">
+    <img src="compass.png" id="picture">
+  </div>
+
+  
+  <script>
+    if (window.DeviceOrientationEvent) {
+
+        window.addEventListener('deviceorientation', function(e) {
+          // DIREZIONE: direzione della bussola (gradi rispetto al nord)
+          var a = e.alpha
+
+          // FRONTE/RETRO (lato corto) - in avanti è positivo
+          var b = e.beta;
+
+          // DA SINISTRA A DESTRA (lato lungo) - destra è positivo
+          var g = e.gamma;
+
+          // call our orientation event handler
+          deviceOrientationHandler(a, b, g);
+        });
+      
+        function deviceOrientationHandler(a, b, g) {        
+          document.querySelector("#alpha").textContent = Math.round(a);
+          document.querySelector("#beta").textContent = Math.round(b);
+          document.querySelector("#gamma").textContent = Math.round(g);
+          
+          // Apply the transform to the image
+          var picture = document.querySelector("#picture");
+          picture.style.webkitTransform = "rotate("+ g +"deg) rotate3d(1,0,0, "+ (b*-1)+"deg)";
+          picture.style.transform = "rotate("+ g +"deg) rotate3d(1,0,0, "+ (b*-1)+"deg)";
+        }
+
+    }
+  </script>  
+
+</body>
+</html>

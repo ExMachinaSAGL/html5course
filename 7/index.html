@@ -1,14 +1,82 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>7: </title>
         <meta charset="UTF-8" />
+        <title>7: media queries</title>        
         <link type="text/css" href="../lib/styles/reset.css" rel="stylesheet" />
         <link type="text/css" href="../lib/styles/main.css" rel="stylesheet" />
+        <style>
+            body{
+                background-color:#333;
+
+            }
+            a {text-decoration:none;}
+            .round5{
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                border-radius: 5px;
+            }
+            section{
+                padding:10px;
+                background-color:#aaa;
+            }
+            section header{
+                font-size:30px;
+                margin-bottom:10px;
+                color:#ffff00;
+            }
+            section ul li{
+                margin-top:10px;
+            }
+            section ul li a{
+                color:#fff;
+            }
+            section ul li a:hover{
+                color:#0000ff;
+            }
+            section ul li ul,
+            section ul li ul li {
+                display: inline;
+            }
+            section ul li ul li:after {
+                content: ' | ';
+                color: #fff;
+            }
+            p{
+                font-size : 10px;
+                padding-top:5px;
+                font-style:italic;
+            }
+        </style>
     </head>
     <body>
-        <ul>
-            <li><a href="7-1/index.html">Exercise 1</a></li>
-        </ul>
+        <section class="round5">
+            <header class="round5">Slides</header>
+            <ul>
+                <li>
+                    <a href="exercises/04_flexible_media/04_1/" >No slides (just HTML5 ninja cats!)</a>
+                </li>
+            </ul>
+        </section>
+        <section class="round5">
+            <header class="round5">Exercises</header>
+            <ul>
+                <li><a href="exercises/01_flexible_layout" target="_blank">01. Flexible Layout</a></li>
+                <li><a href="exercises/02_media_queries" target="_blank">02. Media Queries</a></li>
+                <li><a href="exercises/03_viewport" target="_blank">03. Viewport meta tag</a></li>
+                <li><a href="exercises/04_flexible_media" target="_blank">04. Flexible Media</a></li>
+                <li><a href="exercises/05_flexbox" target="_blank">05. Flexbox</a></li>
+                <li><a href="exercises/06_motion_orientation_api" target="_blank">06. Orientation/Motion API</a></li>
+                <li><a href="exercises/07_bootstrap" target="_blank">07. Bootstrap framework example</a></li>
+            </ul>
+        </section>
+        <section class="round5">
+            <header class="round5">Links</header>
+            <ul>
+                <li><a href="http://www.adamkaplan.me/grid/?ref=heydesigner" target="_blank">GRID: A simple guide to responsive design</a></li>
+                <li><a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap responsive framework</a></li>
+            </ul>
+        </section>        
+
     </body>
 </html>
