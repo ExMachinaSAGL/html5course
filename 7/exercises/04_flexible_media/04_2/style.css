@@ -14,7 +14,7 @@ img, video {
 }
 
 #wrapper section {
-	height: 0;
+	height: 0; 				/* hack per scatenare hasLayout in IE */
 	
 	/* parent del media con posizione "absolute" */
 	position: relative;		/* 	attiva "absolute" dei figli 													*/

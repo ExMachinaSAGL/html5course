@@ -16,7 +16,7 @@ FLEXIBLE GRID
 body {
 	/* anche il font puo' essere reso "fluido" */
 	/* 100%: dimensione font di default del browser */
-	font-size: 100%;
+	font-size: 100%; 		/* 16px	 						*/
 }
 #wrapper {
 	/* anche il contenitore si ridimensiona, fino ad un massimo di 960px */
@@ -31,6 +31,9 @@ body {
 	
 	/* font-size definito in em, in dipendenza del valore di default*/
 	font-size: 1.5em; 		/* 	24/16 = 1.5					*/
+	/* equivalente a */
+	/* font-size: 150%; */
+	/* font-size: 24px; */
 }
 section#left {
 	height: 400px;

@@ -15,7 +15,6 @@ MEDIA QUERIES
 	/* anche il contenitore si ridimensiona, fino ad un massimo di 960px */
 	/* oppure rimuovere questa definizione per un layout largo tutta la pagina */
 	max-width: 960px;
-
 }
 section,
 aside {

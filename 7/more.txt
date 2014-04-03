@@ -31,9 +31,6 @@ In Chrome avviare l'inspector inserendo nella barra degli indirizzi uno dei segu
 - chrome://inspect
 - chrome://inspect/#devices
 
-
-
-=======================================================
-BRACKETS
-=======================================================
-Link: http://brackets.io/
+Se non funziona subito controllare due cose:
+1. di aver installato i driver USB corretti per il dispositivo
+2. da console inserire il comando (android debug bridge: http://developer.android.com/tools/help/adb.html): adb devices
