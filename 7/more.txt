@@ -1,0 +1,39 @@
+=======================================================
+NODE-INSPECTOR (Node.JS debug)
+=======================================================
+Link: https://github.com/node-inspector/node-inspector
+Install: npm install -g node-inspector
+
+
+=> Utilizzo:
+1. Avviare lo script node in modalità "debug":
+	node-debug server.js
+
+	(è anche possibile, all'occorrenza, farlo girare su una specifica porta: node-debug -p 8001 server.js)
+
+
+2. Si apre nel browser una schermata dei developer tools di Chrome all'indirizzo:
+	http://localhost:8080/debug?port=5858
+
+
+3. Aprire a questo punto nel browser l'applicazione (al normale link a cui è raggiungibile): 
+	http://localhost:8088
+
+
+
+=======================================================
+CHROME REMOTE MOBILE DEBUGGING
+=======================================================
+Link: https://developers.google.com/chrome-developer-tools/docs/remote-debugging
+
+In Chrome avviare l'inspector inserendo nella barra degli indirizzi uno dei seguenti link:
+- about://inspect
+- chrome://inspect
+- chrome://inspect/#devices
+
+
+
+=======================================================
+BRACKETS
+=======================================================
+Link: http://brackets.io/

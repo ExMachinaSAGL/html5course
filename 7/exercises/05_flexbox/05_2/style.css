@@ -1,0 +1,168 @@
+/* general styles */
+body { color: #666; font-size: 24px; }
+header { padding: 10px; }
+.wrapper { background: #e5e5e5; overflow: auto; margin: 0 auto; padding: 10px; max-width: 960px; }
+section { background: #3BB23B; height: 40px; color: #fff; margin: 5px; padding: 5px; min-width: 80px; }
+.clearfix { clear: both; display: block; }
+.emphasys { width: 80%; border: 1px solid #00f; margin: 0 auto; text-align: center; padding: 20px; }
+
+
+/*------------------------------------------------------------------------
+FLEXBOX
+------------------------------------------------------------------------*/
+/* generic */
+.ex>div {
+	border: 1px solid blue; height: 220px; position: relative; margin-bottom: 1em;
+}
+#ex_1 #main-axis {
+	position: absolute; top: 50%; height: 1px; border-bottom: 1px dashed red; width: 100%; font-size: 80%;
+}
+#ex_1 #cross-axis {
+	position: absolute; left: 50%; height: 100%; border-left: 1px dashed red; font-size: 80%;
+}
+
+
+/* ======================================================
+	FLEX CONTAINER properties
+========================================================*/
+#ex_1>div {
+	/* 
+		FLEX CONTAINER
+
+		flex | inline-flex		 
+	*/
+	display: flex;	/* block element */
+
+	/*
+		Gli item contenuti nel flex container vengono posizionati su una linea virtuale
+		la cui direzione dipende dal linguaggio impostato:
+		left-to-right, right-to-left, top-to-bottom, bottom-to-top
+	*/
+	/* direction: rtl; */
+}
+
+/* FLEX ITEMS */
+/* sono gli elementi contenuti nel padre flex */
+
+
+/* ======================================================*/
+#ex_2>div {
+	display: flex;
+
+	/* 
+		FLEX-DIRECTION: 
+		direzione dei flex items
+		permette di invertire il main axis con il cross axis 
+
+		row | row-reverse | column | column-reverse
+	*/
+	flex-direction: row-reverse;	/* come: direction: rtl; */
+}
+
+
+/* ======================================================*/
+#ex_3>div {
+	display: flex;
+	flex-direction: column;
+}
+#ex_3>div section {
+	width: 80px;
+}
+
+
+/* ======================================================*/
+#ex_4>div {
+	display: flex;
+	
+	/*
+		JUSTIFY-CONTENT:
+		imposta la posizione dei flex items relativamente al main axis
+
+		flex-start | flex-end | center | space-between | space-around
+	*/
+	justify-content: center;
+}
+
+
+/* ======================================================*/
+#ex_5>div {
+	display: flex;
+	
+	/*
+		ALIGN-ITEMS:
+		imposta la posizione dei flex items relativamente al cross axis
+
+		flex-start | flex-end | center | baseline | stretch
+	*/
+	align-items: center;
+
+	justify-content: center;
+}
+
+
+/* ======================================================
+	FLEX ITEM properties
+========================================================*/
+#ex_6>div {
+	display: flex;
+}
+#ex_6>div>section:nth-child(1) {
+	/*
+		ORDER:
+		aggiusta visivamente l'ordine degli elementi:
+		=> stesso ordine a livello di contenuto
+		=> ordine differente a livello visivo!
+	*/
+	order: 3;
+}
+#ex_6>div>section:nth-child(2) {
+	order: 1;
+}
+#ex_6>div>section:nth-child(3) {
+	order: 2;
+}
+
+
+/* ======================================================*/
+#ex_7>div {
+	display: flex;
+}
+#ex_7>div>section {
+	/*
+		MARGIN:
+		un "margin", ma piu' potente!
+	*/
+	margin: auto;
+}
+
+
+/* ======================================================*/
+#ex_8>div {
+	display: flex;
+}
+#ex_8>div>section:nth-child(2) {
+	/*
+		ALIGN-SELF:
+		sovrascrive, per il singolo item, "align-item" dichiarato a livello del padre
+	*/
+	align-self: flex-end;
+}
+
+
+/* ======================================================*/
+#ex_9>div {
+	display: flex;
+}
+#ex_9>div>section:nth-child(1) {
+	/*
+		FLEX:
+		indica quanta parte dello spazio disponibile deve essere occupata dall'elemento
+	*/
+	flex: 3;
+}
+#ex_9>div>section:nth-child(2) {
+	flex: 1;
+}
+#ex_9>div>section:nth-child(3) {
+	flex: 1;
+}

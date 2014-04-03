@@ -1,0 +1,104 @@
+/* general styles */
+body { color: #666; }
+#wrapper { background: #e5e5e5; overflow: auto; margin: 0 auto; padding: 10px; }
+section,
+aside { background: #3BB23B; color: #fff; }
+ul {
+	font-size: 24px;
+}
+
+
+/*------------------------------------------------------------------------
+BASE PER FLEXIBLE GRID
+------------------------------------------------------------------------*/
+body {
+	/* anche il font puo' essere reso "fluido" */
+	/* 100%: dimensione font di default del browser */
+	font-size: 100%;
+}
+#wrapper {
+	/* anche il contenitore si ridimensiona, fino ad un massimo di 960px */
+	/* oppure rimuovere questa definizione per un layout largo tutta la pagina */
+	max-width: 960px;
+}
+section,
+aside {
+	margin: 1.041666%;   	/*  10px/960px = 0.01041666		*/
+}
+
+
+/*------------------------------------------------------------------------
+MEDIA QUERIES
+------------------------------------------------------------------------*/
+/* 
+	= MOBILE FIRST =
+	Un buon approccio è pensare "prima mobile":
+	partire dalle dimensioni piu' piccole 
+	e adattare man mano che lo schermo di ingrandisce
+	in questo modo è possibile controllare le risorse scaricate sul client
+
+	Esempio:
+
+	// In testa ci saranno gli stili di default...
+
+	// Poi a cascata, partendo dalle dimensioni piu' piccole, i breakpoints:
+	@media screen and (min-width: 320px)	{...}
+	@media screen and (min-width: 420px)  	{...}
+	@media screen and (min-width: 768px) 	{...}
+	@media screen and (min-width: 1024px) 	{...}
+ */
+
+
+ /* se viewport è largo almeno 320px */
+@media all and (min-width: 320px) {
+	section, aside {
+		float: none;
+		width: auto;	
+
+		/* è possibile ridimensioare il font */	
+		font-size: 80%;
+	}
+	section {
+		height: 200px;
+	}
+	aside {
+		height: 100px;
+	}
+}
+
+
+/* se viewport è largo almeno 420px */
+@media all and (min-width: 480px) {
+	section, aside {
+		height: 200px;
+
+		font-size: 120%;
+	}
+}
+
+
+/* se viewport è largo almeno 768px */
+@media all and (min-width: 768px) {
+	section,
+	aside {		
+		height: 400px;
+
+		font-size: 150%;
+	}
+	section {
+		float: left;
+	  	width: 64.583333%;   	/* 	620px/960px = 0.64583333	*/
+	}
+	aside {
+		float: right;
+	  	width: 31.25%;   		/* 	300px/960px = 0.3125 		*/
+	}
+}
+
+
+/* se viewport è largo almeno 960px */
+@media all and (min-width: 960px) {
+	section {
+	  	background: url("eoc.png") 50% 50% no-repeat;
+	}
+}

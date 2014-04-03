@@ -1,0 +1,45 @@
+/* general styles */
+body { color: #666; font-size: 24px; }
+header { padding: 10px; }
+#wrapper { background: #e5e5e5; overflow: auto; margin: 0 auto; padding: 10px; max-width: 960px; }
+section { background: #3BB23B; height: 40px; color: #fff; margin: 5px; padding: 5px; min-width: 80px; }
+.clearfix { clear: both; }
+.emphasys { width: 80%; border: 1px solid #00f; margin: 0 auto; text-align: center; padding: 20px; }
+
+
+/*------------------------------------------------------------------------
+FLEXBOX
+------------------------------------------------------------------------*/
+/* float: left */
+#ex_2 section {
+	float: left;
+}
+
+
+/* display: inline-block */
+#ex_3 {
+	/* 
+		gli elementi inline hanno una distanza di "default" tra loro 
+		che va rimossa se voglio usarli in questo modo
+	*/
+	font-size: 0;
+}
+	#ex_3 header,
+	#ex_3 section {
+		/* ripristino il font-size eliminato sopra */
+		font-size: 24px;
+	}
+	#ex_3 section {
+		display: inline-block;
+	}
+
+
+/* old school - display: table + display: table-cell */
+#ex_4>div {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 10px;
+}
+	#ex_4>div section {
+		display: table-cell;
+	}

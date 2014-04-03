@@ -1,0 +1,28 @@
+/* general styles */
+body { color: #666; }
+#wrapper { background: #e5e5e5; overflow: auto; margin: 0 auto; padding: 0; }
+
+
+/*------------------------------------------------------------------------
+FLEXIBLE GRID
+------------------------------------------------------------------------*/
+body {
+	/* anche il font puo' essere reso "fluido" */
+	/* 100%: dimensione font di default del browser */
+	font-size: 100%;
+}
+#wrapper {
+	/* anche il contenitore si ridimensiona, fino ad un massimo di 960px */
+	/* oppure rimuovere questa definizione per un layout largo tutta la pagina */
+	max-width: 960px;
+	padding: 5px;
+
+}
+
+.column {
+	background: #3BB23B;
+	float: left;
+	height: 600px;
+	width: 15.625%;		/*	150px/960px = 0.15625	*/
+	margin: 0.520833%;		/*	5px/960px = 0.00520833	*/
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html> 
+<head>
+  <meta charset="UTF-8">
+  <title>Device Motion</title>
+  
+  <style>
+    .main {
+      background-color: #e5e5e5;
+      margin: 0 auto;
+    }     
+  </style>
+</head>
+<body>
+
+  <div class="main">
+    <h2>Device Motion</h2>
+    <table>
+      <tr>
+        <td>acceleration</td>
+        <td id="acceleration"></td>
+      </tr>
+      <tr>
+        <td>accelerationIncludingGravity</td>
+        <td id="acceleration-with-gravity"></td>
+      </tr>
+      <tr>
+        <td>rotationRate</td>
+        <td id="rotation"></td>
+      </tr>
+    </table>
+  </div>
+
+  
+  <script>
+  
+    if ((window.DeviceMotionEvent) || ('listenForDeviceMovement' in window)) {
+
+      window.addEventListener('devicemotion', function(e) {
+        var info, 
+            xyz = "[X, Y, Z]";
+
+        // ACCELERAZIONE (per ogni asse, esclusa la forza di gravità)
+        var acceleration = e.acceleration;
+        info = xyz.replace("X", round(acceleration.x));
+        info = info.replace("Y", round(acceleration.y));
+        info = info.replace("Z", round(acceleration.z));
+        document.querySelector("#acceleration").textContent = info;
+
+        // ACCELERAZIONE (per ogni asse, inclusa la forza di gravità)
+        acceleration = e.accelerationIncludingGravity;
+        info = xyz.replace("X", round(acceleration.x));
+        info = info.replace("Y", round(acceleration.y));
+        info = info.replace("Z", round(acceleration.z));
+        document.querySelector("#acceleration-with-gravity").textContent = info;
+
+        // ROTAZIONE (per ogni asse, gradi al secondo)
+        var rotation = e.rotationRate;
+        info = xyz.replace("X", round(rotation.alpha));
+        info = info.replace("Y", round(rotation.beta));
+        info = info.replace("Z", round(rotation.gamma));
+        document.querySelector("#rotation").textContent = info;
+      });
+
+    }    
+
+    function round(val) {
+      return Math.round(val*10)/10;
+    }
+
+  </script>
+  
+</body>
+</html>

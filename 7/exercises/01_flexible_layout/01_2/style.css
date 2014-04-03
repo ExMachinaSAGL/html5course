@@ -1,0 +1,28 @@
+/* general styles */
+body { color: #666; font-size: 24px; }
+header { padding: 10px; }
+#wrapper { background: #e5e5e5; overflow: auto; margin: 0 auto; padding: 10px; }
+section,
+aside { background: #3BB23B; height: 80px; color: #fff; }
+.clearfix { clear: both; }
+.emphasys { width: 80%; border: 1px solid #00f; margin: 0 auto; text-align: center; padding: 20px; }
+
+
+/*------------------------------------------------------------------------
+FLEXIBLE LAYOUT
+------------------------------------------------------------------------*/
+#wrapper {
+	/* anche il contenitore si ridimensiona, fino ad un massimo di 960px */
+	/* RIMUOVERE questa definizione per un layout largo tutta la pagina */
+	max-width: 960px;
+}
+section#left {
+	float: left;
+	margin: 1.041666%;   /*  	10px/960px = 0.01041666		*/
+  	width: 64.583333%;   /* 	620px/960px = 0.64583333	*/
+}
+aside#right {
+	float: right;
+	margin: 1.041666%;   /*  	10px/960px = 0.01041666 	*/
+  	width: 31.25%;   /* 	300px/960px = 0.3125 		*/
+}

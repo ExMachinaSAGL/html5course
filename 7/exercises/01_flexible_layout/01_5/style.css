@@ -1,0 +1,54 @@
+/* general styles */
+body { color: #666; }
+#wrapper { background: #e5e5e5; overflow: auto; margin: 0 auto; padding: 0; }
+.clearfix { clear: both; }
+
+
+/*------------------------------------------------------------------------
+FLEXIBLE GRID
+------------------------------------------------------------------------*/
+body {
+	/* dimensione font default del browser (~16px) */
+	font-size: 100%;
+}
+#wrapper {
+	max-width: 960px;
+	padding: 5px;
+
+}
+.box {
+	background: #3BB23B;
+	color: #fff;
+}
+
+#header {
+	width: 65.624998%; 
+	margin-left: 17.187499%; 
+	margin-top: 0.520833%; 
+	height: 100px; 
+
+	/* Uso lo stesso calcolo utilizzato per le dimensioni delle sezioni  */
+	font-size: 1.5em;	/* 	24px/16px = 1.5em	*/
+}
+.aside {
+	width: 15.625%; 
+	margin-top: 0.520833%; 
+	margin-left: 0.520833%; 
+	height: 100px; 
+	float: left;
+}
+#main {
+	width: 65.624998%; 	 
+	margin: 0.520833%; 
+	margin-left: 1.04166%;
+	height: 400px; 
+	float: left;
+}
+#footer {
+	width: 99%; 
+	margin-top: 0.520833%; 
+	margin-left: 0.520833%;
+	height: 40px; 
+
+	font-size: 0.75em;	/* 	12px/16px = 0.75em	*/
+}

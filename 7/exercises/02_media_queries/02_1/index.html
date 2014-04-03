@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Media Queries</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+	<header>Responsive Design II - Media Queries</header>
+
+	<div id="wrapper">
+
+		<div>
+			
+			<section id="left">RESIZE ME</section>
+			<aside id="right">RESIZE ME</aside>
+
+			<div class="clearfix"></div>
+
+			<ul>
+				<li>Specificare stili diversi a seconda di condizioni specifiche del browser (dimensioni, orientamento...)</li>	
+				<li>media type (all, screen [default], print, tv, braille, 3d-glasses...)</li>	
+				<li>breakpoint (min-width, max-width, orientation, device-aspect-ratio...)</li>	
+				<li>introdurre un breakpoint SOLO quando serve, non a larghezze predefinite</li>
+			</ul>
+
+			<div class="emphasys">&lt;link href="styles.css" media="all and (max-width: 1024px)"&gt;</div>
+			<div class="emphasys">@import url(styles.css) all and (max-width: 1024px) {...}</div>
+			<div class="emphasys">@media all and (max-width: 1024px) {...}</div>
+		</div>
+
+	</div>
+
+	<ul>
+		<li>CSS media queries: <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries" target="_blank">developer.mozilla.org/en-US/docs/Web/Guide/CSS/Media_queries</a></li>
+		<li>W3C Media Queries: <a href="http://www.w3.org/TR/css3-mediaqueries/" target="_blank">www.w3.org/TR/css3-mediaqueries</a></li>
+		<li>CSS Media Queries & Using Available Space: <a href="http://css-tricks.com/css-media-queries/" target="_blank">css-tricks.com/css-media-queries</a></li>
+	</ul>
+
+</body>
+</html>
